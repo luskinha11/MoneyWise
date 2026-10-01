@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MoneyWise</title>
+    
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&display=swap" rel="stylesheet">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <body>
+
+    <!-- EFEITOS VISUAIS MONEYWISE -->
+
+    <div class="moneywise-effects">
+
+        <div
+            id="chuvaDinheiro"
+            class="chuva-dinheiro">
+        </div>
+
+        <div class="aura-bordas"></div>
+
+        <div class="particulas-fundo"></div>
+
+    </div>
+
+    <header>
+
+    <a href="index.html" class="logo">
+
+        <img src="img/favicon.png" alt="MoneyWise">
+
+        <span>
+            Money<span class="verde">Wise</span>
+        </span>
+
+    </a>
+
+
+    <nav>
+<a href="index.html" class="ativo">Início</a>
+<a href="financas.html">Finanças</a>
+<a href="metas.html">Metas</a>
+<a href="relatorios.html">Relatórios</a>
+<a href="investimentos.html">Investimentos</a>
+<a href="bitcoin.html">Bitcoin</a>
+<a href="sobre.html">Sobre</a>
+    </nav>
+
+
+    <div class="conta-area">
+
+
+        <button
+    class="menu-mobile-botao"
+    id="menuMobileBotao"
+    type="button"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+    <div
+        id="areaLoginGoogle"
+        class="login-google-box">
+
+        <div class="login-google-linha">
+
+            <div
+                id="googleButton"
+                class="google-login-container">
+            </div>
+            
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        id="usuarioGoogle"
+        class="usuario-google escondido">
+
+        <img
+            id="googleFoto"
+            class="foto-perfil"
+            src=""
+            alt=""
+        >
+
+        <div class="usuario-dados">
+
+            <strong id="googleNome"></strong>
+
+            <span id="googleEmail"></span>
+
+        </div>
+
+        <button
+            id="sairGoogle"
+            class="botao-sair">
+
+            Sair
+
+        </button>
+
+    </div>
+
+</div>
+
+</header>
+
+
+    <section class="intro">
+
+        <p class="label">
+            PARA VOCÊ
+        </p>
+
+<div class="titulo-com-emoji">
+
+    <h1>
+        Tenha mais controle<br>
+        sobre o seu dinheiro.
+    </h1>
+
+    <img
+        src="img/emoji1.png"
+        class="emoji-titulo"
+        alt=""
+    >
+
+</div>
+
+        <p class="description">
+            O MoneyWise ajuda você a entender melhor suas finanças,
+            organizar seus gastos e tomar decisões mais conscientes
+            sobre o seu dinheiro.
+        </p>
+
+    </section>
+
+
+    <main>
+
+        <section class="dashboard-row">
+
+            <div class="finance-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <p class="panel-title">
+                            Resumo financeiro
+                        </p>
+
+                        <h2 id="saldoTopo">
+                            R$ 0,00
+                        </h2>
+
+                        <span class="positive">
+                            Seu saldo atualizado
+                        </span>
+
+                    </div>
+
+                    <span class="period">
+                        1M
+                    </span>
+
+                </div>
+
+
+<div class="chart chart-24h">
+
+    <div class="grafico-info-24h">
+
+        <span>ÚLTIMAS 24 HORAS</span>
+
+        <strong
+            id="variacaoSaldo24h"
+            class="variacao-24h-neutra">
+            R$ 0,00
+        </strong>
+
+    </div>
+
+    <canvas
+        id="graficoSaldo24h">
+    </canvas>
+
+    <div class="horarios-grafico">
+
+        <span>24h atrás</span>
+        <span>18h</span>
+        <span>12h</span>
+        <span>6h</span>
+        <span>Agora</span>
+
+    </div>
+
+</div>
+
+
+            <aside class="market-panel">
+
+                <div class="market-header">
+
+                    <div>
+
+                        <p class="label">
+                            MERCADO
+                        </p>
+
+                        <h2>
+                            Mercado financeiro
+                        </h2>
+
+                    </div>
+
+                    <span class="market-live">
+                        AO VIVO
+                    </span>
+
+                </div>
+
+
+                <div class="market-item">
+
+                    <div>
+                        <span class="market-name">
+                            Dólar
+                        </span>
+
+                        <small>
+                            USD / BRL
+                        </small>
+                    </div>
+
+                    <div class="market-value">
+
+                        <strong id="dolarValor">
+                            Carregando...
+                        </strong>
+
+                        <span id="dolarVariacao">
+                            --
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="market-item">
+
+                    <div>
+                        <span class="market-name">
+                            Euro
+                        </span>
+
+                        <small>
+                            EUR / BRL
+                        </small>
+                    </div>
+
+                    <div class="market-value">
+
+                        <strong id="euroValor">
+                            Carregando...
+                        </strong>
+
+                        <span id="euroVariacao">
+                            --
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="market-item">
+
+                    <div>
+                        <span class="market-name">
+                            Bitcoin
+                        </span>
+
+                        <small>
+                            BTC / BRL
+                        </small>
+                    </div>
+
+                    <div class="market-value">
+
+                        <strong id="bitcoinValor">
+                            Carregando...
+                        </strong>
+
+                        <span id="bitcoinVariacao">
+                            --
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="market-item">
+
+                    <div>
+                        <span class="market-name">
+                            Real
+                        </span>
+
+                        <small>
+                            BRL / USD
+                        </small>
+                    </div>
+
+                    <div class="market-value">
+
+                        <strong id="realValor">
+                            Carregando...
+                        </strong>
+
+                        <span id="realVariacao">
+                            --
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <p class="market-update">
+                    Atualizado automaticamente
+                    <span id="ultimaAtualizacao"></span>
+                </p>
+
+            </aside>
+
+        </section>
+
+
+<section class="shortcuts">
+
+<a href="relatorios.html">
+    RELATÓRIOS
+</a>
+
+    <a href="financas.html">
+        MINHAS FINANÇAS
+    </a>
+
+    <a href="metas.html">
+        MINHAS METAS
+    </a>
+
+    <a href="investimentos.html">
+        INVESTIMENTOS
+    </a>
+
+    <a href="bitcoin.html">
+        BITCOIN
+    </a>
+
+    <a href="sobre.html">
+        SOBRE
+    </a>
+
+</section>
+
+
+        <section class="about">
+
+            <div class="about-content">
+
+                <p class="label">
+                    MONEYWISE
+                </p>
+
+                <h2>
+                    Organizar sua vida financeira
+                    pode ser mais simples.
+                </h2>
+
+                <p>
+                    Nem sempre é fácil saber quanto você pode gastar,
+                    quanto deve guardar ou onde começar a investir.
+                    O MoneyWise reúne essas informações em um só lugar
+                    para facilitar suas escolhas.
+                </p>
+
+                <a
+                    href="financas.html"
+                    class="main-button">
+                    COMEÇAR AGORA
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <section class="features">
+
+            <div class="feature">
+
+                <span class="feature-number">
+                    01
+                </span>
+
+                <h3>
+                    Organize seus gastos
+                </h3>
+
+                <p>
+                    Registre suas entradas e despesas
+                    para entender melhor para onde
+                    seu dinheiro está indo.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span class="feature-number">
+                    02
+                </span>
+
+                <h3>
+                    Acompanhe seu dinheiro
+                </h3>
+
+                <p>
+                    Veja receitas, despesas e saldo
+                    de forma simples e organizada.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <span class="feature-number">
+                    03
+                </span>
+
+                <h3>
+                    Conheça investimentos
+                </h3>
+
+                <p>
+                    Conheça algumas opções antes
+                    de decidir onde colocar seu dinheiro.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <p>
+            MoneyWise — Projeto Integrador
+        </p>
+    </footer>
+
+
+<script src="script.js"></script>
+
+<script
+    type="module"
+    src="firebase.js">
+</script>
+
+</body>
+</html>

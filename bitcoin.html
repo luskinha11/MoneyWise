@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bitcoin | MoneyWise</title>
+
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- EFEITOS VISUAIS MONEYWISE -->
+
+<div class="moneywise-effects">
+
+    <div
+        id="chuvaDinheiro"
+        class="chuva-dinheiro">
+    </div>
+
+    <div class="aura-bordas"></div>
+
+    <div class="particulas-fundo"></div>
+
+</div>
+
+   <header>
+
+    <a href="index.html" class="logo">
+
+        <img
+            src="img/favicon.png"
+            alt="MoneyWise"
+        >
+
+        <span>
+            Money<span class="verde">Wise</span>
+        </span>
+
+    </a>
+
+
+    <nav>
+
+        <a href="index.html">
+            Início
+        </a>
+
+        <a href="financas.html">
+            Finanças
+        </a>
+
+        <a href="metas.html">
+            Metas
+        </a>
+
+        <a href="relatorios.html">
+            Relatórios
+        </a>
+
+        <a href="investimentos.html">
+            Investimentos
+        </a>
+
+        <a
+            href="bitcoin.html"
+            class="ativo"
+        >
+            Bitcoin
+        </a>
+
+        <a href="sobre.html">
+            Sobre
+        </a>
+
+    </nav>
+
+
+    <div class="conta-area">
+
+        <div
+            id="googleButton"
+            class="google-login-container">
+        </div>
+
+        <div
+            id="usuarioGoogle"
+            class="usuario-google escondido"
+        >
+
+            <img
+                id="googleFoto"
+                class="foto-perfil"
+                src=""
+                alt=""
+            >
+
+            <div class="usuario-dados">
+
+                <strong id="googleNome"></strong>
+
+                <span id="googleEmail"></span>
+
+            </div>
+
+            <button
+                id="sairGoogle"
+                class="botao-sair"
+            >
+                Sair
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="menu-mobile-botao"
+        id="menuMobileBotao"
+        type="button"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+</header>
+
+    <main class="pagina-interna">
+
+        <a href="investimentos.html" class="botao-voltar">
+            ← VOLTAR PARA INVESTIMENTOS
+        </a>
+
+
+        <section class="page-title">
+
+            <p class="label">
+                SIMULADOR BITCOIN
+            </p>
+
+<h1>
+    Carteira Bitcoin
+
+    <img
+        src="img/emoji8.png"
+        class="emoji-bitcoin-inline"
+        alt=""
+    >
+</h1>
+
+            <p>
+                Simule compras de Bitcoin e acompanhe
+                como o valor da carteira muda conforme
+                a cotação atual.
+            </p>
+
+        </section>
+
+
+        <!-- RESUMO -->
+
+        <section class="bitcoin-resumo">
+
+            <div class="bitcoin-card">
+
+                <p>Cotação atual</p>
+
+                <h2 id="btcCotacao">
+                    Carregando...
+                </h2>
+
+            </div>
+
+
+            <div class="bitcoin-card">
+
+                <p>Total investido</p>
+
+                <h2 id="btcInvestido">
+                    R$ 0,00
+                </h2>
+
+            </div>
+
+
+            <div class="bitcoin-card">
+
+                <p>Bitcoin acumulado</p>
+
+                <h2 id="btcQuantidade">
+                    0 BTC
+                </h2>
+
+            </div>
+
+
+            <div class="bitcoin-card">
+
+                <p>Valor atual</p>
+
+                <h2 id="btcValorAtual">
+                    R$ 0,00
+                </h2>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTADO -->
+
+        <section class="bitcoin-resultado">
+
+            <div>
+
+                <p class="label">
+                    RESULTADO
+                </p>
+
+                <h2 id="btcResultado">
+                    R$ 0,00
+                </h2>
+
+                <span id="btcPorcentagem">
+                    0%
+                </span>
+
+            </div>
+
+        </section>
+
+<section class="bitcoin-mercado">
+
+    <div class="btc-mercado-cabecalho">
+
+        <div>
+            <p class="label">MERCADO AO VIVO</p>
+
+            <h2>Bitcoin</h2>
+
+            <div class="btc-preco-linha">
+                <strong id="btcMercadoPreco">
+                    Carregando...
+                </strong>
+
+                <span>BRL</span>
+            </div>
+
+            <p id="btcMercadoVariacao">
+                Carregando mercado...
+            </p>
+        </div>
+
+        <div class="btc-atualizacao">
+            Atualização automática
+        </div>
+
+    </div>
+
+
+    <div class="btc-grafico-container">
+
+        <canvas id="btcMercadoCanvas"></canvas>
+
+        <div
+            id="btcTooltip"
+            class="btc-tooltip"
+        ></div>
+
+    </div>
+
+
+    <div class="btc-grafico-horarios">
+
+        <span id="btcHora1">--:--</span>
+        <span id="btcHora2">--:--</span>
+        <span id="btcHora3">--:--</span>
+        <span id="btcHora4">--:--</span>
+
+    </div>
+
+</section>
+
+
+        <!-- COMPRAR -->
+
+        <section class="bitcoin-compra">
+
+            <p class="label">
+                NOVA SIMULAÇÃO
+            </p>
+
+            <h2>
+                Comprar fração de Bitcoin
+            </h2>
+
+
+            <div class="bitcoin-form">
+
+                <div class="campo">
+
+                    <label for="valorCompraBitcoin">
+                        Valor em reais
+                    </label>
+
+                    <input
+                        type="number"
+                        id="valorCompraBitcoin"
+                        placeholder="Ex: 100"
+                        min="1"
+                        step="0.01"
+                    >
+
+                </div>
+
+
+                <button id="comprarBitcoin">
+                    COMPRAR BTC
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- HISTÓRICO -->
+
+        <section class="bitcoin-historico">
+
+            <div class="bitcoin-historico-topo">
+
+                <div>
+
+                    <p class="label">
+                        HISTÓRICO
+                    </p>
+
+                    <h2>
+                        Compras simuladas
+                    </h2>
+
+                </div>
+
+                <button id="limparBitcoin" class="limpar-tudo">
+                    LIMPAR CARTEIRA
+                </button>
+
+            </div>
+
+
+            <div id="listaComprasBitcoin">
+
+                <p class="lista-vazia">
+                    Nenhuma compra simulada.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        MoneyWise — Projeto Integrador
+    </footer>
+
+<script src="script.js"></script>
+
+<script
+    type="module"
+    src="firebase.js">
+</script>
+
+</body>
+</html>

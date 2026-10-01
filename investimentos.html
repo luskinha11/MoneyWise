@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Investimentos | MoneyWise
+    </title>
+
+    <link
+        rel="icon"
+        href="img/favicon.png"
+        type="image/png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         EFEITOS VISUAIS MONEYWISE
+    ========================================== -->
+
+    <div class="moneywise-effects">
+
+        <div
+            id="chuvaDinheiro"
+            class="chuva-dinheiro">
+        </div>
+
+        <div class="aura-bordas"></div>
+
+        <div class="particulas-fundo"></div>
+
+    </div>
+
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header>
+
+        <a
+            href="index.html"
+            class="logo">
+
+            <img
+                src="img/favicon.png"
+                alt="MoneyWise"
+            >
+
+            <span>
+                Money<span class="verde">Wise</span>
+            </span>
+
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <a href="financas.html">
+                Finanças
+            </a>
+
+            <a href="metas.html">
+                Metas
+            </a>
+
+            <a href="relatorios.html">
+                Relatórios
+            </a>
+
+            <a
+                href="investimentos.html"
+                class="ativo">
+                Investimentos
+            </a>
+
+            <a href="bitcoin.html">
+                Bitcoin
+            </a>
+
+            <a href="sobre.html">
+                Sobre
+            </a>
+
+        </nav>
+
+
+        <!-- CONTA GOOGLE -->
+
+        <div class="conta-area">
+
+            <button
+    class="menu-mobile-botao"
+    id="menuMobileBotao"
+    type="button"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+            <div
+                id="googleButton"
+                class="google-login-container">
+            </div>
+
+
+            <div
+                id="usuarioGoogle"
+                class="usuario-google escondido">
+
+                <img
+                    id="googleFoto"
+                    class="foto-perfil"
+                    src=""
+                    alt=""
+                >
+
+                <div class="usuario-dados">
+
+                    <strong id="googleNome"></strong>
+
+                    <span id="googleEmail"></span>
+
+                </div>
+
+                <button
+                    id="sairGoogle"
+                    class="botao-sair">
+                    Sair
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <main class="pagina-interna">
+
+
+        <a
+            href="index.html"
+            class="botao-voltar">
+            ← VOLTAR PARA O INÍCIO
+        </a>
+
+
+        <!-- TÍTULO -->
+
+        <section class="page-title">
+
+            <p class="label">
+                INVESTIMENTOS
+            </p>
+
+            <h1>
+
+                Entenda antes de investir.
+
+                <img
+                    src="img/emoji7.png"
+                    class="emoji-investimentos-inline"
+                    alt=""
+                >
+
+            </h1>
+
+            <p>
+                Aprenda como organizar sua vida financeira,
+                definir seus objetivos e conhecer diferentes
+                formas de investimento.
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             TIPOS DE INVESTIMENTOS
+        ========================================== -->
+
+        <section class="investment-cards">
+
+
+            <!-- RENDA FIXA -->
+
+            <article class="investment-card">
+
+                <span class="numero">
+                    01
+                </span>
+
+                <h2>
+                    Renda fixa
+                </h2>
+
+                <p>
+                    Investimentos que possuem regras de
+                    remuneração definidas no momento da aplicação.
+                </p>
+
+                <div class="investment-detail">
+
+                    <span>
+                        Exemplos
+                    </span>
+
+                    <strong>
+                        CDB e Tesouro Direto
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <!-- FUNDOS -->
+
+            <article class="investment-card">
+
+                <span class="numero">
+                    02
+                </span>
+
+                <h2>
+                    Fundos de investimento
+                </h2>
+
+                <p>
+                    Reúnem recursos de vários investidores
+                    em uma carteira administrada.
+                </p>
+
+                <div class="investment-detail">
+
+                    <span>
+                        Importante
+                    </span>
+
+                    <strong>
+                        Existem diferentes tipos e riscos
+                    </strong>
+
+                </div>
+
+            </article>
+
+
+            <!-- RENDA VARIÁVEL -->
+
+            <article class="investment-card">
+
+                <span class="numero">
+                    03
+                </span>
+
+                <h2>
+                    Renda variável
+                </h2>
+
+                <p>
+                    O valor do investimento pode aumentar
+                    ou diminuir conforme o mercado.
+                </p>
+
+                <div class="investment-detail">
+
+                    <span>
+                        Exemplo
+                    </span>
+
+                    <strong>
+                        Ações de empresas
+                    </strong>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <!-- =========================================
+             ANTES DE INVESTIR
+        ========================================== -->
+
+        <section class="investir-guia">
+
+            <p class="label">
+                ANTES DE INVESTIR
+            </p>
+
+            <h2>
+                Prepare sua vida financeira primeiro.
+            </h2>
+
+            <p class="investir-guia-texto">
+
+                Investir não começa escolhendo uma ação
+                ou uma criptomoeda.
+
+                Primeiro, é importante entender sua situação
+                financeira, organizar seus gastos e saber quanto
+                dinheiro realmente pode ser separado para
+                seus objetivos.
+
+            </p>
+
+
+            <div class="investir-etapas">
+
+
+                <!-- FINANÇAS -->
+
+                <div class="investir-etapa">
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Organize suas finanças
+                    </h3>
+
+                    <p>
+                        Registre suas receitas e despesas
+                        para entender quanto entra, quanto
+                        sai e quanto sobra durante o mês.
+                    </p>
+
+                    <a href="financas.html">
+                        VER MINHAS FINANÇAS →
+                    </a>
+
+                </div>
+
+
+                <!-- METAS -->
+
+                <div class="investir-etapa">
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Crie seus objetivos
+                    </h3>
+
+                    <p>
+                        Defina metas financeiras para saber
+                        por que você está guardando dinheiro
+                        e quanto deseja alcançar.
+                    </p>
+
+                    <a href="metas.html">
+                        VER MINHAS METAS →
+                    </a>
+
+                </div>
+
+
+                <!-- RELATÓRIOS -->
+
+                <div class="investir-etapa">
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        Analise seus resultados
+                    </h3>
+
+                    <p>
+                        Acompanhe seus relatórios para visualizar
+                        receitas, despesas, saldo e a evolução
+                        da sua organização financeira.
+                    </p>
+
+                    <a href="relatorios.html">
+                        VER RELATÓRIOS →
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             COMO COMEÇAR
+        ========================================== -->
+
+        <section class="investir-passos">
+
+            <div class="investir-passos-topo">
+
+                <p class="label">
+                    COMO COMEÇAR
+                </p>
+
+                <h2>
+                    Do planejamento ao investimento
+                </h2>
+
+                <p>
+                    Depois de organizar seu dinheiro,
+                    existem alguns pontos importantes
+                    para conhecer antes de investir.
+                </p>
+
+            </div>
+
+
+            <div class="investir-passos-grid">
+
+
+                <article>
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Entenda seu orçamento
+                    </h3>
+
+                    <p>
+                        Descubra quanto dinheiro realmente
+                        sobra depois das suas despesas.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Pense em uma reserva
+                    </h3>
+
+                    <p>
+                        Separar dinheiro para situações
+                        inesperadas ajuda a evitar que
+                        seus planos sejam interrompidos.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        Defina seu objetivo
+                    </h3>
+
+                    <p>
+                        Saber se seu objetivo é de curto,
+                        médio ou longo prazo ajuda a entender
+                        quais opções fazem mais sentido.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        Conheça os riscos
+                    </h3>
+
+                    <p>
+                        Investimentos possuem características
+                        e riscos diferentes. Entenda como cada
+                        opção funciona antes de tomar decisões.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RISCO E RETORNO
+        ========================================== -->
+
+        <section class="investir-guia">
+
+            <p class="label">
+                RISCO E RETORNO
+            </p>
+
+            <h2>
+                Maior retorno também pode significar
+                maior risco.
+            </h2>
+
+            <p class="investir-guia-texto">
+
+                O valor de alguns investimentos pode variar
+                bastante ao longo do tempo.
+
+                Por isso, não observe apenas a possibilidade
+                de ganho. Também é importante considerar
+                possíveis perdas, prazo e seus próprios
+                objetivos financeiros.
+
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             BITCOIN / SIMULAÇÃO
+        ========================================== -->
+
+        <section class="investir-bitcoin">
+
+            <div class="investir-bitcoin-conteudo">
+
+                <p class="label">
+                    APRENDA NA PRÁTICA
+                </p>
+
+                <h2>
+                    Entenda a variação do Bitcoin
+                </h2>
+
+                <p>
+                    No MoneyWise você pode acompanhar a
+                    cotação do Bitcoin, visualizar seu
+                    histórico no gráfico e observar como
+                    o preço varia ao longo do tempo.
+                </p>
+
+                <p>
+                    Você também pode utilizar o simulador
+                    para entender como uma compra simulada
+                    mudaria de valor conforme a cotação.
+                </p>
+
+                <p class="investir-aviso">
+                    O recurso é apenas uma simulação educativa
+                    e não utiliza dinheiro real.
+                </p>
+
+
+                <a
+                    href="bitcoin.html"
+                    class="investir-bitcoin-botao">
+                    ABRIR SIMULADOR
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RESUMO
+        ========================================== -->
+
+        <section class="investir-passos">
+
+            <div class="investir-passos-topo">
+
+                <p class="label">
+                    LEMBRE-SE
+                </p>
+
+                <h2>
+                    Investir é uma etapa do planejamento.
+                </h2>
+
+                <p>
+                    Antes de pensar em rentabilidade,
+                    acompanhe sua situação financeira
+                    e mantenha seus objetivos organizados.
+                </p>
+
+            </div>
+
+
+            <div class="investir-passos-grid">
+
+
+                <article>
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        Organize
+                    </h3>
+
+                    <p>
+                        Controle receitas e despesas.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        Planeje
+                    </h3>
+
+                    <p>
+                        Crie metas e defina prioridades.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        Acompanhe
+                    </h3>
+
+                    <p>
+                        Analise seus resultados
+                        através dos relatórios.
+                    </p>
+
+                </article>
+
+
+                <article>
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        Aprenda
+                    </h3>
+
+                    <p>
+                        Conheça riscos e diferentes
+                        formas de investimento.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- VOLTAR -->
+
+        <div class="voltar-container">
+
+            <a
+                href="index.html"
+                class="main-button">
+                VOLTAR PARA O INÍCIO
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+    <!-- =========================================
+         RODAPÉ
+    ========================================== -->
+
+    <footer>
+
+        <p>
+            MoneyWise — Projeto Integrador
+        </p>
+
+    </footer>
+
+
+    <!-- =========================================
+         SCRIPTS
+    ========================================== -->
+
+    <script src="script.js"></script>
+
+    <script
+        type="module"
+        src="firebase.js">
+    </script>
+
+
+</body>
+
+</html>

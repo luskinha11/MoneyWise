@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Minhas Finanças | MoneyWise</title>
+
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- EFEITOS VISUAIS MONEYWISE -->
+
+<div class="moneywise-effects">
+
+    <div
+        id="chuvaDinheiro"
+        class="chuva-dinheiro">
+    </div>
+
+    <div class="aura-bordas"></div>
+
+    <div class="particulas-fundo"></div>
+
+</div>
+
+    <header>
+
+        <a href="index.html" class="logo">
+
+            <img src="img/favicon.png" alt="MoneyWise">
+
+            <span>
+                Money<span class="verde">Wise</span>
+            </span>
+
+        </a>
+
+
+<nav>
+<a href="index.html">Início</a>
+<a href="financas.html" class="ativo">Finanças</a>
+<a href="metas.html">Metas</a>
+<a href="relatorios.html">Relatórios</a>
+<a href="investimentos.html">Investimentos</a>
+<a href="bitcoin.html">Bitcoin</a>
+<a href="sobre.html">Sobre</a>
+</nav>
+
+
+        <div class="conta-area">
+
+
+            <button
+    class="menu-mobile-botao"
+    id="menuMobileBotao"
+    type="button"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+            <div
+                id="googleButton"
+                class="google-login-container">
+            </div>
+
+            <div
+                id="usuarioGoogle"
+                class="usuario-google escondido">
+
+                <img
+                    id="googleFoto"
+                    class="foto-perfil"
+                    src=""
+                    alt=""
+                >
+
+                <div class="usuario-dados">
+                    <strong id="googleNome"></strong>
+                    <span id="googleEmail"></span>
+                </div>
+
+                <button
+                    id="sairGoogle"
+                    class="botao-sair">
+                    Sair
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <main class="pagina-interna">
+
+        <a
+            href="index.html"
+            class="botao-voltar">
+            ← VOLTAR PARA O INÍCIO
+        </a>
+
+
+        <section class="page-title">
+
+            <p class="label">
+                MINHAS FINANÇAS
+            </p>
+
+<div class="titulo-com-emoji">
+
+    <h1>
+        Controle suas movimentações.
+    </h1>
+
+    <img
+        src="img/emoji5.png"
+        class="emoji-titulo"
+        alt=""
+    >
+
+</div>
+
+            <p>
+                Registre o dinheiro que entra e sai
+                para acompanhar sua situação financeira.
+            </p>
+
+        <section class="resumo-cards">
+
+    <!-- SALDO ATUAL -->
+    <div class="resumo-card">
+
+        <p>
+            Saldo atual
+        </p>
+
+        <h2 id="saldo">
+            R$ 0,00
+        </h2>
+
+    </div>
+
+
+    <!-- RECEITAS -->
+    <div class="resumo-card">
+
+        <p>
+            Receitas
+        </p>
+
+        <h2 id="receitas">
+            R$ 0,00
+        </h2>
+
+    </div>
+
+
+    <!-- DESPESAS -->
+    <div class="resumo-card">
+
+        <p>
+            Despesas
+        </p>
+
+        <h2 id="despesas">
+            R$ 0,00
+        </h2>
+
+    </div>
+
+
+</section>
+
+
+
+        <section class="nova-movimentacao">
+
+            <p class="label">
+                REGISTRO
+            </p>
+
+            <h2>
+                Nova movimentação
+            </h2>
+
+
+<div class="formulario formulario-completo">
+
+    <div class="campo">
+
+        <label for="descricao">
+            Descrição
+        </label>
+
+        <input
+            type="text"
+            id="descricao"
+            placeholder="Ex: Salário"
+        >
+
+    </div>
+
+
+    <div class="campo">
+
+        <label for="valor">
+            Valor
+        </label>
+
+        <input
+            type="number"
+            id="valor"
+            placeholder="0,00"
+            min="0"
+            step="0.01"
+        >
+
+    </div>
+
+
+    <div class="campo">
+
+        <label for="tipo">
+            Tipo
+        </label>
+
+        <select id="tipo">
+
+            <option value="receita">
+                Receita
+            </option>
+
+            <option value="despesa">
+                Despesa
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="campo">
+
+        <label for="categoria">
+            Categoria
+        </label>
+
+        <select id="categoria">
+
+            <option value="Alimentação">
+                Alimentação
+            </option>
+
+            <option value="Transporte">
+                Transporte
+            </option>
+
+            <option value="Jogos">
+                Jogos
+            </option>
+
+            <option value="Estudos">
+                Estudos
+            </option>
+
+            <option value="Compras">
+                Compras
+            </option>
+
+            <option value="Contas">
+                Contas
+            </option>
+
+            <option value="Salário">
+                Salário
+            </option>
+
+            <option value="Outros">
+                Outros
+            </option>
+
+        </select>
+
+    </div>
+
+
+    <div class="campo">
+
+        <label for="dataMovimentacao">
+            Data
+        </label>
+
+        <input
+            type="date"
+            id="dataMovimentacao"
+        >
+
+    </div>
+
+
+    <button id="adicionar">
+        ADICIONAR
+    </button>
+
+</div>
+
+        </section>
+
+        <!-- LIMITE DE GASTOS DIÁRIOS -->
+
+<section class="limite-diario">
+
+    <p class="label">
+        CONTROLE DIÁRIO
+    </p>
+
+    <h2>
+        Limite de gastos por dia
+    </h2>
+
+    <p class="limite-diario-descricao">
+        Defina quanto você pode gastar por dia.
+        O limite máximo é calculado de acordo com sua renda mensal.
+    </p>
+
+    <div class="limite-diario-formulario">
+
+        <div class="campo">
+            <label for="limiteDiarioInput">
+                Seu limite diário
+            </label>
+
+            <input
+                type="number"
+                id="limiteDiarioInput"
+                placeholder="Ex: 30,00"
+                min="0"
+                step="0.01"
+            >
+        </div>
+
+        <button
+            type="button"
+            id="salvarLimiteDiario"
+        >
+            SALVAR LIMITE
+        </button>
+
+    </div>
+
+    <div class="limite-diario-resumo">
+
+        <div>
+            <span>Renda do mês</span>
+            <strong id="rendaMesLimite">
+                R$ 0,00
+            </strong>
+        </div>
+
+        <div>
+            <span>Máximo permitido</span>
+            <strong id="limiteMaximoDiario">
+                R$ 0,00
+            </strong>
+        </div>
+
+        <div>
+            <span>Gasto hoje</span>
+            <strong id="gastoHojeLimite">
+                R$ 0,00
+            </strong>
+        </div>
+
+        <div>
+            <span>Restante hoje</span>
+            <strong id="restanteHojeLimite">
+                R$ 0,00
+            </strong>
+        </div>
+
+    </div>
+
+    <div class="limite-diario-barra">
+
+        <div
+            id="progressoLimiteDiario"
+            class="limite-diario-progresso"
+        ></div>
+
+    </div>
+
+    <p
+        id="mensagemLimiteDiario"
+        class="limite-diario-mensagem"
+    >
+        Registre uma receita para calcular seu limite diário.
+    </p>
+
+</section>
+
+        <section class="historico">
+
+            <div class="historico-topo">
+
+                <div>
+
+                    <p class="label">
+                        HISTÓRICO
+                    </p>
+
+                    <h2>
+                        Suas movimentações
+                    </h2>
+
+                </div>
+
+                <button
+                    id="limparTudo"
+                    class="limpar-tudo">
+                    LIMPAR TUDO
+                </button>
+
+            </div>
+
+
+            <div class="tabela-cabecalho">
+
+                <span>Descrição</span>
+                <span>Tipo</span>
+                <span>Valor</span>
+                <span></span>
+
+            </div>
+
+
+            <div id="listaMovimentacoes">
+
+                <p class="lista-vazia">
+                    Nenhuma movimentação registrada.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="voltar-container">
+
+            <a
+                href="index.html"
+                class="main-button">
+                VOLTAR PARA O INÍCIO
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        <p>
+            MoneyWise — Projeto Integrador
+        </p>
+    </footer>
+
+
+  <script src="script.js"></script>
+
+
+<script
+    type="module"
+    src="firebase.js">
+</script>
+
+</body>
+</html>

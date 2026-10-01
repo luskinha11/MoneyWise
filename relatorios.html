@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Relatórios | MoneyWise</title>
+
+    <link
+        rel="icon"
+        href="img/favicon.png"
+        type="image/png"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- EFEITOS VISUAIS MONEYWISE -->
+
+<div class="moneywise-effects">
+
+    <div
+        id="chuvaDinheiro"
+        class="chuva-dinheiro">
+    </div>
+
+    <div class="aura-bordas"></div>
+
+    <div class="particulas-fundo"></div>
+
+</div>
+
+<header>
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <img
+            src="img/favicon.png"
+            alt="MoneyWise"
+        >
+
+        <span>
+            Money<span class="verde">Wise</span>
+        </span>
+
+    </a>
+
+
+    <nav>
+<a href="index.html">Início</a>
+<a href="financas.html">Finanças</a>
+<a href="metas.html">Metas</a>
+<a href="relatorios.html" class="ativo">Relatórios</a>
+<a href="investimentos.html">Investimentos</a>
+<a href="bitcoin.html">Bitcoin</a>
+<a href="sobre.html">Sobre</a>
+    </nav>
+
+
+    <div class="conta-area">
+
+
+        <button
+    class="menu-mobile-botao"
+    id="menuMobileBotao"
+    type="button"
+    aria-label="Abrir menu"
+    aria-expanded="false"
+>
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+        <div
+            id="areaLoginGoogle"
+            class="login-google-box"
+        >
+
+            <div class="login-google-linha">
+
+                <div
+                    id="googleButton"
+                    class="google-login-container"
+                >
+                </div>
+
+                <img
+                    src="img/emoji9.png"
+                    class="emoji-login-google"
+                    alt=""
+                >
+
+            </div>
+
+            <p class="login-google-subtitulo">
+                Primeiro faça login em sua conta!
+            </p>
+
+        </div>
+
+
+        <div
+            id="usuarioGoogle"
+            class="usuario-google escondido"
+        >
+
+            <img
+                id="googleFoto"
+                class="foto-perfil"
+                src=""
+                alt=""
+            >
+
+            <div class="usuario-dados">
+
+                <strong id="googleNome"></strong>
+
+                <span id="googleEmail"></span>
+
+            </div>
+
+            <button
+                id="sairGoogle"
+                class="botao-sair"
+            >
+                Sair
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="pagina-interna">
+
+
+    <a
+        href="index.html"
+        class="botao-voltar"
+    >
+        ← VOLTAR PARA O INÍCIO
+    </a>
+
+
+    <section class="page-title">
+
+        <p class="label">
+            RELATÓRIOS
+        </p>
+
+        <h1>
+            Entenda seu dinheiro.
+        </h1>
+
+        <p>
+            Analise suas receitas, despesas,
+            economia e hábitos financeiros.
+        </p>
+
+    </section>
+
+
+    <!-- RESUMO -->
+
+    <section class="relatorios-resumo">
+
+        <div class="relatorio-card">
+
+            <p>
+                Receitas do mês
+            </p>
+
+            <h2
+                id="relatorioReceitas"
+                class="valor-verde"
+            >
+                R$ 0,00
+            </h2>
+
+        </div>
+
+
+        <div class="relatorio-card">
+
+            <p>
+                Despesas do mês
+            </p>
+
+            <h2 id="relatorioDespesas">
+                R$ 0,00
+            </h2>
+
+        </div>
+
+
+        <div class="relatorio-card">
+
+            <p>
+                Economizado
+            </p>
+
+            <h2 id="relatorioEconomizado">
+                R$ 0,00
+            </h2>
+
+        </div>
+
+
+        <div class="relatorio-card">
+
+            <p>
+                Maior gasto
+            </p>
+
+            <h2 id="relatorioMaiorGasto">
+                R$ 0,00
+            </h2>
+
+            <span id="relatorioMaiorGastoNome">
+                Nenhuma despesa
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- COMPARAÇÃO -->
+
+    <section class="relatorio-comparacao">
+
+        <p class="label">
+            COMPARAÇÃO MENSAL
+        </p>
+
+        <h2>
+            Como foi seu mês?
+        </h2>
+
+        <p id="textoComparacao">
+            Ainda não existem dados suficientes
+            para comparar os meses.
+        </p>
+
+    </section>
+
+
+    <!-- GRÁFICO RECEITAS X DESPESAS -->
+
+    <section class="relatorio-painel">
+
+        <div class="relatorio-titulo">
+
+            <p class="label">
+                VISÃO GERAL
+            </p>
+
+            <h2>
+                Receitas x Despesas
+            </h2>
+
+        </div>
+
+
+        <div class="grafico-barras">
+
+            <div class="barra-coluna">
+
+                <div class="barra-area">
+
+                    <div
+                        id="barraReceitas"
+                        class="barra-financeira barra-receita"
+                    >
+                    </div>
+
+                </div>
+
+                <strong id="valorBarraReceitas">
+                    R$ 0
+                </strong>
+
+                <span>
+                    Receitas
+                </span>
+
+            </div>
+
+
+            <div class="barra-coluna">
+
+                <div class="barra-area">
+
+                    <div
+                        id="barraDespesas"
+                        class="barra-financeira barra-despesa"
+                    >
+                    </div>
+
+                </div>
+
+                <strong id="valorBarraDespesas">
+                    R$ 0
+                </strong>
+
+                <span>
+                    Despesas
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EVOLUÇÃO DO SALDO -->
+
+    <section class="relatorio-painel">
+
+        <div class="relatorio-titulo">
+
+            <p class="label">
+                EVOLUÇÃO
+            </p>
+
+            <h2>
+                Evolução do saldo
+            </h2>
+
+        </div>
+
+
+        <canvas
+            id="graficoSaldo"
+            class="grafico-saldo"
+            width="900"
+            height="320"
+        >
+        </canvas>
+
+    </section>
+
+
+    <!-- CATEGORIAS -->
+
+    <section class="relatorio-painel">
+
+        <div class="relatorio-titulo">
+
+            <p class="label">
+                CATEGORIAS
+            </p>
+
+            <h2>
+                Para onde seu dinheiro está indo?
+            </h2>
+
+        </div>
+
+
+        <div
+            id="listaCategorias"
+            class="lista-categorias"
+        >
+
+            <p class="lista-vazia">
+                Nenhuma despesa cadastrada.
+            </p>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    MoneyWise — Projeto Integrador
+
+</footer>
+
+
+<script src="script.js"></script>
+
+<script
+    type="module"
+    src="firebase.js">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,6746 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050605;
+    color: #ffffff;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select {
+    font-family: inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    width: 100%;
+    min-height: 82px;
+
+    padding: 0 6%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 35px;
+
+    background: #050605;
+
+    border-bottom: 1px solid #18351f;
+}
+
+
+/* LOGO */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+.verde {
+    color: #267a3c;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+nav {
+    display: flex;
+    align-items: center;
+
+    gap: 35px;
+
+    margin-left: auto;
+}
+
+nav a {
+    position: relative;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    padding: 32px 0;
+
+    transition: 0.2s;
+}
+
+nav a:hover {
+    color: #267a3c;
+}
+
+nav a.ativo {
+    color: #267a3c;
+}
+
+nav a.ativo::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 2px;
+
+    background: #267a3c;
+}
+
+
+/* =========================
+   CONTA GOOGLE
+========================= */
+
+.conta-area {
+    min-width: 220px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin-left: 15px;
+}
+
+
+.google-login-container {
+    min-height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+/* PERFIL LOGADO */
+
+.usuario-google {
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 6px 8px 6px 6px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+    border-radius: 30px;
+
+    transition:
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.usuario-google:hover {
+    border-color: #267a3c;
+
+    background: #0a0d0b;
+}
+
+
+/* FOTO */
+
+.foto-perfil {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #267a3c;
+
+    background: #050605;
+}
+
+
+/* NOME E EMAIL */
+
+.usuario-dados {
+    min-width: 0;
+    max-width: 145px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.usuario-dados strong {
+    color: #ffffff;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.usuario-dados span {
+    margin-top: 3px;
+
+    color: #ffffff;
+
+    font-size: 9px;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* SAIR */
+
+.botao-sair {
+    height: 34px;
+
+    padding: 0 14px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid #267a3c;
+    border-radius: 20px;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.botao-sair:hover {
+    background: #267a3c;
+}
+
+
+/* ESCONDIDO */
+
+.escondido {
+    display: none !important;
+}
+
+
+/* =========================
+   INTRO
+========================= */
+
+.intro {
+    width: 84%;
+
+    margin: auto;
+
+    padding: 65px 0 45px;
+}
+
+.label {
+    color: #267a3c;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* TÍTULO PRINCIPAL */
+
+.intro h1 {
+    margin: 18px 0;
+
+    color: #ffffff;
+
+font-family: "Bodoni Moda", Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 600;
+
+    font-size: 46px;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* TEXTO ABAIXO DO TÍTULO */
+
+.description {
+    max-width: 650px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard-row {
+    width: 92%;
+
+    margin: 0 auto;
+
+    display: block;
+}
+
+
+/* =========================
+   RESUMO
+========================= */
+
+.finance-panel {
+    width: 100%;
+
+    max-width: 1500px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.panel-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.panel-title {
+    margin-bottom: 10px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+.panel-header h2 {
+    margin-bottom: 8px;
+
+    color: #ffffff;
+
+    font-size: 30px;
+}
+
+.positive {
+    color: #267a3c;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.period {
+    padding: 10px 17px;
+
+    background: #267a3c;
+
+    color: #ffffff;
+
+    border-radius: 4px;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   GRÁFICO
+========================= */
+
+.chart {
+    height: 300px;
+
+    margin-top: 25px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.grid-line {
+    position: absolute;
+
+    width: 100%;
+
+    border-top: 1px dashed #18351f;
+}
+
+.line-one {
+    top: 25%;
+}
+
+.line-two {
+    top: 50%;
+}
+
+.line-three {
+    top: 75%;
+}
+
+.chart-line {
+    position: absolute;
+
+    left: 2%;
+
+    bottom: 50px;
+
+    width: 96%;
+    height: 125px;
+
+    border-bottom: 3px solid #267a3c;
+
+    transform: skewY(-5deg);
+}
+
+.dates {
+    position: absolute;
+
+    bottom: 5px;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #ffffff;
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   MERCADO
+========================= */
+
+.market-panel {
+    min-width: 0;
+
+    padding: 28px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.market-header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+.market-header h2 {
+    margin-top: 8px;
+
+    color: #ffffff;
+
+    font-size: 20px;
+}
+
+.market-live {
+    flex-shrink: 0;
+
+    padding: 6px 9px;
+
+    color: #267a3c;
+
+    border: 1px solid #267a3c;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+.market-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid #18351f;
+}
+
+.market-name {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.market-item small {
+    color: #ffffff;
+
+    font-size: 9px;
+}
+
+.market-value {
+    text-align: right;
+
+    white-space: nowrap;
+}
+
+.market-value strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+.market-value span {
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+.market-up {
+    color: #267a3c;
+}
+
+.market-down {
+    color: #ffffff;
+}
+
+.market-update {
+    margin-top: 18px;
+
+    color: #ffffff;
+
+    font-size: 9px;
+}
+
+
+/* =========================
+   ATALHOS
+========================= */
+
+.shortcuts {
+    width: 84%;
+
+    margin: 25px auto 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+}
+
+.shortcuts a {
+    padding: 10px 20px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    border: 1px solid #267a3c;
+    border-radius: 20px;
+
+    transition: 0.2s;
+}
+
+.shortcuts a:hover {
+    background: #267a3c;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   SOBRE
+========================= */
+
+.about {
+    width: 84%;
+
+    margin: 45px auto;
+
+    background: #080b09;
+
+    border: 1px solid #267a3c;
+}
+
+.about-content {
+    max-width: 760px;
+
+    padding: 55px;
+}
+
+.about h2 {
+    margin: 15px 0 20px;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 600;
+
+    font-size: 34px;
+
+    line-height: 1.25;
+
+    letter-spacing: -0.3px;
+}
+
+.about p:not(.label) {
+    color: #ffffff;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+.main-button {
+    display: inline-block;
+
+    margin-top: 28px;
+
+    padding: 13px 25px;
+
+    background: #267a3c;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: bold;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.main-button:hover {
+    background: #1c5c2d;
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    width: 84%;
+
+    margin: 55px auto 100px;
+
+    display: flex;
+
+    gap: 20px;
+}
+
+.feature {
+    flex: 1;
+
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.feature-number {
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.feature h3 {
+    margin-bottom: 14px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+.feature p {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   PÁGINAS INTERNAS
+========================= */
+
+.pagina-interna {
+    width: 84%;
+
+    min-height: 800px;
+
+    margin: auto;
+
+    padding: 55px 0 100px;
+}
+
+.botao-voltar {
+    display: inline-block;
+
+    margin-bottom: 60px;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    transition: 0.2s;
+}
+
+.botao-voltar:hover {
+    color: #267a3c;
+}
+
+.page-title {
+    margin-bottom: 50px;
+}
+
+.page-title h1 {
+    max-width: 750px;
+
+    margin: 15px 0;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 600;
+
+    font-size: 44px;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.5px;
+}
+
+.page-title > p:not(.label) {
+    max-width: 650px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FINANÇAS
+========================= */
+
+.resumo-cards {
+    display: flex;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.resumo-card {
+    flex: 1;
+
+    padding: 28px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.resumo-card p {
+    margin-bottom: 13px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+.resumo-card h2 {
+    color: #ffffff;
+
+    font-size: 27px;
+}
+
+.valor-verde {
+    color: #267a3c !important;
+}
+
+.valor-vermelho {
+    color: #e53935 !important;
+}
+
+.valor-neutro {
+    color: #ffffff !important;
+}
+
+/* =========================
+   NOVA MOVIMENTAÇÃO
+========================= */
+
+.nova-movimentacao {
+    margin-bottom: 30px;
+
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.nova-movimentacao h2 {
+    margin: 10px 0 25px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+}
+
+.formulario {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr auto;
+
+    align-items: end;
+
+    gap: 12px;
+}
+
+.campo {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.campo label {
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+.formulario input,
+.formulario select {
+    width: 100%;
+    height: 45px;
+
+    padding: 0 13px;
+
+    background: #050605;
+
+    color: #ffffff;
+
+    border: 1px solid #18351f;
+
+    outline: none;
+}
+
+.formulario input::placeholder {
+    color: #ffffff;
+
+    opacity: 0.75;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+    border-color: #267a3c;
+}
+
+.formulario button {
+    height: 45px;
+
+    padding: 0 24px;
+
+    background: #267a3c;
+
+    color: #ffffff;
+
+    border: none;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   HISTÓRICO
+========================= */
+
+.historico {
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.historico-topo {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.historico-topo h2 {
+    margin-top: 10px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+}
+
+.limpar-tudo {
+    padding: 9px 14px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid #18351f;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.limpar-tudo:hover {
+    border-color: #267a3c;
+
+    color: #267a3c;
+}
+
+.tabela-cabecalho,
+.movimentacao {
+    display: grid;
+
+    grid-template-columns:
+        2fr 1fr 1fr 90px;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 15px 10px;
+}
+
+.tabela-cabecalho {
+    color: #ffffff;
+
+    font-size: 11px;
+
+    border-bottom: 1px solid #18351f;
+}
+
+.movimentacao {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #101b13;
+}
+
+.receita {
+    color: #267a3c;
+
+    font-weight: bold;
+}
+
+.despesa {
+    color: #ffffff;
+
+    font-weight: bold;
+}
+
+.remover {
+    padding: 7px 10px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid #267a3c;
+
+    font-size: 10px;
+
+    cursor: pointer;
+}
+
+.remover:hover {
+    background: #267a3c;
+}
+
+.lista-vazia {
+    padding: 30px 10px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   INVESTIMENTOS
+========================= */
+
+.investment-cards {
+    display: flex;
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+}
+
+.investment-card {
+    flex: 1;
+
+    min-height: 320px;
+
+    padding: 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.numero {
+    display: block;
+
+    margin-bottom: 35px;
+
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.investment-card h2 {
+    margin-bottom: 15px;
+
+    color: #ffffff;
+
+    font-size: 21px;
+}
+
+.investment-card > p {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+.investment-detail {
+    margin-top: auto;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #18351f;
+}
+
+.investment-detail span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #267a3c;
+
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.investment-detail strong {
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+.investment-info {
+    margin-top: 40px;
+
+    padding: 45px;
+
+    background: #080b09;
+
+    border: 1px solid #267a3c;
+}
+
+.investment-info h2 {
+    max-width: 650px;
+
+    margin: 15px 0;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 600;
+
+    font-size: 30px;
+
+    line-height: 1.3;
+}
+
+.investment-info p:not(.label) {
+    max-width: 750px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   PASSOS
+========================= */
+
+.steps {
+    margin-top: 70px;
+}
+
+.steps > h2 {
+    margin: 12px 0 30px;
+
+    color: #ffffff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 600;
+
+    font-size: 30px;
+}
+
+.steps-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.step {
+    padding: 28px;
+
+    border-top: 1px solid #267a3c;
+}
+
+.step span {
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.step h3 {
+    margin: 18px 0 12px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+.step p {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+}
+
+.voltar-container {
+    margin-top: 60px;
+
+    text-align: center;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 30px;
+
+    text-align: center;
+
+    color: #ffffff;
+
+    font-size: 12px;
+
+    border-top: 1px solid #18351f;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 1180px) {
+
+    header {
+        gap: 20px;
+    }
+
+    nav {
+        gap: 20px;
+    }
+
+    .usuario-dados {
+        display: none;
+    }
+
+    .conta-area {
+        min-width: auto;
+    }
+
+}
+
+
+@media (max-width: 1050px) {
+
+    .dashboard-row {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    header {
+        padding: 0 4%;
+    }
+
+    .logo span {
+        display: none;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 11px;
+        padding: 32px 0;
+    }
+
+    .google-login-container {
+        transform: scale(0.85);
+        transform-origin: right center;
+    }
+
+    .foto-perfil {
+        width: 36px;
+        height: 36px;
+        min-width: 36px;
+    }
+
+    .botao-sair {
+        padding: 0 10px;
+    }
+
+    .intro,
+    .dashboard-row,
+    .shortcuts,
+    .about,
+    .features,
+    .pagina-interna {
+        width: 92%;
+    }
+
+    .intro h1,
+    .page-title h1 {
+        font-size: 34px;
+    }
+
+    .features,
+    .resumo-cards,
+    .investment-cards {
+        flex-direction: column;
+    }
+
+    .formulario {
+        grid-template-columns: 1fr;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================
+   METAS FINANCEIRAS
+========================================= */
+
+
+/* RESUMO */
+
+.metas-resumo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+.meta-resumo-card {
+    padding: 28px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.meta-resumo-card p {
+    margin-bottom: 12px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+.meta-resumo-card h2 {
+    color: #ffffff;
+
+    font-size: 27px;
+}
+
+
+/* =========================================
+   NOVA META
+========================================= */
+
+.nova-meta {
+    padding: 30px;
+
+    margin-bottom: 40px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.nova-meta-titulo h2 {
+    margin: 10px 0 25px;
+
+    color: #ffffff;
+
+    font-size: 23px;
+}
+
+.formulario-meta {
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr auto;
+
+    align-items: end;
+
+    gap: 12px;
+}
+
+.formulario-meta .campo {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.formulario-meta .campo label {
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+.formulario-meta input {
+    width: 100%;
+    height: 45px;
+
+    padding: 0 14px;
+
+    background: #050605;
+
+    color: #ffffff;
+
+    border: 1px solid #18351f;
+
+    outline: none;
+
+    transition: 0.2s;
+}
+
+.formulario-meta input::placeholder {
+    color: #ffffff;
+
+    opacity: 0.55;
+}
+
+.formulario-meta input:focus {
+    border-color: #267a3c;
+}
+
+.formulario-meta button {
+    height: 45px;
+
+    padding: 0 25px;
+
+    background: #267a3c;
+
+    color: #ffffff;
+
+    border: none;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.formulario-meta button:hover {
+    background: #1c5c2d;
+}
+
+
+/* =========================================
+   ÁREA DAS METAS
+========================================= */
+
+.area-metas {
+    margin-top: 20px;
+}
+
+.area-metas-topo {
+    margin-bottom: 25px;
+}
+
+.area-metas-topo h2 {
+    margin-top: 10px;
+
+    color: #ffffff;
+
+    font-size: 27px;
+}
+
+
+/* =========================================
+   LISTA DE METAS
+========================================= */
+
+.lista-metas {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+/* CARD */
+
+.meta-card {
+    position: relative;
+
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+
+    transition: 0.2s;
+}
+
+.meta-card:hover {
+    border-color: #267a3c;
+}
+
+.meta-card.concluida {
+    border-color: #267a3c;
+}
+
+
+/* TOPO DO CARD */
+
+.meta-card-topo {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.meta-card-topo h3 {
+    margin-top: 8px;
+
+    color: #ffffff;
+
+    font-size: 20px;
+}
+
+.meta-status {
+    padding: 6px 10px;
+
+    color: #267a3c;
+
+    border: 1px solid #267a3c;
+
+    font-size: 9px;
+    font-weight: bold;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* VALORES */
+
+.meta-valores {
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.meta-guardado {
+    color: #ffffff;
+
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.meta-objetivo {
+    color: #ffffff;
+
+    font-size: 12px;
+
+    opacity: 0.7;
+}
+
+.meta-porcentagem {
+    margin-bottom: 10px;
+
+    color: #267a3c;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================================
+   BARRA DE PROGRESSO
+========================================= */
+
+.meta-barra {
+    width: 100%;
+    height: 8px;
+
+    margin-bottom: 25px;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+
+    overflow: hidden;
+}
+
+.meta-progresso {
+    height: 100%;
+
+    background: #267a3c;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================================
+   AÇÕES DA META
+========================================= */
+
+.meta-acoes {
+    display: flex;
+
+    gap: 10px;
+}
+
+.meta-acoes input {
+    flex: 1;
+
+    height: 40px;
+
+    padding: 0 12px;
+
+    background: #050605;
+
+    color: #ffffff;
+
+    border: 1px solid #18351f;
+
+    outline: none;
+}
+
+.meta-acoes input::placeholder {
+    color: #ffffff;
+
+    opacity: 0.55;
+}
+
+.meta-acoes input:focus {
+    border-color: #267a3c;
+}
+
+.meta-adicionar {
+    padding: 0 16px;
+
+    background: #267a3c;
+
+    color: #ffffff;
+
+    border: none;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.meta-adicionar:hover {
+    background: #1c5c2d;
+}
+
+.meta-remover {
+    padding: 0 15px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid #267a3c;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.meta-remover:hover {
+    background: #267a3c;
+}
+
+
+/* =========================================
+   NENHUMA META
+========================================= */
+
+.metas-vazio {
+    grid-column: 1 / -1;
+
+    padding: 60px 30px;
+
+    text-align: center;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.metas-vazio h3 {
+    margin-bottom: 10px;
+
+    color: #ffffff;
+}
+
+.metas-vazio p {
+    color: #ffffff;
+
+    font-size: 13px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================================
+   RESPONSIVO DAS METAS
+========================================= */
+
+@media (max-width: 950px) {
+
+    .formulario-meta {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .formulario-meta button {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 750px) {
+
+    .metas-resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-metas {
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .meta-acoes {
+        flex-direction: column;
+    }
+
+    .meta-acoes button {
+        min-height: 40px;
+    }
+
+}
+
+/* =========================================
+   SIMULADOR BITCOIN
+========================================= */
+
+.bitcoin-resumo {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+.bitcoin-card {
+    padding: 25px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.bitcoin-card p {
+    margin-bottom: 12px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+.bitcoin-card h2 {
+    color: #ffffff;
+
+    font-size: 22px;
+}
+
+
+/* RESULTADO */
+
+.bitcoin-resultado {
+    margin-bottom: 30px;
+
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.bitcoin-resultado h2 {
+    margin: 10px 0 5px;
+
+    font-size: 30px;
+}
+
+.bitcoin-resultado span {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+/* COMPRA */
+
+.bitcoin-compra {
+    margin-bottom: 30px;
+
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.bitcoin-compra h2 {
+    margin: 10px 0 25px;
+}
+
+.bitcoin-form {
+    display: grid;
+
+    grid-template-columns: 1fr auto;
+
+    align-items: end;
+
+    gap: 15px;
+}
+
+.bitcoin-form input {
+    width: 100%;
+    height: 45px;
+
+    padding: 0 13px;
+
+    background: #050605;
+
+    color: #ffffff;
+
+    border: 1px solid #18351f;
+
+    outline: none;
+}
+
+.bitcoin-form input:focus {
+    border-color: #267a3c;
+}
+
+.bitcoin-form button {
+    height: 45px;
+
+    padding: 0 25px;
+
+    background: #267a3c;
+
+    color: #ffffff;
+
+    border: none;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+/* HISTÓRICO */
+
+.bitcoin-historico {
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+.bitcoin-historico-topo {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.bitcoin-historico-topo h2 {
+    margin-top: 10px;
+}
+
+.compra-bitcoin {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        1fr
+        1fr
+        1fr;
+
+    gap: 20px;
+
+    align-items: center;
+
+    padding: 20px 10px;
+
+    border-bottom: 1px solid #18351f;
+}
+
+
+.compra-bitcoin div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.compra-bitcoin span {
+    color: #ffffff;
+
+    font-size: 10px;
+
+    opacity: 0.7;
+}
+
+
+.compra-bitcoin strong {
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+.compra-bitcoin span {
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+
+/* LUCRO / PREJUÍZO */
+
+.bitcoin-positivo {
+    color: #267a3c !important;
+}
+
+.bitcoin-negativo {
+    color: #e53935 !important;
+}
+
+.bitcoin-neutro {
+    color: #ffffff !important;
+}
+
+
+@media (max-width: 1000px) {
+
+    .bitcoin-resumo {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .bitcoin-resumo {
+        grid-template-columns: 1fr;
+    }
+
+    .bitcoin-form {
+        grid-template-columns: 1fr;
+    }
+
+    .compra-bitcoin {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* TÍTULO COM EMOJI */
+
+.titulo-com-emoji {
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+.titulo-com-emoji h1 {
+    margin: 18px 0;
+}
+
+.emoji-titulo {
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 650px) {
+
+    .emoji-titulo {
+        width: 65px;
+        height: 65px;
+    }
+
+}
+
+/* EMOJI DO TÍTULO DE METAS */
+
+.titulo-metas {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    width: fit-content;
+
+    gap: 15px;
+}
+
+.titulo-metas h1 {
+    width: auto;
+    max-width: none;
+    margin: 18px 0;
+}
+
+.emoji-metas {
+    width: 85px;
+    height: 85px;
+
+    object-fit: contain;
+
+    margin-bottom: 15px;
+
+    flex-shrink: 0;
+}
+
+.emoji-metas-inline {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+
+    vertical-align: middle;
+
+    margin-left: 10px;
+}
+
+/* EMOJI DO TÍTULO DE INVESTIMENTOS */
+
+.emoji-investimentos-inline {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+    vertical-align: middle;
+
+    margin-left: 5px;
+}
+
+/* EMOJI DO TÍTULO BITCOIN */
+
+.emoji-bitcoin-inline {
+    width: 75px;
+    height: 75px;
+
+    object-fit: contain;
+    vertical-align: middle;
+
+    margin-left: 5px;
+}
+
+/* =========================
+   LOGIN GOOGLE COM EMOJI
+========================= */
+
+.login-google-box {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+}
+
+.login-google-linha {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.emoji-login-google {
+    width: 65px;
+    height: 65px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   SOBRE
+========================================= */
+
+.sobre-contato {
+    margin-top: 45px;
+
+    padding: 40px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+
+.sobre-contato-texto {
+    margin-bottom: 35px;
+}
+
+
+.sobre-contato-texto h2 {
+    margin: 10px 0 15px;
+
+    color: #ffffff;
+
+    font-size: 28px;
+}
+
+
+.sobre-contato-texto p:not(.label) {
+    max-width: 650px;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+
+/* CONTATOS */
+
+.contatos-links {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+
+.contato-card {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+.contato-card:hover {
+    border-color: #267a3c;
+
+    transform: translateY(-2px);
+}
+
+
+.contato-card img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+}
+
+
+.contato-card div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.contato-card span {
+    color: #267a3c;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+.contato-card strong {
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: normal;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .contatos-links {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================
+   CONTATO WHATSAPP
+========================= */
+
+.contato-telefone {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 22px;
+
+    background: transparent;
+
+    border-left: 2px solid #267a3c;
+}
+
+
+/* ÍCONE */
+
+.contato-telefone img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+}
+
+
+/* TEXTOS */
+
+.contato-telefone div {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+.contato-telefone span {
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.contato-telefone strong {
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.contato-telefone p {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    opacity: 0.7;
+}
+
+/* =========================
+   LOGIN OBRIGATÓRIO
+========================= */
+
+.login-destaque {
+    padding: 8px;
+
+    border: 1px solid #267a3c;
+
+    border-radius: 25px;
+
+    animation: destaqueLogin 0.8s ease infinite alternate;
+}
+
+
+@keyframes destaqueLogin {
+
+    from {
+        box-shadow:
+            0 0 0 rgba(38, 122, 60, 0);
+    }
+
+    to {
+        box-shadow:
+            0 0 18px rgba(38, 122, 60, 0.7);
+    }
+
+}
+
+/* =========================
+   FORMULÁRIO COMPLETO
+========================= */
+
+.formulario-completo {
+    grid-template-columns:
+        1.6fr
+        0.8fr
+        0.8fr
+        1fr
+        1fr
+        auto;
+}
+
+.formulario input[type="date"] {
+    color-scheme: dark;
+}
+
+@media (max-width: 1200px) {
+
+    .formulario-completo {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .formulario-completo {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+/* =========================================
+   RELATÓRIOS
+========================================= */
+
+.relatorios-resumo {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+.relatorio-card {
+    padding: 28px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+
+.relatorio-card p {
+    margin-bottom: 12px;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+.relatorio-card h2 {
+    color: #ffffff;
+
+    font-size: 25px;
+}
+
+
+.relatorio-card span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    opacity: 0.75;
+}
+
+
+/* =========================
+   COMPARAÇÃO
+========================= */
+
+.relatorio-comparacao {
+    margin-bottom: 30px;
+
+    padding: 32px;
+
+    background: #080b09;
+
+    border-left: 3px solid #267a3c;
+
+    border-top: 1px solid #18351f;
+    border-right: 1px solid #18351f;
+    border-bottom: 1px solid #18351f;
+}
+
+
+.relatorio-comparacao h2 {
+    margin: 10px 0;
+
+    color: #ffffff;
+
+    font-size: 25px;
+}
+
+
+.relatorio-comparacao > p:not(.label) {
+    color: #ffffff;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================
+   PAINÉIS
+========================= */
+
+.relatorio-painel {
+    margin-bottom: 30px;
+
+    padding: 35px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+}
+
+
+.relatorio-titulo {
+    margin-bottom: 35px;
+}
+
+
+.relatorio-titulo h2 {
+    margin-top: 10px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+}
+
+
+/* =========================
+   GRÁFICO BARRAS
+========================= */
+
+.grafico-barras {
+    height: 320px;
+
+    display: flex;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    gap: 100px;
+
+    padding-top: 20px;
+}
+
+
+.barra-coluna {
+    width: 140px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.barra-area {
+    width: 75px;
+    height: 220px;
+
+    display: flex;
+    align-items: flex-end;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+}
+
+
+.barra-financeira {
+    width: 100%;
+
+    height: 0;
+
+    transition:
+        height 0.8s ease;
+}
+
+
+.barra-receita {
+    background: #267a3c;
+}
+
+
+.barra-despesa {
+    background: #e53935;
+}
+
+
+.barra-coluna strong {
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+
+.barra-coluna span {
+    color: #ffffff;
+
+    font-size: 11px;
+
+    opacity: 0.7;
+}
+
+
+/* =========================
+   EVOLUÇÃO DO SALDO
+========================= */
+
+.grafico-saldo {
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+}
+
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.lista-categorias {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+
+.categoria-item {
+    display: grid;
+
+    grid-template-columns:
+        140px
+        1fr
+        100px;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.categoria-nome {
+    color: #ffffff;
+
+    font-size: 13px;
+}
+
+
+.categoria-barra {
+    height: 8px;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+
+    overflow: hidden;
+}
+
+
+.categoria-progresso {
+    height: 100%;
+
+    background: #267a3c;
+
+    transition:
+        width 0.7s ease;
+}
+
+
+.categoria-valor {
+    text-align: right;
+
+    color: #ffffff;
+
+    font-size: 12px;
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 1050px) {
+
+    .relatorios-resumo {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .relatorios-resumo {
+        grid-template-columns: 1fr;
+    }
+
+
+    .grafico-barras {
+        gap: 30px;
+    }
+
+
+    .categoria-item {
+        grid-template-columns: 1fr;
+    }
+
+
+    .categoria-valor {
+        text-align: left;
+    }
+
+}
+
+/* =========================================
+   FIREBASE LOGIN
+========================================= */
+
+.botao-login-firebase {
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 0 16px;
+
+    background: #ffffff;
+
+    color: #222222;
+
+    border: none;
+    border-radius: 4px;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 13px;
+    font-weight: normal;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.botao-login-firebase:hover {
+    background: #eeeeee;
+
+    transform: translateY(-1px);
+}
+
+
+.google-g {
+    color: #267a3c;
+
+    font-size: 17px;
+    font-weight: bold;
+}
+
+/* SALDO ATUAL */
+#saldo {
+    color: #ffffff !important;
+}
+
+/* RECEITAS */
+#receitas {
+    color: #16883a !important;
+}
+
+/* DESPESAS */
+#despesas {
+    color: #ff3333 !important;
+}
+
+/* =========================================
+   ANIMAÇÕES GERAIS MONEYWISE
+========================================= */
+
+/* TÍTULOS ENTRANDO */
+.page-title,
+.intro {
+    animation: aparecerEsquerda 0.8s ease both;
+}
+
+@keyframes aparecerEsquerda {
+    from {
+        opacity: 0;
+        transform: translateX(-35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* CARDS SUBINDO */
+.resumo-card,
+.finance-panel,
+.market-panel,
+.feature,
+.meta-card,
+.investment-card,
+.bitcoin-card,
+.relatorio-card {
+    animation: aparecerBaixo 0.7s ease both;
+}
+
+@keyframes aparecerBaixo {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* HOVER NOS CARDS */
+.resumo-card,
+.feature,
+.meta-card,
+.investment-card,
+.bitcoin-card,
+.relatorio-card {
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.resumo-card:hover,
+.feature:hover,
+.meta-card:hover,
+.investment-card:hover,
+.bitcoin-card:hover,
+.relatorio-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #267a3c;
+
+    box-shadow:
+        0 8px 25px rgba(38, 122, 60, 0.15);
+}
+
+
+/* EMOJIS FLUTUANDO */
+.emoji-titulo,
+.emoji-metas-inline,
+.emoji-investimentos-inline,
+.emoji-bitcoin-inline,
+.emoji-login-google {
+    animation: emojiFlutuando 3s ease-in-out infinite;
+}
+
+@keyframes emojiFlutuando {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+/* BOTÕES */
+.main-button,
+.shortcuts a,
+.botao-sair,
+.meta-adicionar,
+.meta-remover,
+.bitcoin-form button,
+.formulario button {
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.main-button:hover,
+.shortcuts a:hover,
+.botao-sair:hover,
+.meta-adicionar:hover,
+.bitcoin-form button:hover,
+.formulario button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px rgba(38, 122, 60, 0.25);
+}
+
+
+/* BARRA DE META */
+.meta-progresso {
+    animation: carregarBarra 0.8s ease;
+}
+
+@keyframes carregarBarra {
+    from {
+        width: 0;
+    }
+}
+
+
+/* MENU */
+nav a {
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+nav a:hover {
+    transform: translateY(-2px);
+}
+
+
+/* SUAVIZA A PÁGINA AO CARREGAR */
+body {
+    animation: carregarPagina 0.45s ease;
+}
+
+@keyframes carregarPagina {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =====================================================
+   MONEYWISE - EFEITOS VISUAIS
+===================================================== */
+
+
+/* GARANTE QUE O CONTEÚDO FIQUE NA FRENTE */
+
+header,
+main,
+.intro,
+footer {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* =====================================================
+   AURA VERDE NAS BORDAS
+===================================================== */
+
+.aura-bordas {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 2;
+
+    box-shadow:
+        inset 35px 0 60px rgba(38, 122, 60, 0.12),
+        inset -35px 0 60px rgba(38, 122, 60, 0.12),
+        inset 0 35px 60px rgba(38, 122, 60, 0.08),
+        inset 0 -35px 60px rgba(38, 122, 60, 0.10);
+
+    animation:
+        auraMoneyWise 4s ease-in-out infinite alternate;
+}
+
+
+@keyframes auraMoneyWise {
+
+    from {
+
+        box-shadow:
+            inset 25px 0 45px rgba(38, 122, 60, 0.08),
+            inset -25px 0 45px rgba(38, 122, 60, 0.08),
+            inset 0 25px 45px rgba(38, 122, 60, 0.06),
+            inset 0 -25px 45px rgba(38, 122, 60, 0.08);
+
+    }
+
+    to {
+
+        box-shadow:
+            inset 45px 0 80px rgba(38, 122, 60, 0.18),
+            inset -45px 0 80px rgba(38, 122, 60, 0.18),
+            inset 0 40px 75px rgba(38, 122, 60, 0.10),
+            inset 0 -40px 75px rgba(38, 122, 60, 0.14);
+
+    }
+
+}
+
+
+/* =====================================================
+   PARTÍCULAS
+===================================================== */
+
+.particulas-fundo {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 1;
+
+    opacity: 0.32;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(38, 122, 60, 0.75) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        70px 70px;
+
+    animation:
+        moverParticulas 18s linear infinite;
+}
+
+
+@keyframes moverParticulas {
+
+    from {
+        background-position:
+            0 0;
+    }
+
+    to {
+        background-position:
+            70px 140px;
+    }
+
+}
+
+
+/* =====================================================
+   CHUVA DE DINHEIRO
+===================================================== */
+
+.chuva-dinheiro {
+    position: fixed;
+
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+
+/* CÉDULA */
+
+.nota-moneywise {
+    position: absolute;
+
+    top: -100px;
+
+    width: 72px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #18351f,
+            #267a3c
+        );
+
+    border:
+        1px solid rgba(
+            255,
+            255,
+            255,
+            0.16
+        );
+
+    border-radius: 4px;
+
+    color: #ffffff;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    opacity: 0;
+
+    box-shadow:
+        0 0 15px
+        rgba(
+            38,
+            122,
+            60,
+            0.20
+        );
+
+    animation:
+        cairNota linear forwards;
+}
+
+
+/* LINHAS DENTRO DA CÉDULA */
+
+.nota-moneywise::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5px;
+
+    border:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.14
+        );
+
+    border-radius: 2px;
+}
+
+
+/* LOGO SIMBÓLICA */
+
+.nota-moneywise::after {
+    content: "MW";
+
+    position: absolute;
+
+    right: 7px;
+    bottom: 4px;
+
+    color:
+        rgba(
+            255,
+            255,
+            255,
+            0.35
+        );
+
+    font-size: 7px;
+}
+
+
+/* ANIMAÇÃO */
+
+@keyframes cairNota {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(-80px)
+            translateX(0)
+            rotate(0deg);
+
+    }
+
+    10% {
+
+        opacity: 0.75;
+
+    }
+
+    50% {
+
+        transform:
+            translateY(50vh)
+            translateX(35px)
+            rotate(180deg);
+
+    }
+
+    90% {
+
+        opacity: 0.55;
+
+    }
+
+    100% {
+
+        opacity: 0;
+
+        transform:
+            translateY(115vh)
+            translateX(-35px)
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =====================================================
+   BRILHO MUITO LEVE NOS PAINÉIS
+===================================================== */
+
+.finance-panel,
+.market-panel,
+.resumo-card,
+.meta-card,
+.investment-card,
+.bitcoin-card,
+.relatorio-card,
+.about,
+.feature {
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.finance-panel::before,
+.market-panel::before,
+.resumo-card::before,
+.meta-card::before,
+.investment-card::before,
+.bitcoin-card::before,
+.relatorio-card::before,
+.about::before,
+.feature::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    right: -100px;
+    top: -100px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(
+            38,
+            122,
+            60,
+            0.08
+        );
+
+    filter:
+        blur(35px);
+
+    pointer-events: none;
+
+    transition:
+        0.4s ease;
+}
+
+
+.finance-panel:hover::before,
+.market-panel:hover::before,
+.resumo-card:hover::before,
+.meta-card:hover::before,
+.investment-card:hover::before,
+.bitcoin-card:hover::before,
+.relatorio-card:hover::before,
+.about:hover::before,
+.feature:hover::before {
+
+    background:
+        rgba(
+            38,
+            122,
+            60,
+            0.17
+        );
+
+}
+
+
+/* =====================================================
+   ACESSIBILIDADE
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .aura-bordas,
+    .particulas-fundo {
+        animation: none !important;
+    }
+
+}
+
+.whatsapp-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+.whatsapp-link:hover {
+    opacity: 0.85;
+}
+
+/* WHATSAPP DO SOBRE */
+
+.whatsapp-card {
+    width: 100%;
+    min-height: 190px;
+
+    display: flex;
+    align-items: center;
+
+    text-decoration: none;
+    color: inherit;
+
+    box-sizing: border-box;
+
+    border: 1px solid #18351f;
+
+    transition:
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.whatsapp-card .contato-telefone {
+    width: 100%;
+    min-height: 190px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 30px;
+
+    box-sizing: border-box;
+}
+
+.whatsapp-card:hover {
+    border-color: #267a3c;
+
+    background: rgba(38, 122, 60, 0.04);
+
+    transform: translateY(-3px);
+}
+
+.contatos-links {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 20px;
+
+    width: 100%;
+}
+
+/* =========================================
+   BOTÃO RESGATAR META
+========================================= */
+
+.meta-resgatar {
+    padding: 0 18px;
+
+    min-height: 40px;
+
+    background: #267a3c;
+
+    color: #ffffff;
+
+    border: 1px solid #267a3c;
+
+    font-size: 10px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.meta-resgatar:hover {
+    background: #1c5c2d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 15px
+        rgba(38, 122, 60, 0.30);
+}
+
+/* =====================================================
+   GRÁFICO DO SALDO - ÚLTIMAS 24 HORAS
+===================================================== */
+
+.chart-24h {
+    position: relative;
+
+    width: 100%;
+    height: 460px;
+
+    margin: 35px auto 0;
+
+    padding: 20px 30px 45px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+
+/* INFORMAÇÃO NO TOPO */
+
+.grafico-info-24h {
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    gap: 4px;
+}
+
+
+.grafico-info-24h span {
+    color: #ffffff;
+
+    font-size: 9px;
+
+    opacity: 0.6;
+
+    letter-spacing: 1px;
+}
+
+
+.grafico-info-24h strong {
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* CORES DA VARIAÇÃO */
+
+.variacao-24h-positiva {
+    color: #267a3c;
+}
+
+.variacao-24h-negativa {
+    color: #e53935;
+}
+
+.variacao-24h-neutra {
+    color: #ffffff;
+}
+
+
+/* CANVAS */
+
+#graficoSaldo24h {
+    display: block;
+
+    width: 100% !important;
+    height: 360px !important;
+
+    margin: 25px auto 0;
+}
+
+
+/* HORÁRIOS */
+
+.horarios-grafico {
+    position: absolute;
+
+    bottom: 5px;
+    left: 0;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #ffffff;
+
+    font-size: 9px;
+
+    opacity: 0.6;
+}
+
+/* =========================================
+   GRÁFICO BITCOIN AO VIVO
+========================================= */
+
+.bitcoin-grafico-card {
+    margin: 35px 0;
+
+    padding: 30px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+
+    box-sizing: border-box;
+}
+
+.bitcoin-grafico-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    gap: 30px;
+}
+
+.bitcoin-grafico-topo h2 {
+    margin: 5px 0;
+    color: #ffffff;
+}
+
+.bitcoin-grafico-atualizacao {
+    margin: 0;
+
+    color: #888888;
+
+    font-size: 12px;
+}
+
+.bitcoin-grafico-preco {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    gap: 4px;
+}
+
+.bitcoin-grafico-preco span {
+    color: #888888;
+
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.bitcoin-grafico-preco strong {
+    color: #ffffff;
+
+    font-size: 25px;
+}
+
+.bitcoin-grafico-preco small {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.btc-subindo {
+    color: #267a3c !important;
+}
+
+.btc-caindo {
+    color: #ff3b3b !important;
+}
+
+.btc-neutro {
+    color: #ffffff !important;
+}
+
+
+/* ÁREA DO GRÁFICO */
+
+.bitcoin-grafico-area {
+    position: relative;
+
+    width: 100%;
+    height: 350px;
+
+    margin-top: 30px;
+}
+
+#btcGraficoCanvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+.bitcoin-grafico-vazio {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    color: #666666;
+
+    font-size: 13px;
+
+    pointer-events: none;
+}
+
+
+/* RODAPÉ */
+
+.bitcoin-grafico-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 12px;
+
+    color: #888888;
+
+    font-size: 10px;
+}
+
+#btcGraficoStatus {
+    color: #267a3c;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+/* =========================================
+   MERCADO BITCOIN
+========================================= */
+
+.bitcoin-mercado {
+    margin: 35px 0;
+    padding: 30px;
+    background: #080b09;
+    border: 1px solid #18351f;
+}
+
+.btc-mercado-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.btc-mercado-cabecalho h2 {
+    margin: 5px 0 3px;
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.btc-preco-linha {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+}
+
+.btc-preco-linha strong {
+    color: #ffffff;
+    font-size: 32px;
+}
+
+.btc-preco-linha span {
+    color: #a0a0a0;
+    font-size: 14px;
+}
+
+#btcMercadoVariacao {
+    margin: 2px 0 0;
+    font-size: 14px;
+}
+
+.btc-positivo {
+    color: #2fa84f;
+}
+
+.btc-negativo {
+    color: #ff746a;
+}
+
+.btc-atualizacao {
+    color: #888888;
+    font-size: 11px;
+}
+
+.btc-grafico-container {
+    position: relative;
+    width: 100%;
+    height: 390px;
+    margin-top: 25px;
+}
+
+#btcMercadoCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.btc-grafico-horarios {
+    padding-left: 75px;
+    padding-right: 20px;
+
+    display: flex;
+    justify-content: space-between;
+
+    color: #888888;
+    font-size: 10px;
+}
+
+.btc-tooltip {
+    position: absolute;
+    top: 10px;
+
+    display: none;
+    flex-direction: column;
+    gap: 2px;
+
+    transform: translateX(-50%);
+
+    padding: 8px 10px;
+
+    background: #151816;
+    border: 1px solid #303530;
+
+    color: #ffffff;
+
+    pointer-events: none;
+    z-index: 10;
+}
+
+.btc-tooltip strong {
+    font-size: 12px;
+}
+
+.btc-tooltip span {
+    color: #a0a0a0;
+    font-size: 10px;
+}
+
+/* =========================================
+   MODAL - LOGIN NECESSÁRIO
+========================================= */
+
+.modal-login-fundo {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(6px);
+
+    z-index: 99999;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.2s ease;
+}
+
+
+.modal-login-fundo.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal-login-card {
+    width: 100%;
+    max-width: 460px;
+
+    padding: 38px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+    border-radius: 14px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(38, 122, 60, 0.08);
+
+    text-align: center;
+
+    transform: translateY(15px) scale(0.97);
+
+    transition: 0.2s ease;
+}
+
+
+.modal-login-fundo.ativo
+.modal-login-card {
+    transform: translateY(0) scale(1);
+}
+
+
+.modal-login-icone {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0d1b11;
+
+    border: 1px solid #267a3c;
+    border-radius: 50%;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 25px rgba(38, 122, 60, 0.18);
+}
+
+
+.modal-login-label {
+    margin: 0 0 8px;
+
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+.modal-login-card h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+.modal-login-texto {
+    max-width: 360px;
+
+    margin: 15px auto 28px;
+
+    color: #a0a0a0;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.modal-login-acoes {
+    display: flex;
+    gap: 10px;
+}
+
+
+.modal-login-acoes button {
+    flex: 1;
+
+    height: 45px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.modal-login-cancelar {
+    background: transparent;
+
+    border: 1px solid #18351f;
+
+    color: #ffffff;
+}
+
+
+.modal-login-cancelar:hover {
+    background: #0d120f;
+
+    border-color: #267a3c;
+}
+
+
+.modal-login-entrar {
+    background: #267a3c;
+
+    border: 1px solid #267a3c;
+
+    color: #ffffff;
+}
+
+
+.modal-login-entrar:hover {
+    background: #1c5c2d;
+
+    border-color: #1c5c2d;
+
+    transform: translateY(-1px);
+}
+
+
+@media (max-width: 520px) {
+
+    .modal-login-card {
+        padding: 30px 22px;
+    }
+
+    .modal-login-acoes {
+        flex-direction: column;
+    }
+
+}
+
+.modal-login-logo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+/* =========================================
+   INVESTIMENTOS - NOVA PÁGINA
+========================================= */
+
+
+/* GUIA / BLOCOS PRINCIPAIS */
+
+.investir-guia,
+.investir-passos,
+.investir-bitcoin {
+    margin-top: 40px;
+    padding: 45px;
+
+    background: #080b09;
+    border: 1px solid #18351f;
+}
+
+
+/* TÍTULOS */
+
+.investir-guia > h2,
+.investir-passos-topo h2,
+.investir-bitcoin h2 {
+    margin: 8px 0 14px;
+
+    max-width: 750px;
+
+    color: #ffffff;
+
+    font-size: 32px;
+    line-height: 1.2;
+}
+
+
+/* TEXTOS */
+
+.investir-guia-texto,
+.investir-passos-topo > p:last-child,
+.investir-bitcoin-conteudo > p {
+    max-width: 720px;
+
+    color: #a0a0a0;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   FINANÇAS / METAS / RELATÓRIOS
+========================================= */
+
+.investir-etapas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+
+.investir-etapa {
+    position: relative;
+
+    padding: 28px;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+
+    transition: 0.25s ease;
+}
+
+
+.investir-etapa:hover {
+    border-color: #267a3c;
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+.investir-etapa > span {
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+.investir-etapa h3 {
+    margin: 18px 0 10px;
+
+    color: #ffffff;
+
+    font-size: 19px;
+}
+
+
+.investir-etapa p {
+    min-height: 65px;
+
+    margin: 0;
+
+    color: #a0a0a0;
+
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+
+.investir-etapa a {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.4px;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+
+.investir-etapa a:hover {
+    color: #ffffff;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   COMO COMEÇAR / LEMBRE-SE
+========================================= */
+
+.investir-passos {
+    border-color: #267a3c;
+}
+
+
+.investir-passos-topo {
+    max-width: 760px;
+}
+
+
+.investir-passos-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    margin-top: 35px;
+
+    border-top: 1px solid #18351f;
+}
+
+
+.investir-passos-grid article {
+    position: relative;
+
+    min-height: 150px;
+
+    padding:
+        27px
+        25px
+        15px
+        0;
+
+    margin-right: 25px;
+
+    border-right: 1px solid #18351f;
+}
+
+
+.investir-passos-grid article:last-child {
+    margin-right: 0;
+
+    border-right: none;
+}
+
+
+.investir-passos-grid span {
+    color: #267a3c;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+.investir-passos-grid h3 {
+    margin: 15px 0 9px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+}
+
+
+.investir-passos-grid p {
+    margin: 0;
+
+    color: #a0a0a0;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   BITCOIN
+========================================= */
+
+.investir-bitcoin {
+    position: relative;
+
+    min-height: 300px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+
+.investir-bitcoin::after {
+    content: "₿";
+
+    position: absolute;
+
+    right: 70px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: rgba(38, 122, 60, 0.09);
+
+    font-size: 220px;
+    font-weight: 800;
+
+    pointer-events: none;
+}
+
+
+.investir-bitcoin-conteudo {
+    position: relative;
+
+    max-width: 720px;
+
+    z-index: 2;
+}
+
+
+.investir-bitcoin
+.investir-aviso {
+    margin-top: 18px;
+
+    color: #888888;
+
+    font-size: 11px;
+
+    font-style: italic;
+}
+
+
+.investir-bitcoin-botao {
+    display: inline-block;
+
+    margin-top: 24px;
+    padding: 14px 24px;
+
+    background: #267a3c;
+
+    border: 1px solid #267a3c;
+    border-radius: 5px;
+
+    color: #ffffff;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.4px;
+
+    text-decoration: none;
+
+    transition: 0.2s ease;
+}
+
+
+.investir-bitcoin-botao:hover {
+    background: #1c5c2d;
+
+    border-color: #1c5c2d;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 25px rgba(38, 122, 60, 0.18);
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .investir-passos-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .investir-passos-grid article {
+        border-bottom:
+            1px solid #18351f;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .investir-etapas {
+        grid-template-columns: 1fr;
+    }
+
+
+    .investir-etapa p {
+        min-height: auto;
+    }
+
+
+    .investir-bitcoin::after {
+        right: 20px;
+
+        font-size: 160px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .investir-guia,
+    .investir-passos,
+    .investir-bitcoin {
+        margin-top: 25px;
+
+        padding: 28px 22px;
+    }
+
+
+    .investir-guia > h2,
+    .investir-passos-topo h2,
+    .investir-bitcoin h2 {
+        font-size: 25px;
+    }
+
+
+    .investir-passos-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .investir-passos-grid article {
+        min-height: auto;
+
+        margin-right: 0;
+
+        padding: 25px 0;
+
+        border-right: none;
+
+        border-bottom:
+            1px solid #18351f;
+    }
+
+
+    .investir-passos-grid
+    article:last-child {
+        border-bottom: none;
+    }
+
+
+    .investir-bitcoin::after {
+        right: -20px;
+
+        font-size: 130px;
+    }
+
+}
+
+/* =========================================================
+   MONEYWISE - RESPONSIVIDADE GLOBAL
+   COLOCAR NO FINAL DO STYLE.CSS
+========================================================= */
+
+
+/* =========================================================
+   TABLET E CELULAR
+========================================================= */
+
+@media (max-width: 850px) {
+
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+        width: 100%;
+        min-height: auto;
+
+        padding: 12px 4%;
+
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        gap: 10px;
+    }
+
+
+    .logo {
+        order: 1;
+    }
+
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .logo span {
+        display: inline-block;
+
+        font-size: 18px;
+    }
+
+
+    /* CONTA */
+
+    .conta-area {
+        order: 2;
+
+        min-width: 0;
+
+        margin-left: auto;
+    }
+
+
+    .google-login-container {
+        min-height: auto;
+
+        transform: none;
+    }
+
+
+    .botao-login-firebase {
+        height: 38px;
+
+        padding: 0 12px;
+
+        font-size: 11px;
+    }
+
+
+    .usuario-google {
+        min-height: 44px;
+
+        gap: 6px;
+
+        padding: 4px;
+    }
+
+
+    .foto-perfil {
+        width: 34px;
+        height: 34px;
+
+        min-width: 34px;
+    }
+
+
+    .usuario-dados {
+        display: none;
+    }
+
+
+    .botao-sair {
+        height: 32px;
+
+        padding: 0 10px;
+
+        font-size: 9px;
+    }
+
+
+    /* =========================
+       NAVEGAÇÃO
+    ========================= */
+
+    nav {
+        order: 3;
+
+        width: 100%;
+
+        margin: 2px 0 0;
+
+        display: flex;
+
+        gap: 8px;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        scrollbar-width: none;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    nav::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    nav a {
+        flex: 0 0 auto;
+
+        padding: 12px 10px;
+
+        font-size: 11px;
+
+        white-space: nowrap;
+    }
+
+
+    nav a.ativo::after {
+        bottom: 3px;
+    }
+
+
+    /* =========================
+       ÁREAS GERAIS
+    ========================= */
+
+    .intro,
+    .dashboard-row,
+    .shortcuts,
+    .about,
+    .features,
+    .pagina-interna {
+        width: 92%;
+    }
+
+
+    .pagina-interna {
+        min-height: auto;
+
+        padding-top: 35px;
+        padding-bottom: 70px;
+    }
+
+
+    .botao-voltar {
+        margin-bottom: 40px;
+    }
+
+
+    /* =========================
+       TÍTULOS
+    ========================= */
+
+    .intro {
+        padding-top: 45px;
+        padding-bottom: 30px;
+    }
+
+
+    .intro h1,
+    .page-title h1 {
+        max-width: 100%;
+
+        font-size: 34px;
+
+        line-height: 1.15;
+    }
+
+
+    .description,
+    .page-title > p:not(.label) {
+        max-width: 100%;
+
+        font-size: 14px;
+    }
+
+
+    .page-title {
+        margin-bottom: 35px;
+    }
+
+
+    .label {
+        font-size: 10px;
+    }
+
+
+    /* =========================
+       EMOJIS DOS TÍTULOS
+    ========================= */
+
+    .emoji-titulo,
+    .emoji-metas,
+    .emoji-metas-inline,
+    .emoji-investimentos-inline,
+    .emoji-bitcoin-inline {
+        width: 55px;
+        height: 55px;
+    }
+
+
+    .titulo-com-emoji {
+        gap: 12px;
+    }
+
+
+    /* =========================
+       HOME - PAINEL
+    ========================= */
+
+    .finance-panel {
+        padding: 25px;
+    }
+
+
+    .panel-header {
+        gap: 15px;
+    }
+
+
+    .panel-header h2 {
+        font-size: 25px;
+    }
+
+
+    .period {
+        padding: 8px 12px;
+
+        font-size: 10px;
+    }
+
+
+    .chart {
+        height: 230px;
+    }
+
+
+    /* =========================
+       MERCADO
+    ========================= */
+
+    .market-panel {
+        padding: 22px;
+    }
+
+
+    .market-item {
+        gap: 10px;
+
+        padding: 16px 0;
+    }
+
+
+    /* =========================
+       ATALHOS
+    ========================= */
+
+    .shortcuts {
+        margin-top: 20px;
+
+        gap: 8px;
+    }
+
+
+    .shortcuts a {
+        padding: 9px 14px;
+
+        font-size: 10px;
+    }
+
+
+    /* =========================
+       SOBRE DA HOME
+    ========================= */
+
+    .about-content {
+        max-width: 100%;
+
+        padding: 35px 28px;
+    }
+
+
+    .about h2 {
+        font-size: 28px;
+    }
+
+
+    .about p:not(.label) {
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       FEATURES
+    ========================= */
+
+    .features {
+        flex-direction: column;
+
+        margin-bottom: 70px;
+    }
+
+
+    .feature {
+        width: 100%;
+
+        padding: 25px;
+    }
+
+
+    /* =================================================
+       FINANÇAS
+    ================================================= */
+
+    .resumo-cards {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .resumo-card {
+        width: 100%;
+
+        padding: 22px;
+    }
+
+
+    .resumo-card h2 {
+        font-size: 24px;
+    }
+
+
+    .nova-movimentacao {
+        padding: 22px;
+    }
+
+
+    .formulario,
+    .formulario-completo {
+        grid-template-columns: 1fr;
+    }
+
+
+    .formulario button {
+        width: 100%;
+
+        min-height: 45px;
+    }
+
+
+    /* HISTÓRICO FINANÇAS */
+
+    .historico {
+        padding: 22px;
+    }
+
+
+    .historico-topo {
+        gap: 15px;
+    }
+
+
+    .tabela-cabecalho {
+        display: none;
+    }
+
+
+    .movimentacao {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+
+        padding: 18px 5px;
+    }
+
+
+    .movimentacao .remover,
+    .remover {
+        width: 100%;
+
+        margin-top: 5px;
+    }
+
+
+    /* =================================================
+       METAS
+    ================================================= */
+
+    .metas-resumo {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .meta-resumo-card {
+        padding: 22px;
+    }
+
+
+    .nova-meta {
+        padding: 22px;
+    }
+
+
+    .formulario-meta {
+        grid-template-columns: 1fr;
+    }
+
+
+    .formulario-meta button {
+        width: 100%;
+    }
+
+
+    .lista-metas {
+        grid-template-columns: 1fr;
+    }
+
+
+    .meta-card {
+        padding: 22px;
+    }
+
+
+    .meta-card-topo {
+        gap: 10px;
+    }
+
+
+    .meta-valores {
+        gap: 10px;
+    }
+
+
+    .meta-guardado {
+        font-size: 20px;
+    }
+
+
+    .meta-acoes {
+        flex-direction: column;
+    }
+
+
+    .meta-acoes input,
+    .meta-acoes button {
+        width: 100%;
+
+        min-height: 42px;
+    }
+
+
+    /* =================================================
+       RELATÓRIOS
+    ================================================= */
+
+    .relatorios-resumo {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+
+    .relatorio-card {
+        padding: 20px;
+    }
+
+
+    .relatorio-card h2 {
+        font-size: 21px;
+    }
+
+
+    .relatorio-comparacao,
+    .relatorio-painel {
+        padding: 25px;
+    }
+
+
+    .grafico-barras {
+        gap: 40px;
+
+        height: 280px;
+    }
+
+
+    .barra-coluna {
+        width: 100px;
+    }
+
+
+    .barra-area {
+        width: 60px;
+
+        height: 190px;
+    }
+
+
+    .grafico-saldo {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    .categoria-item {
+        grid-template-columns:
+            100px 1fr 80px;
+
+        gap: 10px;
+    }
+
+
+    /* =================================================
+       INVESTIMENTOS ANTIGOS + NOVOS
+    ================================================= */
+
+    .investment-cards {
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+
+    .investment-card {
+        width: 100%;
+
+        min-height: auto;
+
+        padding: 25px;
+    }
+
+
+    .investment-detail {
+        margin-top: 25px;
+    }
+
+
+    .investment-info {
+        padding: 28px;
+    }
+
+
+    .investment-info h2 {
+        font-size: 25px;
+    }
+
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* NOVA ÁREA */
+
+    .investir-guia,
+    .investir-passos,
+    .investir-bitcoin {
+        width: 100%;
+
+        margin-top: 25px;
+
+        padding: 28px;
+
+        box-sizing: border-box;
+    }
+
+
+    .investir-guia > h2,
+    .investir-passos-topo h2,
+    .investir-bitcoin h2 {
+        max-width: 100%;
+
+        font-size: 26px;
+    }
+
+
+    .investir-etapas {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .investir-etapa {
+        width: 100%;
+
+        padding: 22px;
+    }
+
+
+    .investir-etapa p {
+        min-height: auto;
+    }
+
+
+    .investir-passos-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .investir-bitcoin::after {
+        right: 10px;
+
+        font-size: 140px;
+    }
+
+
+    /* =================================================
+       BITCOIN
+    ================================================= */
+
+    .bitcoin-resumo {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 12px;
+    }
+
+
+    .bitcoin-card {
+        padding: 20px;
+    }
+
+
+    .bitcoin-card h2 {
+        font-size: 19px;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    .bitcoin-resultado,
+    .bitcoin-compra,
+    .bitcoin-historico {
+        padding: 22px;
+    }
+
+
+    .bitcoin-form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .bitcoin-form button {
+        width: 100%;
+    }
+
+
+    .compra-bitcoin {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 15px;
+    }
+
+
+    /* =================================================
+       SOBRE / CONTATO
+    ================================================= */
+
+    .sobre-contato {
+        padding: 28px;
+    }
+
+
+    .contatos-links {
+        grid-template-columns: 1fr;
+    }
+
+
+    .contato-card {
+        padding: 18px;
+    }
+
+
+    /* =================================================
+       FOOTER
+    ================================================= */
+
+    footer {
+        padding: 25px 15px;
+
+        font-size: 11px;
+    }
+
+
+    /* =================================================
+       MODAL LOGIN
+    ================================================= */
+
+    .modal-login-card {
+        width: 92%;
+        max-width: 440px;
+
+        padding: 30px 24px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+        padding: 10px 15px;
+    }
+
+
+    .logo img {
+        width: 37px;
+        height: 37px;
+    }
+
+
+    .logo span {
+        font-size: 16px;
+    }
+
+
+    .botao-login-firebase {
+        max-width: 170px;
+
+        height: 36px;
+
+        padding: 0 10px;
+
+        font-size: 10px;
+    }
+
+
+    /* =========================
+       PÁGINAS
+    ========================= */
+
+    .intro,
+    .dashboard-row,
+    .shortcuts,
+    .about,
+    .features,
+    .pagina-interna {
+        width: calc(100% - 28px);
+    }
+
+
+    .pagina-interna {
+        padding-top: 28px;
+        padding-bottom: 55px;
+    }
+
+
+    .botao-voltar {
+        margin-bottom: 32px;
+
+        font-size: 10px;
+    }
+
+
+    /* =========================
+       TÍTULOS
+    ========================= */
+
+    .intro h1,
+    .page-title h1 {
+        font-size: 29px;
+
+        letter-spacing: -0.3px;
+    }
+
+
+    .intro h1 {
+        margin: 14px 0;
+    }
+
+
+    .description,
+    .page-title > p:not(.label) {
+        font-size: 13px;
+
+        line-height: 1.65;
+    }
+
+
+    .page-title {
+        margin-bottom: 30px;
+    }
+
+
+    /* EMOJIS */
+
+    .emoji-titulo,
+    .emoji-metas,
+    .emoji-metas-inline,
+    .emoji-investimentos-inline,
+    .emoji-bitcoin-inline {
+        width: 45px;
+        height: 45px;
+
+        margin-left: 4px;
+    }
+
+
+    /* =========================
+       HOME
+    ========================= */
+
+    .finance-panel {
+        padding: 20px;
+    }
+
+
+    .panel-header {
+        flex-direction: column;
+    }
+
+
+    .panel-header h2 {
+        font-size: 23px;
+    }
+
+
+    .period {
+        align-self: flex-start;
+    }
+
+
+    .chart {
+        height: 200px;
+    }
+
+
+    .dates {
+        font-size: 8px;
+    }
+
+
+    .market-panel {
+        padding: 20px;
+    }
+
+
+    .market-header h2 {
+        font-size: 18px;
+    }
+
+
+    .market-name,
+    .market-value strong {
+        font-size: 12px;
+    }
+
+
+    /* ATALHOS */
+
+    .shortcuts {
+        justify-content: flex-start;
+    }
+
+
+    .shortcuts a {
+        flex-grow: 1;
+
+        text-align: center;
+    }
+
+
+    /* SOBRE */
+
+    .about-content {
+        padding: 28px 20px;
+    }
+
+
+    .about h2 {
+        font-size: 25px;
+    }
+
+
+    /* =========================
+       FINANÇAS
+    ========================= */
+
+    .resumo-card,
+    .nova-movimentacao,
+    .historico {
+        padding: 19px;
+    }
+
+
+    .historico-topo {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .limpar-tudo {
+        width: 100%;
+    }
+
+
+    /* =========================
+       METAS
+    ========================= */
+
+    .meta-resumo-card,
+    .nova-meta,
+    .meta-card {
+        padding: 19px;
+    }
+
+
+    .meta-card-topo {
+        flex-direction: column;
+    }
+
+
+    .meta-valores {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    /* =========================
+       RELATÓRIOS
+    ========================= */
+
+    .relatorios-resumo {
+        grid-template-columns: 1fr;
+    }
+
+
+    .relatorio-card {
+        padding: 19px;
+    }
+
+
+    .relatorio-comparacao,
+    .relatorio-painel {
+        padding: 20px;
+    }
+
+
+    .relatorio-comparacao h2,
+    .relatorio-titulo h2 {
+        font-size: 21px;
+    }
+
+
+    .grafico-barras {
+        gap: 20px;
+
+        height: 250px;
+    }
+
+
+    .barra-coluna {
+        width: 90px;
+    }
+
+
+    .barra-area {
+        width: 50px;
+
+        height: 170px;
+    }
+
+
+    .categoria-item {
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+    }
+
+
+    .categoria-valor {
+        text-align: left;
+    }
+
+
+    /* =========================
+       INVESTIMENTOS
+    ========================= */
+
+    .investment-card {
+        padding: 21px;
+    }
+
+
+    .investment-info {
+        padding: 22px;
+    }
+
+
+    .investment-info h2 {
+        font-size: 23px;
+    }
+
+
+    .investir-guia,
+    .investir-passos,
+    .investir-bitcoin {
+        padding: 23px 19px;
+    }
+
+
+    .investir-guia > h2,
+    .investir-passos-topo h2,
+    .investir-bitcoin h2 {
+        font-size: 23px;
+    }
+
+
+    .investir-etapas {
+        margin-top: 22px;
+    }
+
+
+    .investir-etapa {
+        padding: 20px;
+    }
+
+
+    .investir-passos-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .investir-passos-grid article {
+        width: 100%;
+
+        min-height: auto;
+
+        margin: 0;
+
+        padding: 21px 0;
+
+        border-right: none;
+        border-bottom: 1px solid #18351f;
+    }
+
+
+    .investir-passos-grid article:last-child {
+        border-bottom: none;
+    }
+
+
+    .investir-bitcoin {
+        min-height: auto;
+    }
+
+
+    .investir-bitcoin::after {
+        right: -20px;
+        top: 25px;
+
+        transform: none;
+
+        font-size: 100px;
+    }
+
+
+    .investir-bitcoin-botao {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    /* =========================
+       BITCOIN
+    ========================= */
+
+    .bitcoin-resumo {
+        grid-template-columns: 1fr;
+    }
+
+
+    .bitcoin-card,
+    .bitcoin-resultado,
+    .bitcoin-compra,
+    .bitcoin-historico {
+        padding: 19px;
+    }
+
+
+    .bitcoin-resultado h2 {
+        font-size: 24px;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    .compra-bitcoin {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    .bitcoin-historico-topo {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+
+    /* =========================
+       SOBRE
+    ========================= */
+
+    .sobre-contato {
+        padding: 22px 19px;
+    }
+
+
+    .sobre-contato-texto h2 {
+        font-size: 23px;
+    }
+
+
+    .contato-card {
+        gap: 12px;
+
+        padding: 16px;
+    }
+
+
+    .contato-card img,
+    .contato-telefone img {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .contato-card strong {
+        font-size: 13px;
+
+        overflow-wrap: anywhere;
+    }
+
+
+    .contato-telefone {
+        gap: 12px;
+
+        padding: 17px;
+    }
+
+
+    /* =========================
+       BOTÕES GERAIS
+    ========================= */
+
+    .voltar-container .main-button {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    /* =========================
+       MODAL LOGIN
+    ========================= */
+
+    .modal-login-fundo {
+        padding: 14px;
+    }
+
+
+    .modal-login-card {
+        width: 100%;
+
+        padding: 27px 19px;
+    }
+
+
+    .modal-login-card h2 {
+        font-size: 22px;
+    }
+
+
+    .modal-login-texto {
+        font-size: 13px;
+    }
+
+
+    .modal-login-acoes {
+        flex-direction: column;
+    }
+
+
+    .modal-login-acoes button {
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 400px) {
+
+    header {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+
+    .logo span {
+        display: none;
+    }
+
+
+    .botao-login-firebase {
+        max-width: 160px;
+
+        font-size: 9px;
+    }
+
+
+    .intro,
+    .dashboard-row,
+    .shortcuts,
+    .about,
+    .features,
+    .pagina-interna {
+        width: calc(100% - 20px);
+    }
+
+
+    .intro h1,
+    .page-title h1 {
+        font-size: 26px;
+    }
+
+
+    .emoji-titulo,
+    .emoji-metas,
+    .emoji-metas-inline,
+    .emoji-investimentos-inline,
+    .emoji-bitcoin-inline {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .finance-panel,
+    .market-panel,
+    .resumo-card,
+    .nova-movimentacao,
+    .historico,
+    .meta-resumo-card,
+    .nova-meta,
+    .meta-card,
+    .relatorio-card,
+    .bitcoin-card,
+    .bitcoin-resultado,
+    .bitcoin-compra,
+    .bitcoin-historico {
+        padding: 17px;
+    }
+
+
+    .grafico-barras {
+        gap: 10px;
+    }
+
+
+    .barra-coluna {
+        width: 75px;
+    }
+
+
+    .investir-guia,
+    .investir-passos,
+    .investir-bitcoin {
+        padding: 20px 16px;
+    }
+
+
+    .market-item {
+        align-items: flex-start;
+    }
+
+
+    .market-value {
+        white-space: normal;
+    }
+
+}
+
+/* =========================================================
+   MENU MOBILE MONEYWISE
+========================================================= */
+
+
+/* ESCONDIDO NO COMPUTADOR */
+
+.menu-mobile-botao {
+    display: none;
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 850px) {
+
+    body.menu-aberto {
+        overflow: hidden;
+    }
+
+
+    /* HEADER */
+
+    header {
+        position: relative;
+
+        min-height: 70px;
+
+        padding: 10px 4%;
+
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+
+        z-index: 10001;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+        position: relative;
+
+        order: 1;
+
+        z-index: 10003;
+    }
+
+
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    /* CONTA */
+
+    .conta-area {
+        position: relative;
+
+        order: 2;
+
+        margin-left: auto;
+
+        z-index: 10003;
+    }
+
+
+    /* =====================================================
+       BOTÃO ☰
+    ===================================================== */
+
+    .menu-mobile-botao {
+        position: relative;
+
+        order: 3;
+
+        width: 44px;
+        height: 44px;
+
+        margin-left: 12px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 6px;
+
+        padding: 0;
+
+        background: transparent;
+
+        border: none;
+
+        cursor: pointer;
+
+        z-index: 10003;
+    }
+
+
+    .menu-mobile-botao span {
+        display: block;
+
+        width: 28px;
+        height: 2px;
+
+        background: #ffffff;
+
+        border-radius: 5px;
+
+        transition:
+            transform 0.35s ease,
+            opacity 0.25s ease,
+            width 0.35s ease;
+    }
+
+
+    /* PRIMEIRO RISCO */
+
+    .menu-mobile-botao.ativo
+    span:nth-child(1) {
+        transform:
+            translateY(8px)
+            rotate(45deg);
+    }
+
+
+    /* RISCO DO MEIO */
+
+    .menu-mobile-botao.ativo
+    span:nth-child(2) {
+        width: 0;
+
+        opacity: 0;
+    }
+
+
+    /* TERCEIRO RISCO */
+
+    .menu-mobile-botao.ativo
+    span:nth-child(3) {
+        transform:
+            translateY(-8px)
+            rotate(-45deg);
+    }
+
+
+    /* =====================================================
+       MENU TELA INTEIRA
+    ===================================================== */
+
+    header nav {
+        position: fixed;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100dvh;
+
+        margin: 0;
+        padding: 100px 25px 50px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        gap: 0;
+
+        background:
+            rgba(5, 6, 5, 0.97);
+
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        opacity: 0;
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transform: translateY(-15px);
+
+        transition:
+            opacity 0.35s ease,
+            visibility 0.35s ease,
+            transform 0.35s ease;
+
+        z-index: 10002;
+    }
+
+
+    /* MENU ABERTO */
+
+    header nav.menu-mobile-aberto {
+        opacity: 1;
+        visibility: visible;
+
+        pointer-events: auto;
+
+        transform: translateY(0);
+    }
+
+
+    /* =====================================================
+       LINKS
+    ===================================================== */
+
+    header nav a {
+        position: relative;
+
+        width: auto;
+
+        flex: none;
+
+        margin: 0;
+        padding: 13px 5px;
+
+        color: #ffffff;
+
+        font-size: 20px;
+        font-weight: 600;
+
+        text-align: center;
+
+        white-space: nowrap;
+
+        opacity: 0;
+
+        transform: translateY(18px);
+
+        transition:
+            color 0.2s ease,
+            opacity 0.4s ease,
+            transform 0.4s ease;
+    }
+
+
+    /* LINKS APARECENDO */
+
+    header nav.menu-mobile-aberto a {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+
+    /* ANIMAÇÃO EM SEQUÊNCIA */
+
+    header nav.menu-mobile-aberto
+    a:nth-child(1) {
+        transition-delay: 0.08s;
+    }
+
+    header nav.menu-mobile-aberto
+    a:nth-child(2) {
+        transition-delay: 0.12s;
+    }
+
+    header nav.menu-mobile-aberto
+    a:nth-child(3) {
+        transition-delay: 0.16s;
+    }
+
+    header nav.menu-mobile-aberto
+    a:nth-child(4) {
+        transition-delay: 0.20s;
+    }
+
+    header nav.menu-mobile-aberto
+    a:nth-child(5) {
+        transition-delay: 0.24s;
+    }
+
+    header nav.menu-mobile-aberto
+    a:nth-child(6) {
+        transition-delay: 0.28s;
+    }
+
+    header nav.menu-mobile-aberto
+    a:nth-child(7) {
+        transition-delay: 0.32s;
+    }
+
+
+    /* HOVER / TOQUE */
+
+    header nav a:hover {
+        color: #267a3c;
+    }
+
+
+    /* PÁGINA ATUAL */
+
+    header nav a.ativo {
+        color: #ffffff;
+    }
+
+
+    header nav a.ativo::after {
+        content: "";
+
+        position: absolute;
+
+        left: 50%;
+        right: auto;
+        bottom: 5px;
+
+        width: 55%;
+
+        height: 2px;
+
+        background: #267a3c;
+
+        transform: translateX(-50%);
+
+        border-radius: 5px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR PEQUENO
+========================================================= */
+
+@media (max-width: 430px) {
+
+    header nav a {
+        padding: 11px 5px;
+
+        font-size: 18px;
+    }
+
+
+    .menu-mobile-botao {
+        width: 40px;
+        height: 40px;
+
+        margin-left: 7px;
+    }
+
+
+    .menu-mobile-botao span {
+        width: 25px;
+    }
+
+}
+
+/* GARANTE QUE O CONTEÚDO VOLTE AO NORMAL
+   QUANDO O MENU MOBILE FECHAR */
+
+@media (max-width: 850px) {
+
+    header nav:not(.menu-mobile-aberto) {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    header nav.menu-mobile-aberto {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+}
+
+/* =========================================
+   SOBRE - AJUSTE MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    /* PÁGINA SOBRE */
+
+    .pagina-interna {
+        line-height: 1.5;
+    }
+
+
+    /* TÍTULO PRINCIPAL */
+
+    .page-title h1 {
+        margin-top: 12px;
+        margin-bottom: 18px;
+
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+
+    .page-title > p:not(.label) {
+        margin-top: 0;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* SEÇÃO O PROJETO */
+
+    .sobre-projeto {
+        margin-top: 45px;
+    }
+
+
+    .sobre-projeto h2 {
+        margin-top: 8px;
+        margin-bottom: 16px;
+
+        font-size: 25px;
+        line-height: 1.25;
+    }
+
+
+    .sobre-projeto p:not(.label) {
+        margin-top: 0;
+        margin-bottom: 16px;
+
+        font-size: 14px;
+        line-height: 1.65;
+    }
+
+
+    /* LABELS VERDES */
+
+    .sobre-projeto .label,
+    .sobre-contato .label {
+        margin-bottom: 8px;
+
+        font-size: 10px;
+        line-height: 1.4;
+    }
+
+
+    /* CONTATO */
+
+    .sobre-contato {
+        margin-top: 40px;
+
+        padding: 28px 20px;
+    }
+
+
+    .sobre-contato h2,
+    .sobre-contato-texto h2 {
+        margin-top: 8px;
+        margin-bottom: 18px;
+
+        font-size: 24px;
+        line-height: 1.25;
+    }
+
+
+    .sobre-contato p {
+        margin-bottom: 16px;
+
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+}
+
+/* =====================================================
+   MODAL PADRÃO MONEYWISE
+===================================================== */
+
+.modal-moneywise-fundo {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(5px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.2s ease;
+}
+
+.modal-moneywise-fundo.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+.modal-moneywise-card {
+    width: 100%;
+    max-width: 460px;
+
+    padding: 38px;
+
+    text-align: center;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+    border-radius: 15px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.65);
+
+    transform: translateY(15px) scale(0.98);
+
+    transition: 0.2s ease;
+}
+
+.modal-moneywise-fundo.ativo
+.modal-moneywise-card {
+    transform: translateY(0) scale(1);
+}
+
+
+.modal-moneywise-icone {
+    width: 58px;
+    height: 58px;
+
+    margin: 0 auto 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #267a3c;
+    border-radius: 50%;
+
+    background: #050605;
+
+    box-shadow:
+        0 0 25px rgba(38, 122, 60, 0.15);
+}
+
+
+.modal-moneywise-icone img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+.modal-moneywise-label {
+    margin-bottom: 9px;
+
+    color: #267a3c;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    letter-spacing: 2px;
+}
+
+
+.modal-moneywise-card h2 {
+    margin-bottom: 14px;
+
+    color: #ffffff;
+
+    font-size: 25px;
+    font-weight: 700;
+}
+
+
+.modal-moneywise-texto {
+    max-width: 370px;
+
+    margin: 0 auto;
+
+    color: #a0a0a0;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.modal-moneywise-acoes {
+    margin-top: 28px;
+
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.modal-moneywise-acoes button {
+    flex: 1;
+
+    min-height: 46px;
+
+    padding: 0 20px;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s;
+}
+
+
+.modal-moneywise-cancelar {
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 1px solid #18351f;
+}
+
+
+.modal-moneywise-cancelar:hover {
+    border-color: #267a3c;
+
+    background: #0b120d;
+}
+
+
+.modal-moneywise-confirmar {
+    background: #267a3c;
+
+    color: #ffffff;
+
+    border: 1px solid #267a3c;
+}
+
+
+.modal-moneywise-confirmar:hover {
+    background: #1c5c2d;
+
+    border-color: #1c5c2d;
+}
+
+
+.modal-moneywise-acoes button:active {
+    transform: scale(0.98);
+}
+
+
+@media (max-width: 550px) {
+
+    .modal-moneywise-card {
+        padding: 30px 22px;
+    }
+
+    .modal-moneywise-card h2 {
+        font-size: 21px;
+    }
+
+    .modal-moneywise-acoes {
+        flex-direction: column;
+    }
+
+}
+
+/* =====================================================
+   OTIMIZAÇÃO PARA CELULAR
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .modal-moneywise-fundo {
+        backdrop-filter: none;
+    }
+
+    .modal-moneywise-card {
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.55);
+    }
+
+    .shortcuts a:hover,
+    .botao-sair:hover,
+    .main-button:hover,
+    .formulario-meta button:hover {
+        transform: none;
+    }
+}
+
+#chuvaDinheiro.pausado {
+    display: none !important;
+}
+
+
+h1,
+.page-title h1,
+.sobre-projeto h2,
+.sobre-contato h2,
+.nova-movimentacao h2,
+.limite-mensal h2,
+h2 {
+    font-family: "Bodoni Moda", Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -1px;
+}
+
+/* =====================================================
+   LIMITE DE GASTOS DIÁRIOS
+===================================================== */
+
+.limite-diario {
+
+    margin-bottom: 30px;
+
+    padding: 28px;
+
+    background: #080b09;
+
+    border: 1px solid #18351f;
+
+    border-radius: 12px;
+
+}
+
+
+.limite-diario .label {
+
+    margin-bottom: 8px;
+
+    color: #267a3c;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+}
+
+
+.limite-diario h2 {
+
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 24px;
+
+}
+
+
+.limite-diario-descricao {
+
+    margin: 0 0 25px;
+
+    color: #a0a0a0;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+.limite-diario-formulario {
+
+    display: flex;
+
+    align-items: end;
+
+    gap: 15px;
+
+    margin-bottom: 25px;
+
+}
+
+
+.limite-diario-formulario .campo {
+
+    flex: 1;
+
+}
+
+
+.limite-diario-formulario label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+}
+
+
+.limite-diario-formulario input {
+
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 14px;
+
+    box-sizing: border-box;
+
+    color: #ffffff;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+
+    border-radius: 7px;
+
+    outline: none;
+
+}
+
+
+.limite-diario-formulario input:focus {
+
+    border-color: #267a3c;
+
+}
+
+
+.limite-diario-formulario button {
+
+    height: 45px;
+
+    padding: 0 20px;
+
+    color: #ffffff;
+
+    background: #267a3c;
+
+    border: 1px solid #267a3c;
+
+    border-radius: 7px;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.limite-diario-formulario button:hover {
+
+    background: #1c5c2d;
+
+}
+
+
+.limite-diario-resumo {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.limite-diario-resumo > div {
+
+    padding: 17px;
+
+    background: #050605;
+
+    border: 1px solid #18351f;
+
+    border-radius: 8px;
+
+}
+
+
+.limite-diario-resumo span {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #a0a0a0;
+
+    font-size: 12px;
+
+}
+
+
+.limite-diario-resumo strong {
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+}
+
+
+.limite-diario-barra {
+
+    width: 100%;
+
+    height: 9px;
+
+    overflow: hidden;
+
+    background: #101410;
+
+    border-radius: 20px;
+
+}
+
+
+.limite-diario-progresso {
+
+    width: 0%;
+
+    height: 100%;
+
+    background: #267a3c;
+
+    border-radius: 20px;
+
+    transition:
+        width 0.3s ease,
+        background 0.3s ease;
+
+}
+
+
+.limite-diario-progresso.limite-diario-atencao {
+
+    background: #c58a19;
+
+}
+
+
+.limite-diario-progresso.limite-diario-estourado {
+
+    background: #b83232;
+
+}
+
+
+.limite-diario-mensagem {
+
+    margin: 14px 0 0;
+
+    color: #a0a0a0;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+}
+
+
+/* CELULAR */
+
+@media (max-width: 700px) {
+
+    .limite-diario {
+
+        padding: 20px;
+
+    }
+
+
+    .limite-diario-formulario {
+
+        flex-direction: column;
+
+        align-items: stretch;
+
+    }
+
+
+    .limite-diario-formulario button {
+
+        width: 100%;
+
+    }
+
+
+    .limite-diario-resumo {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .limite-diario-resumo {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
