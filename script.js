@@ -2235,87 +2235,137 @@ async function carregarCotacaoBitcoin() {
    COMPRAR BITCOIN
 ========================================= */
 
+
 function comprarBitcoin() {
 
     if (!exigirLogin()) {
         return;
     }
 
-    if (
-        !valorCompraBitcoin ||
-        cotacaoBitcoinAtual <= 0
-    ) {
-        return;
-    }
-
-    const valor =
-        Number(
-            valorCompraBitcoin.value
+    if (!valorCompraBitcoin || cotacaoBitcoinAtual <= 0) {
+        mostrarMensagemMoneyWise(
+            "Cotação indisponível",
+            "Aguarde a cotação do Bitcoin carregar antes de comprar.",
+            "ATENÇÃO"
         );
-
-    if (
-        !valor ||
-        valor <= 0
-    ) {
-
-mostrarMensagemMoneyWise(
-    "Valor inválido",
-    "Digite um valor maior que zero para realizar a simulação.",
-    "ATENÇÃO"
-);
-
         return;
     }
 
-    const quantidadeBTC =
-        valor /
-        cotacaoBitcoinAtual;
+    const valor = Number(valorCompraBitcoin.value);
 
-    carteiraBitcoin.push({
+    if (!Number.isFinite(valor) || valor <= 0) {
+        mostrarMensagemMoneyWise(
+            "Valor inválido",
+            "Digite um valor maior que zero.",
+            "ATENÇÃO"
+        );
+        return;
+    }
 
-        id:
-            Date.now(),
+    // Exige um limite diário configurado.
+    if (limiteDiarioMoneyWise <= 0) {
+        mostrarMensagemMoneyWise(
+            "Defina seu limite diário",
+            "Antes de investir, configure seu limite diário na página Finanças.",
+            "ATENÇÃO"
+        );
+        return;
+    }
 
-        valorInvestido:
-            valor,
+    // Confere o saldo disponível.
+    const resumo = calcularResumo();
+    const saldoDisponivel = resumo.saldo;
 
-        quantidade:
-            quantidadeBTC,
+    if (valor > saldoDisponivel) {
+        mostrarMensagemMoneyWise(
+            "Saldo insuficiente",
+            "Seu saldo disponível é " +
+                formatarDinheiro(Math.max(saldoDisponivel, 0)) +
+                ". Não é possível investir esse valor.",
+            "ATENÇÃO"
+        );
+        return;
+    }
 
-        cotacaoCompra:
-            cotacaoBitcoinAtual,
+    // Confere quanto do limite diário já foi utilizado.
+    const hoje = new Date().toISOString().split("T")[0];
+    const gastoHoje = calcularGastoHojeLimite();
+    const restanteHoje = limiteDiarioMoneyWise - gastoHoje;
 
-        data:
-            new Date().toLocaleString(
-                "pt-BR"
-            )
+    if (valor > restanteHoje + 0.000001) {
+        mostrarMensagemMoneyWise(
+            "Limite diário ultrapassado",
+            "Você ainda pode gastar " +
+                formatarDinheiro(Math.max(restanteHoje, 0)) +
+                " hoje. Reduza o valor da compra de Bitcoin para continuar.",
+            "ATENÇÃO"
+        );
+        return;
+    }
 
-    });
+    // Registra a quantidade de Bitcoin comprada.
+    const quantidadeBTC = valor / cotacaoBitcoinAtual;
+
+    const compra = {
+        id: Date.now(),
+        valorInvestido: valor,
+        quantidade: quantidadeBTC,
+        cotacaoCompra: cotacaoBitcoinAtual,
+        data: new Date().toLocaleString("pt-BR")
+    };
+
+    carteiraBitcoin.push(compra);
 
     localStorage.setItem(
         "carteiraBitcoinMoneyWise",
         JSON.stringify(carteiraBitcoin)
     );
 
-    if (
-        typeof window.salvarCarteiraBitcoinFirestore ===
-        "function"
-    ) {
-
-        window.salvarCarteiraBitcoinFirestore(
-            carteiraBitcoin
-        );
-
+    if (typeof window.salvarCarteiraBitcoinFirestore === "function") {
+        window.salvarCarteiraBitcoinFirestore(carteiraBitcoin);
     }
 
+    // Registra a compra como despesa para atualizar o saldo
+    // e contabilizar o investimento no limite diário.
+    const movimentacaoBitcoin = {
+        id: Date.now() + 1,
+        descricao: "Compra de Bitcoin",
+        valor: valor,
+        tipo: "despesa",
+        categoria: "Investimentos",
+        data: hoje
+    };
+
+    movimentacoes.push(movimentacaoBitcoin);
+
+    salvarMovimentacoes();
+
+    if (typeof window.salvarMovimentacaoFirestore === "function") {
+        window.salvarMovimentacaoFirestore(movimentacaoBitcoin);
+    }
+
+    // Atualiza saldo, carteira, histórico e limite diário.
     valorCompraBitcoin.value = "";
 
     atualizarCarteiraBitcoin();
+    atualizarTela();
+    atualizarLimiteDiario();
+
+    if (typeof atualizarRelatorios === "function") {
+        atualizarRelatorios();
+    }
+
+    mostrarMensagemMoneyWise(
+        "Compra realizada!",
+        "Você investiu " +
+            formatarDinheiro(valor) +
+            " em Bitcoin. Seu saldo disponível agora é " +
+            formatarDinheiro(calcularResumo().saldo) +
+            ".",
+        "SUCESSO"
+    );
 }
 
-/* =========================================
-   ATUALIZAR CARTEIRA
-========================================= */
 
 function atualizarCarteiraBitcoin() {
 
