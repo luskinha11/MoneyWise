@@ -5309,12 +5309,8 @@ if (input && document.activeElement !== input) {
         );
 
 
-    const porcentagem =
-        (
-            gastoHoje /
-            limiteDiarioMoneyWise
-        ) * 100;
-
+  const porcentagem =
+    (gastoHoje / limiteDiarioMoneyWise) * 100;
 
     progresso.style.width =
         Math.min(
