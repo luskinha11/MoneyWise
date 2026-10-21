@@ -5188,14 +5188,20 @@ function atualizarLimiteDiario() {
         );
 
 
-    if (input) {
 
-        input.value =
-            limiteDiarioMoneyWise > 0
-                ? limiteDiarioMoneyWise
-                : "";
+if (input && document.activeElement !== input) {
 
+    const valorSalvo =
+        limiteDiarioMoneyWise > 0
+            ? String(limiteDiarioMoneyWise)
+            : "";
+
+    if (input.value !== valorSalvo) {
+        input.value = valorSalvo;
     }
+
+}
+
 
 
     /* SEM RENDA */
