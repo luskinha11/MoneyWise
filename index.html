@@ -96,7 +96,9 @@
     class="usuario-google escondido perfil-conta-clicavel"
     role="link"
     tabindex="0"
-    aria-label="Abrir minha conta">
+    aria-label="Abrir minha conta"
+    style="cursor: pointer;"
+    onclick="if (!event.target.closest('#sairGoogle')) window.location.href='conta.html'">
 
     <img
         id="googleFoto"
