@@ -5637,34 +5637,36 @@ if (valorInput) {
    ABRIR A PÁGINA MINHA CONTA
 ========================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-    const perfil = document.getElementById("usuarioGoogle");
+document.addEventListener("click", function (evento) {
+    const perfil = evento.target.closest("#usuarioGoogle");
 
     if (!perfil) {
-        console.error("MoneyWise: elemento usuarioGoogle não encontrado.");
         return;
     }
 
-    perfil.style.cursor = "pointer";
+    // Não abrir a conta ao clicar no botão Sair
+    if (evento.target.closest("#sairGoogle")) {
+        return;
+    }
 
-    perfil.addEventListener("click", function (evento) {
+    window.location.href = new URL("conta.html", window.location.href).href;
+});
+
+document.addEventListener("keydown", function (evento) {
+    const perfil = evento.target.closest("#usuarioGoogle");
+
+    if (!perfil) {
+        return;
+    }
+
+    if (evento.key === "Enter" || evento.key === " ") {
         if (evento.target.closest("#sairGoogle")) {
             return;
         }
 
-        window.location.href = "conta.html";
-    });
-
-    perfil.addEventListener("keydown", function (evento) {
-        if (evento.key === "Enter" || evento.key === " ") {
-            if (evento.target.closest("#sairGoogle")) {
-                return;
-            }
-
-            evento.preventDefault();
-            window.location.href = "conta.html";
-        }
-    });
-
-    console.log("MoneyWise: clique do perfil configurado.");
+        evento.preventDefault();
+        window.location.href = new URL("conta.html", window.location.href).href;
+    }
 });
+
+console.log("MoneyWise: sistema de navegação da conta carregado.");
