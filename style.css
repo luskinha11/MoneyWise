@@ -7437,3 +7437,50 @@ body:has(.pagina-conta) {
         grid-template-columns: 1fr;
     }
 }
+
+/* PERFIL GOOGLE NO CABEÇALHO */
+
+.usuario-google.perfil-conta-clicavel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.usuario-google.perfil-conta-clicavel.escondido {
+    display: none !important;
+}
+
+.usuario-google .foto-perfil {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.usuario-google .usuario-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.usuario-google .usuario-dados strong {
+    color: #ffffff;
+    font-size: 13px;
+}
+
+.usuario-google .usuario-dados span {
+    color: #aaaaaa;
+    font-size: 11px;
+}
+
+.usuario-google .botao-sair {
+    position: relative;
+    z-index: 5;
+    cursor: pointer;
+}
+
+.usuario-google.perfil-conta-clicavel:focus-visible {
+    outline: 2px solid #267a3c;
+    outline-offset: 3px;
+}
