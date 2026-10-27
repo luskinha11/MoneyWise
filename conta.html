@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Conta | MoneyWise</title>
+
+    <link rel="icon" href="img/favicon.png">
+    <link rel="stylesheet" href="style.css">
+
+    <meta name="theme-color" content="#080b09">
+</head>
+<body>
+<div class="moneywise-effects">
+    <div id="chuvaDinheiro" class="chuva-dinheiro"></div>
+    <div class="aura-bordas"></div>
+    <div class="particulas-fundo"></div>
+</div>
+
+<header class="cabecalho-conta">
+    <a href="index.html" class="logo">
+        <img src="img/favicon.png" alt="MoneyWise">
+        <span>Money<span class="verde">Wise</span></span>
+    </a>
+
+    <nav class="navegacao-conta">
+        <a href="index.html">Início</a>
+        <a href="financas.html">Finanças</a>
+        <a href="conta.html" class="ativo">Minha Conta</a>
+    </nav>
+
+    <a href="financas.html" class="botao-voltar-conta">
+        Voltar às finanças
+    </a>
+</header>
+
+<main class="pagina-conta">
+
+    <section class="boas-vindas-conta">
+        <div class="identidade-conta">
+            <div class="avatar-conta">
+                <img id="fotoConta" src="img/favicon.png" alt="Foto do perfil">
+            </div>
+
+            <div>
+                <span class="etiqueta-conta">ÁREA PESSOAL</span>
+                <h1>Minha <span class="verde">Conta</span></h1>
+                <p id="nomeConta">Carregando seus dados...</p>
+                <p id="emailConta" class="email-conta"></p>
+            </div>
+        </div>
+
+        <div class="status-conta">
+            <span class="status-ponto"></span>
+            <span>Seu painel financeiro</span>
+        </div>
+    </section>
+
+    <section class="resumo-conta">
+
+        <article class="cartao-resumo-conta">
+            <div class="icone-resumo">R$</div>
+            <span>Saldo atual</span>
+            <strong id="saldoConta">R$ 0,00</strong>
+            <small>Saldo registrado na conta</small>
+        </article>
+
+        <article class="cartao-resumo-conta">
+            <div class="icone-resumo">+</div>
+            <span>Receitas do mês</span>
+            <strong id="receitasConta">R$ 0,00</strong>
+            <small>Total de entradas no mês</small>
+        </article>
+
+        <article class="cartao-resumo-conta">
+            <div class="icone-resumo">-</div>
+            <span>Despesas do mês</span>
+            <strong id="despesasConta">R$ 0,00</strong>
+            <small>Total de saídas no mês</small>
+        </article>
+
+        <article class="cartao-resumo-conta">
+            <div class="icone-resumo">#</div>
+            <span>Movimentações</span>
+            <strong id="quantidadeConta">0</strong>
+            <small>Registros neste mês</small>
+        </article>
+
+    </section>
+
+    <section class="secao-calendario-conta">
+
+        <div class="titulo-secao-conta">
+            <div>
+                <span class="etiqueta-conta">ORGANIZAÇÃO FINANCEIRA</span>
+                <h2>Calendário de <span class="verde">movimentações</span></h2>
+                <p>Selecione um dia para consultar suas receitas e despesas.</p>
+            </div>
+        </div>
+
+        <div class="calendario-layout">
+
+            <div class="calendario-cartao">
+
+                <div class="calendario-cabecalho">
+                    <button type="button" id="mesAnterior" aria-label="Mês anterior">&lt;</button>
+                    <h3 id="mesAnoCalendario">Mês Ano</h3>
+                    <button type="button" id="proximoMes" aria-label="Próximo mês">&gt;</button>
+                </div>
+
+                <div class="calendario-semana">
+                    <span>DOM</span>
+                    <span>SEG</span>
+                    <span>TER</span>
+                    <span>QUA</span>
+                    <span>QUI</span>
+                    <span>SEX</span>
+                    <span>SÁB</span>
+                </div>
+
+                <div id="diasCalendario" class="calendario-dias"></div>
+
+                <div class="legenda-calendario">
+                    <span><i class="legenda-ponto receita-ponto"></i> Receita</span>
+                    <span><i class="legenda-ponto despesa-ponto"></i> Despesa</span>
+                    <span><i class="legenda-ponto selecionado-ponto"></i> Dia selecionado</span>
+                </div>
+
+            </div>
+
+            <aside class="detalhes-dia-cartao">
+
+                <div class="detalhes-dia-cabecalho">
+                    <span class="etiqueta-conta">DETALHES DO DIA</span>
+                    <h3 id="tituloDiaSelecionado">Selecione uma data</h3>
+                    <p id="resumoDiaSelecionado">As movimentações do dia aparecerão aqui.</p>
+                </div>
+
+                <div class="totais-dia">
+                    <div>
+                        <span>Receitas</span>
+                        <strong id="receitasDia">R$ 0,00</strong>
+                    </div>
+
+                    <div>
+                        <span>Despesas</span>
+                        <strong id="despesasDia">R$ 0,00</strong>
+                    </div>
+                </div>
+
+                <div id="listaMovimentacoesDia" class="lista-movimentacoes-dia">
+                    <p class="estado-vazio">Nenhuma movimentação para exibir.</p>
+                </div>
+
+            </aside>
+
+        </div>
+    </section>
+
+    <section class="historico-conta">
+
+        <div class="titulo-secao-conta">
+            <div>
+                <span class="etiqueta-conta">HISTÓRICO</span>
+                <h2>Movimentações do <span class="verde">mês</span></h2>
+                <p>Consulte os registros do mês selecionado no calendário.</p>
+            </div>
+        </div>
+
+        <div id="historicoMensalConta" class="historico-mensal-conta">
+            <p class="estado-vazio">Carregando movimentações...</p>
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="rodape-conta">
+    <p>Money<span class="verde">Wise</span> | Controle financeiro inteligente</p>
+</footer>
+
+<script src="js/conta.js" defer></script>
+<script type="module" src="js/firebase.js"></script>
+</body>
+</html>

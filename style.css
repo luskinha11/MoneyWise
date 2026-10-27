@@ -6745,3 +6745,695 @@ h2 {
 
 }
 
+/* PERFIL CLICÁVEL - MONEYWISE */
+
+.perfil-conta-clicavel {
+    cursor: pointer;
+}
+
+.perfil-conta-clicavel:focus-visible {
+    outline: 2px solid #39ff78;
+    outline-offset: 4px;
+}
+
+.perfil-conta-clicavel #sairGoogle {
+    position: relative;
+    z-index: 5;
+}
+
+/* =========================================
+   MONEYWISE - MINHA CONTA
+   Visual discreto, alinhado às outras abas
+========================================= */
+
+body:has(.pagina-conta) {
+    background: #080b09;
+    color: #f2f2f2;
+}
+
+.pagina-conta {
+    width: min(1300px, 90%);
+    margin: 40px auto 65px;
+    color: #f2f2f2;
+}
+
+.cabecalho-conta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 5%;
+    background: #080b09;
+    border-bottom: 1px solid #1c281f;
+}
+
+.cabecalho-conta .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.cabecalho-conta .logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.pagina-conta .verde,
+.cabecalho-conta .verde,
+.rodape-conta .verde {
+    color: #267a3c;
+}
+
+.navegacao-conta {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navegacao-conta a {
+    color: #b5b5b5;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.navegacao-conta a:hover,
+.navegacao-conta a.ativo {
+    color: #fff;
+}
+
+.botao-voltar-conta {
+    padding: 10px 15px;
+    border: 1px solid #29412e;
+    border-radius: 5px;
+    color: #d8e5db;
+    background: transparent;
+    text-decoration: none;
+    font-size: 13px;
+    transition: background 0.2s ease;
+}
+
+.botao-voltar-conta:hover {
+    background: #142019;
+}
+
+.boas-vindas-conta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 30px;
+    padding: 27px;
+    border: 1px solid #202b23;
+    border-radius: 8px;
+    background: #0d110e;
+}
+
+.identidade-conta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+}
+
+.avatar-conta {
+    width: 76px;
+    height: 76px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 2px solid #267a3c;
+    border-radius: 50%;
+    background: #141a15;
+}
+
+.avatar-conta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.etiqueta-conta {
+    display: block;
+    margin-bottom: 8px;
+    color: #398c4e;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.boas-vindas-conta h1 {
+    margin: 0 0 8px;
+    color: #fff;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.2;
+}
+
+.boas-vindas-conta p {
+    margin: 5px 0;
+    color: #a0a0a0;
+    font-size: 14px;
+}
+
+.boas-vindas-conta .email-conta {
+    overflow-wrap: anywhere;
+    font-size: 13px;
+}
+
+.status-conta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid #25372a;
+    border-radius: 5px;
+    color: #b9c3bc;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.status-ponto {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #398c4e;
+}
+
+.resumo-conta {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 42px;
+}
+
+.cartao-resumo-conta {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #202b23;
+    border-radius: 7px;
+    background: #0d110e;
+    transition: border-color 0.2s ease;
+}
+
+.cartao-resumo-conta:hover {
+    border-color: #34563c;
+}
+
+.icone-resumo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 18px;
+    border: 1px solid #26372a;
+    border-radius: 5px;
+    background: #141a15;
+    color: #398c4e;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.cartao-resumo-conta > span {
+    display: block;
+    margin-bottom: 10px;
+    color: #a0a0a0;
+    font-size: 13px;
+}
+
+.cartao-resumo-conta strong {
+    display: block;
+    color: #f2f2f2;
+    font-size: clamp(19px, 2vw, 25px);
+    overflow-wrap: anywhere;
+}
+
+.cartao-resumo-conta small {
+    display: block;
+    margin-top: 9px;
+    color: #777;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.titulo-secao-conta {
+    margin-bottom: 20px;
+}
+
+.titulo-secao-conta h2 {
+    margin: 0 0 8px;
+    color: #f2f2f2;
+    font-size: 25px;
+}
+
+.titulo-secao-conta p {
+    margin: 0;
+    color: #999;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.calendario-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.8fr);
+    gap: 20px;
+}
+
+.calendario-cartao,
+.detalhes-dia-cartao {
+    min-width: 0;
+    padding: 22px;
+    border: 1px solid #202b23;
+    border-radius: 7px;
+    background: #0d110e;
+}
+
+.calendario-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.calendario-cabecalho h3 {
+    margin: 0;
+    color: #f2f2f2;
+    text-align: center;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.calendario-cabecalho button {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #29392d;
+    border-radius: 5px;
+    background: #111712;
+    color: #d7e0d9;
+    font-size: 20px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.calendario-cabecalho button:hover {
+    background: #1a291e;
+}
+
+.calendario-semana,
+.calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.calendario-semana {
+    margin-bottom: 10px;
+}
+
+.calendario-semana span {
+    padding: 8px 0;
+    color: #8f9891;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.dia-calendario {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 43px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: #141915;
+    color: #e5e5e5;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+}
+
+.dia-calendario:hover {
+    background: #202b23;
+}
+
+.dia-calendario.vazio {
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.dia-calendario.hoje {
+    border-color: #398c4e;
+}
+
+.dia-calendario.selecionado {
+    border-color: #267a3c;
+    background: #1b3522;
+    color: #fff;
+    font-weight: 700;
+}
+
+.dia-calendario.tem-receita::after,
+.dia-calendario.tem-despesa::before {
+    position: absolute;
+    bottom: 4px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    content: "";
+}
+
+.dia-calendario.tem-receita::after {
+    left: calc(50% + 3px);
+    background: #398c4e;
+}
+
+.dia-calendario.tem-despesa::before {
+    left: calc(50% - 7px);
+    background: #d45c5c;
+}
+
+.dia-calendario.selecionado.tem-receita::after,
+.dia-calendario.selecionado.tem-despesa::before {
+    background: #e4e4e4;
+}
+
+.legenda-calendario {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #202820;
+}
+
+.legenda-calendario span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #999;
+    font-size: 11px;
+}
+
+.legenda-ponto {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+
+.receita-ponto {
+    background: #398c4e;
+}
+
+.despesa-ponto {
+    background: #d45c5c;
+}
+
+.selecionado-ponto {
+    background: #e4e4e4;
+}
+
+.detalhes-dia-cabecalho {
+    padding-bottom: 18px;
+    border-bottom: 1px solid #202820;
+}
+
+.detalhes-dia-cabecalho h3 {
+    margin: 0 0 8px;
+    color: #f2f2f2;
+    font-size: 17px;
+    text-transform: capitalize;
+}
+
+.detalhes-dia-cabecalho p {
+    margin: 0;
+    color: #999;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.totais-dia {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 18px 0;
+}
+
+.totais-dia > div {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #202820;
+    border-radius: 5px;
+    background: #111612;
+}
+
+.totais-dia span {
+    display: block;
+    margin-bottom: 8px;
+    color: #999;
+    font-size: 12px;
+}
+
+.totais-dia strong {
+    display: block;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+}
+
+#receitasDia {
+    color: #398c4e;
+}
+
+#despesasDia {
+    color: #d45c5c;
+}
+
+.lista-movimentacoes-dia {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    max-height: 340px;
+    overflow-y: auto;
+}
+
+.movimentacao-conta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 13px;
+    border: 1px solid #202820;
+    border-radius: 5px;
+    background: #111612;
+}
+
+.movimentacao-conta-info {
+    min-width: 0;
+}
+
+.movimentacao-conta-info strong {
+    display: block;
+    color: #e8e8e8;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.movimentacao-conta-info span {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 11px;
+}
+
+.movimentacao-conta-valor {
+    flex-shrink: 0;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.valor-receita {
+    color: #398c4e;
+}
+
+.valor-despesa {
+    color: #d45c5c;
+}
+
+.estado-vazio {
+    padding: 20px 10px;
+    color: #999;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.historico-conta {
+    margin-top: 42px;
+}
+
+.historico-mensal-conta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px;
+    border: 1px solid #202b23;
+    border-radius: 7px;
+    background: #0d110e;
+}
+
+.historico-mes-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 10px;
+    border-bottom: 1px solid #202820;
+}
+
+.historico-mes-item:last-child {
+    border-bottom: none;
+}
+
+.historico-mes-descricao {
+    min-width: 0;
+}
+
+.historico-mes-descricao strong {
+    display: block;
+    color: #e8e8e8;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+.historico-mes-descricao span {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+    font-size: 11px;
+}
+
+.rodape-conta {
+    padding: 24px 5%;
+    border-top: 1px solid #1c281f;
+    color: #888;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1000px) {
+    .resumo-conta {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .calendario-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .cabecalho-conta {
+        flex-wrap: wrap;
+        padding: 18px 5%;
+    }
+
+    .navegacao-conta {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 18px;
+        padding-top: 10px;
+    }
+
+    .botao-voltar-conta {
+        padding: 9px 11px;
+        font-size: 12px;
+    }
+
+    .pagina-conta {
+        width: 92%;
+        margin-top: 25px;
+    }
+
+    .boas-vindas-conta {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .avatar-conta {
+        width: 62px;
+        height: 62px;
+    }
+
+    .resumo-conta {
+        gap: 12px;
+    }
+
+    .cartao-resumo-conta {
+        padding: 17px;
+    }
+
+    .calendario-cartao,
+    .detalhes-dia-cartao {
+        padding: 15px;
+    }
+
+    .calendario-semana,
+    .calendario-dias {
+        gap: 4px;
+    }
+
+    .dia-calendario {
+        min-height: 37px;
+        font-size: 12px;
+    }
+
+    .historico-mensal-conta {
+        padding: 10px;
+    }
+
+    .historico-mes-item {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 420px) {
+    .resumo-conta {
+        grid-template-columns: 1fr;
+    }
+
+    .identidade-conta {
+        align-items: flex-start;
+        gap: 13px;
+    }
+
+    .status-conta {
+        white-space: normal;
+    }
+
+    .calendario-cabecalho h3 {
+        font-size: 15px;
+    }
+
+    .calendario-semana span {
+        font-size: 10px;
+    }
+
+    .dia-calendario {
+        min-height: 33px;
+    }
+
+    .totais-dia {
+        grid-template-columns: 1fr;
+    }
+}
