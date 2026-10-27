@@ -3852,7 +3852,7 @@ const escala =
         menorSaldo -=
             Math.max(
                 Math.abs(
-                    menorSaldo * 0.05
+                    menorSaldo * 0.010
                 ),
                 100
             );
@@ -3860,7 +3860,7 @@ const escala =
         maiorSaldo +=
             Math.max(
                 Math.abs(
-                    maiorSaldo * 0.05
+                    maiorSaldo * 0.010
                 ),
                 100
             );
