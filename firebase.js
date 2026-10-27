@@ -156,213 +156,132 @@ if (entrarFirebase) {
    OBSERVAR LOGIN
 ========================================= */
 
-onAuthStateChanged(
-    auth,
-    async function (usuario) {
-
-        const modalLogin =
-    document.getElementById(
-        "modalLoginMoneyWise"
-    );
-
-if (modalLogin) {
-
-    modalLogin.classList.remove("ativo");
-
-    setTimeout(function () {
-
-        modalLogin.remove();
-
-    }, 200);
-
-}
-
-        const botaoLogin =
-            document.getElementById("googleButton");
-
-        const areaLogin =
-            document.getElementById("areaLoginGoogle");
-
-        const areaUsuario =
-            document.getElementById("usuarioGoogle");
-
-
-        if (usuario) {
-
-            /* =========================
-               USUÁRIO LOGADO
-            ========================= */
-
-
-            try {
-
-    await setDoc(
-        doc(
-            db,
-            "usuarios",
-            usuario.uid
-        ),
-        {
-            nome:
-                usuario.displayName ||
-                "Usuário",
-
-            email:
-                usuario.email || "",
-
-            foto:
-                usuario.photoURL || "",
-
-            atualizadoEm:
-                serverTimestamp()
-        },
-        {
-            merge: true
-        }
-    );
-
-    console.log(
-        "Usuário salvo no Firestore!"
-    );
-
-    if (
-    typeof window.carregarMetasDoFirestore ===
-    "function"
-) {
-
-    await window.carregarMetasDoFirestore();
-
-}
-
-if (
-    typeof window.carregarMetasDoFirestore ===
-    "function"
-) {
-
-    await window.carregarMetasDoFirestore();
-
-}
-
-/* CARREGA AS MOVIMENTAÇÕES DESTE USUÁRIO */
-
-const movimentacoesUsuario =
-    await window.carregarMovimentacoesFirestore();
-
-if (
-    typeof window.receberMovimentacoesFirestore ===
-    "function"
-) {
-
-    window.receberMovimentacoesFirestore(
-        movimentacoesUsuario
-    );
-
-}
-
-/* CARREGA A CARTEIRA BITCOIN DESTE USUÁRIO */
-
-if (
-    typeof window.carregarCarteiraBitcoinDoFirestore ===
-    "function"
-) {
-
-    await window.carregarCarteiraBitcoinDoFirestore();
-
-}
-
-
-} catch (erro) {
-
-    console.error(
-        "Erro ao salvar usuário no Firestore:",
-        erro
-    );
-
-}
-
-            if (botaoLogin) {
-                botaoLogin.style.display = "none";
-            }
-
-            if (areaLogin) {
-                areaLogin.style.display = "none";
-            }
-
-            if (areaUsuario) {
-                areaUsuario.style.display = "flex";
-                areaUsuario.classList.remove("escondido");
-            }
-
-
-            if (googleNome) {
-
-                googleNome.textContent =
-                    usuario.displayName ||
-                    "Usuário";
-
-            }
-
-
-            if (googleEmail) {
-
-                googleEmail.textContent =
-                    usuario.email || "";
-
-            }
-
-
-            if (googleFoto) {
-
-                googleFoto.src =
-                    usuario.photoURL || "";
-
-            }
-
-
-            localStorage.setItem(
-                "usuarioMoneyWise",
-                JSON.stringify({
-                    uid: usuario.uid,
-                    nome:
-                        usuario.displayName ||
-                        "Usuário",
-                    email:
-                        usuario.email || "",
-                    foto:
-                        usuario.photoURL || ""
-                })
-            );
-
-
-        } else {
-
-            /* =========================
-               USUÁRIO DESLOGADO
-            ========================= */
-
-            if (botaoLogin) {
-                botaoLogin.style.display = "flex";
-            }
-
-            if (areaLogin) {
-                areaLogin.style.display = "flex";
-            }
-
-            if (areaUsuario) {
-                areaUsuario.style.display = "none";
-                areaUsuario.classList.add("escondido");
-            }
-
-
-            localStorage.removeItem(
-                "usuarioMoneyWise"
-            );
-
-        }
-
+onAuthStateChanged(auth, async function (usuario) {
+    const modalLogin = document.getElementById("modalLoginMoneyWise");
+
+    if (modalLogin) {
+        modalLogin.classList.remove("ativo");
+
+        setTimeout(function () {
+            modalLogin.remove();
+        }, 200);
     }
-);
 
+    const botaoLogin = document.getElementById("googleButton");
+    const areaLogin = document.getElementById("areaLoginGoogle");
+    const areaUsuario = document.getElementById("usuarioGoogle");
+
+    const googleNome = document.getElementById("googleNome");
+    const googleEmail = document.getElementById("googleEmail");
+    const googleFoto = document.getElementById("googleFoto");
+
+    if (usuario) {
+        /* USUÁRIO LOGADO */
+
+        if (botaoLogin) {
+            botaoLogin.style.display = "none";
+        }
+
+        if (areaLogin) {
+            areaLogin.style.display = "none";
+        }
+
+        if (areaUsuario) {
+            areaUsuario.classList.remove("escondido");
+            areaUsuario.style.display = "flex";
+        }
+
+        if (googleNome) {
+            googleNome.textContent = usuario.displayName || "Usuário";
+        }
+
+        if (googleEmail) {
+            googleEmail.textContent = usuario.email || "";
+        }
+
+        if (googleFoto) {
+            googleFoto.src = usuario.photoURL || "img/favicon.png";
+        }
+
+        localStorage.setItem(
+            "usuarioMoneyWise",
+            JSON.stringify({
+                uid: usuario.uid,
+                nome: usuario.displayName || "Usuário",
+                email: usuario.email || "",
+                foto: usuario.photoURL || ""
+            })
+        );
+
+        try {
+            await setDoc(
+                doc(db, "usuarios", usuario.uid),
+                {
+                    nome: usuario.displayName || "Usuário",
+                    email: usuario.email || "",
+                    foto: usuario.photoURL || "",
+                    atualizadoEm: serverTimestamp()
+                },
+                { merge: true }
+            );
+
+            console.log("Usuário salvo no Firestore!");
+
+        } catch (erro) {
+            console.error("Erro ao salvar usuário no Firestore:", erro);
+        }
+
+        /* CARREGA AS METAS */
+        if (typeof window.carregarMetasDoFirestore === "function") {
+            try {
+                await window.carregarMetasDoFirestore();
+            } catch (erro) {
+                console.error("Erro ao carregar metas:", erro);
+            }
+        }
+
+        /* CARREGA AS MOVIMENTAÇÕES */
+        if (typeof window.carregarMovimentacoesFirestore === "function") {
+            try {
+                const movimentacoesUsuario =
+                    await window.carregarMovimentacoesFirestore();
+
+                if (typeof window.receberMovimentacoesFirestore === "function") {
+                    window.receberMovimentacoesFirestore(movimentacoesUsuario);
+                }
+            } catch (erro) {
+                console.error("Erro ao carregar movimentações:", erro);
+            }
+        }
+
+        /* CARREGA A CARTEIRA BITCOIN */
+        if (typeof window.carregarCarteiraBitcoinDoFirestore === "function") {
+            try {
+                await window.carregarCarteiraBitcoinDoFirestore();
+            } catch (erro) {
+                console.error("Erro ao carregar carteira Bitcoin:", erro);
+            }
+        }
+
+    } else {
+        /* USUÁRIO DESLOGADO */
+
+        if (botaoLogin) {
+            botaoLogin.style.display = "flex";
+        }
+
+        if (areaLogin) {
+            areaLogin.style.display = "flex";
+        }
+
+        if (areaUsuario) {
+            areaUsuario.style.display = "none";
+            areaUsuario.classList.add("escondido");
+        }
+
+        localStorage.removeItem("usuarioMoneyWise");
+    }
+});
 
 /* =========================================
    SAIR
