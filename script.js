@@ -5309,14 +5309,27 @@ if (input && document.activeElement !== input) {
         );
 
 
-  const porcentagem =
+const porcentagem =
     (gastoHoje / limiteDiarioMoneyWise) * 100;
 
-    progresso.style.width =
-        Math.min(
-            porcentagem,
-            100
-        ) + "%";
+// Atualiza o número exibido acima da barra.
+const indicadorPorcentagem =
+    document.getElementById("porcentagemGastoDiario");
+
+if (indicadorPorcentagem) {
+    indicadorPorcentagem.textContent =
+        porcentagem.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }) + "%";
+}
+
+// Atualiza o preenchimento da barra.
+progresso.style.width =
+    Math.min(
+        Math.max(porcentagem, 0),
+        100
+    ) + "%";
 
 
     progresso.classList.remove(
