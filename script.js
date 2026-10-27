@@ -5632,3 +5632,39 @@ if (valorInput) {
     );
 
 }
+
+/* =========================================
+   ABRIR A PÁGINA MINHA CONTA
+========================================= */
+
+document.addEventListener("DOMContentLoaded", function () {
+    const perfil = document.getElementById("usuarioGoogle");
+
+    if (!perfil) {
+        console.error("MoneyWise: elemento usuarioGoogle não encontrado.");
+        return;
+    }
+
+    perfil.style.cursor = "pointer";
+
+    perfil.addEventListener("click", function (evento) {
+        if (evento.target.closest("#sairGoogle")) {
+            return;
+        }
+
+        window.location.href = "conta.html";
+    });
+
+    perfil.addEventListener("keydown", function (evento) {
+        if (evento.key === "Enter" || evento.key === " ") {
+            if (evento.target.closest("#sairGoogle")) {
+                return;
+            }
+
+            evento.preventDefault();
+            window.location.href = "conta.html";
+        }
+    });
+
+    console.log("MoneyWise: clique do perfil configurado.");
+});
