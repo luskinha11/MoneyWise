@@ -5090,17 +5090,12 @@ function calcularRendaMesLimite() {
 /* LIMITE MÁXIMO */
 
 function calcularMaximoLimiteDiario() {
+    const renda = calcularRendaMesLimite();
 
-    const renda =
-        calcularRendaMesLimite();
+    // 10% da renda mensal.
+    // Exemplo: R$ 1.000,00 = R$ 100,00 por dia.
 
-    /*
-       1% da renda mensal por dia.
-       Exemplo:
-       R$ 3.000 = R$ 30 por dia.
-    */
-
-    return renda * 0.05;
+    return renda * 0.10;
 }
 
 
