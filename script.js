@@ -315,8 +315,17 @@ function mostrarConfirmacaoMoneyWise(
 
 let movimentacoes =
     JSON.parse(
-        localStorage.getItem("movimentacoesMoneyWise")
+        localStorage.getItem(
+            "movimentacoesMoneyWise"
+        )
     ) || [];
+
+/* INICIALIZAÇÃO DA CARTEIRA BITCOIN */
+
+
+let carteiraBitcoin = JSON.parse(
+    localStorage.getItem("carteiraBitcoinMoneyWise")
+) || [];
 
 const descricaoInput =
     document.getElementById("descricao");
@@ -2090,15 +2099,6 @@ atualizarMetas();
    Trecho original: linhas 2022–2688.
    Cole esta parte inteira e depois a próxima logo abaixo.
 */
-
-/* =====================================================
-   SIMULADOR BITCOIN
-===================================================== */
-
-let carteiraBitcoin =
-    JSON.parse(
-        localStorage.getItem("carteiraBitcoinMoneyWise")
-    ) || [];
 
 /* =========================================
    CARREGAR CARTEIRA DO FIRESTORE
