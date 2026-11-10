@@ -33,13 +33,13 @@ import {
 ========================================= */
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCrEBTwrXR0YI7FDfMBJDjIzb2tajTtWlc",
-  authDomain: "moneywise-201d9.firebaseapp.com",
-  projectId: "moneywise-201d9",
-  storageBucket: "moneywise-201d9.firebasestorage.app",
-  messagingSenderId: "972820182134",
-  appId: "1:972820182134:web:1c6ee4b1cc8cf4ef411b57",
-  measurementId: "G-XJJ0D8FXEK"
+    apiKey: "AIzaSyCJGQAianaZsg7dx8uMdKb2zB2qu9nmXfQ",
+    authDomain: "moneywise-90448.firebaseapp.com",
+    projectId: "moneywise-90448",
+    storageBucket: "moneywise-90448.firebasestorage.app",
+    messagingSenderId: "471701842367",
+    appId: "1:471701842367:web:75e7e9f2b111380205990a",
+    measurementId: "G-BSMWECZ2WE"
 };
 
 
