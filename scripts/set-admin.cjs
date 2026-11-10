@@ -27,7 +27,7 @@ async function main() {
     }
 
     const serviceAccount = JSON.parse(fs.readFileSync(absolutePath, "utf8"));
-    if (serviceAccount.project_id !== "moneywise-201d9") {
+    if (serviceAccount.project_id !== "moneywise-90448") {
         throw new Error("As credenciais não pertencem ao projeto Firebase do MoneyWise.");
     }
 
