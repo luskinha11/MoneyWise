@@ -327,6 +327,53 @@ let carteiraBitcoin = JSON.parse(
     localStorage.getItem("carteiraBitcoinMoneyWise")
 ) || [];
 
+/* ESTADOS E ELEMENTOS COMPARTILHADOS.
+   Mantidos antes de qualquer callback ou atualização de tela. */
+let cotacaoBitcoinAtual = 0;
+let metas =
+    JSON.parse(
+        localStorage.getItem("metasMoneyWise")
+    ) || [];
+
+const btcCotacao = document.getElementById("btcCotacao");
+const btcInvestido = document.getElementById("btcInvestido");
+const btcQuantidade = document.getElementById("btcQuantidade");
+const btcValorAtual = document.getElementById("btcValorAtual");
+const btcResultado = document.getElementById("btcResultado");
+const btcPorcentagem = document.getElementById("btcPorcentagem");
+const valorCompraBitcoin = document.getElementById("valorCompraBitcoin");
+const comprarBitcoinBtn = document.getElementById("comprarBitcoin");
+const limparBitcoinBtn = document.getElementById("limparBitcoin");
+const listaComprasBitcoin = document.getElementById("listaComprasBitcoin");
+
+const dolarValor =
+    document.getElementById("dolarValor");
+
+const dolarVariacao =
+    document.getElementById("dolarVariacao");
+
+const euroValor =
+    document.getElementById("euroValor");
+
+const euroVariacao =
+    document.getElementById("euroVariacao");
+
+const bitcoinValor =
+    document.getElementById("bitcoinValor");
+
+const bitcoinVariacao =
+    document.getElementById("bitcoinVariacao");
+
+const realValor =
+    document.getElementById("realValor");
+
+const realVariacao =
+    document.getElementById("realVariacao");
+
+const ultimaAtualizacao =
+    document.getElementById("ultimaAtualizacao");
+
+
 const descricaoInput =
     document.getElementById("descricao");
 
@@ -957,33 +1004,6 @@ atualizarTela();
    MERCADO FINANCEIRO
 ===================================================== */
 
-const dolarValor =
-    document.getElementById("dolarValor");
-
-const dolarVariacao =
-    document.getElementById("dolarVariacao");
-
-const euroValor =
-    document.getElementById("euroValor");
-
-const euroVariacao =
-    document.getElementById("euroVariacao");
-
-const bitcoinValor =
-    document.getElementById("bitcoinValor");
-
-const bitcoinVariacao =
-    document.getElementById("bitcoinVariacao");
-
-const realValor =
-    document.getElementById("realValor");
-
-const realVariacao =
-    document.getElementById("realVariacao");
-
-const ultimaAtualizacao =
-    document.getElementById("ultimaAtualizacao");
-
 function atualizarVariacao(
     elemento,
     valor
@@ -1159,8 +1179,9 @@ async function carregarMercado() {
             erro
         );
 
-        dolarValor.textContent =
-            "Indisponível";
+        if (dolarValor) {
+            dolarValor.textContent = "Indisponível";
+        }
 
         if (euroValor) {
 
@@ -1352,11 +1373,6 @@ function renderizarBotaoGoogle() {
 /* =====================================================
    METAS FINANCEIRAS
 ===================================================== */
-
-let metas =
-    JSON.parse(
-        localStorage.getItem("metasMoneyWise")
-    ) || [];
 
 /* ELEMENTOS */
 
@@ -2158,38 +2174,6 @@ const intervaloCarteiraBitcoin = setInterval(async function () {
         clearInterval(intervaloCarteiraBitcoin);
     }
 }, 300);
-
-let cotacaoBitcoinAtual = 0;
-
-const btcCotacao =
-    document.getElementById("btcCotacao");
-
-const btcInvestido =
-    document.getElementById("btcInvestido");
-
-const btcQuantidade =
-    document.getElementById("btcQuantidade");
-
-const btcValorAtual =
-    document.getElementById("btcValorAtual");
-
-const btcResultado =
-    document.getElementById("btcResultado");
-
-const btcPorcentagem =
-    document.getElementById("btcPorcentagem");
-
-const valorCompraBitcoin =
-    document.getElementById("valorCompraBitcoin");
-
-const comprarBitcoinBtn =
-    document.getElementById("comprarBitcoin");
-
-const limparBitcoinBtn =
-    document.getElementById("limparBitcoin");
-
-const listaComprasBitcoin =
-    document.getElementById("listaComprasBitcoin");
 
 async function carregarCotacaoBitcoin() {
 
