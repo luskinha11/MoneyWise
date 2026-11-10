@@ -1,40 +1,56 @@
-# Configurar o primeiro administrador do MoneyWise
+# Configuração do painel administrativo MoneyWise
 
-A permissão administrativa usa **Firebase Authentication custom claims**. Ela é concedida localmente pelo Firebase Admin SDK, nunca por uma comparação de e-mail no navegador.
+O painel usa Firebase Authentication custom claims e funções seguras no projeto \`moneywise-90448\`.
 
-## Antes de começar
+## O que foi adicionado
 
-1. Crie a conta normalmente no MoneyWise com o e-mail que será administrador e entre nela pelo menos uma vez.
-2. Abra o projeto `moneywise-201d9` no Firebase Console.
-3. Vá em **Configurações do projeto → Contas de serviço → Gerar nova chave privada**.
-4. Baixe o JSON e coloque-o temporariamente na pasta raiz do projeto com o nome `serviceAccountKey.json`.
-5. **Não envie esse arquivo para ninguém e não o publique.** O nome está no `.gitignore`.
+- Visão geral com contagem de contas ativas, bloqueadas e administradores.
+- Lista de usuários com dados básicos de perfil e status da conta.
+- Bloqueio e reativação de contas comuns.
+- Concessão e remoção de permissão administrativa.
+- Proteções para impedir que o administrador altere a própria permissão ou bloqueie a si mesmo.
+- Proteção para manter pelo menos um administrador.
+- Auditoria das ações administrativas.
+- Verificação de disponibilidade das funções e do Firestore.
+- Configurações administrativas persistidas em \`configuracoes/admin\`.
+- Regras do Firestore para manter dados financeiros privados.
 
-## Windows PowerShell
+## Credenciais e segurança
 
-Abra o terminal do VS Code na pasta principal do MoneyWise e execute:
+A chave privada do Firebase Admin SDK deve permanecer somente no computador. Nunca envie o JSON, publique no GitHub ou coloque a chave no navegador. O arquivo \`serviceAccountKey.json\` já está no \`.gitignore\`.
 
-```powershell
+## Antes de publicar
+
+As funções administrativas rodam no Firebase Cloud Functions, separadas do GitHub Pages. A implantação de Cloud Functions exige que o projeto esteja no plano Blaze (cobrança por uso). Não habilite cobrança sem conversar com o responsável pela conta e conferir limites e custos.
+
+## Implantação
+
+No Git Bash, na pasta raiz do projeto:
+
+\`\`\`bash
+npm install -g firebase-tools
+firebase login
+firebase use moneywise-90448
+cd functions
 npm install
-$env:GOOGLE_APPLICATION_CREDENTIALS=".\serviceAccountKey.json"
-npm run set-admin -- andrieskilucas@gmail.com
-```
+cd ..
+firebase deploy --only functions,firestore:rules
+\`\`\`
 
-O comando verifica se a chave pertence ao projeto MoneyWise, localiza a conta pelo e-mail e atribui a claim `admin: true`. Depois, revoga as sessões antigas para forçar a renovação do token.
+A implantação publica as funções na região \`southamerica-east1\` e as regras do Firestore. Se o Firebase CLI pedir para ativar APIs ou configurar faturamento, pare e confira o plano e os custos antes de continuar.
 
-## Finalizar
+## Depois da implantação
 
-1. Quando o terminal confirmar sucesso, saia da conta no MoneyWise.
-2. Entre novamente com a conta que recebeu a permissão.
-3. O link **Admin** deverá aparecer no menu.
-4. Acesse `admin.html`.
+1. Entre no MoneyWise com uma conta que tenha a custom claim \`admin: true\`.
+2. Abra \`admin.html\`.
+3. Use **Atualizar dados** para validar a comunicação com as funções.
+4. Teste primeiro com uma conta de teste, nunca com a única conta administrativa.
 
-Se o comando disser que o usuário não foi encontrado, primeiro crie a conta no MoneyWise usando esse e-mail. Se houver erro de permissão, confira se a conta de serviço foi gerada no projeto correto e se ela tem acesso administrativo ao Firebase Authentication.
+## Limitações atuais
 
-## Segurança e limites atuais
-
-- O JSON da conta de serviço é uma credencial altamente privilegiada. Mantenha-o apenas no computador e apague-o quando terminar.
-- Nunca coloque a chave privada em `js/firebase.js`, no navegador, no GitHub ou em mensagens.
-- O painel inicial confirma a claim administrativa e mostra a identidade da conta. Ele ainda não oferece gerenciamento de usuários nem acesso administrativo aos dados financeiros.
-- Antes de adicionar operações administrativas ou consultar dados de outros usuários, é necessário implantar uma API confiável no servidor e revisar as regras do Firestore para validar a claim `admin`. A interface sozinha não protege dados.
-- O arquivo `package-lock.json` precisa ser atualizado pelo `npm install` depois da inclusão do Firebase Admin SDK.
+- O painel não mostra movimentações, metas, saldos ou carteiras de outros usuários.
+- Contas administrativas não podem ser bloqueadas pelo painel.
+- O administrador não pode remover a própria permissão; o sistema também protege o último administrador.
+- O aviso e o modo de manutenção são armazenados como configurações, mas ainda precisam de integração nas páginas públicas para serem exibidos ou aplicados.
+- O monitoramento atual verifica a API e registra ações administrativas. A coleta automática de erros JavaScript de todas as páginas ainda não está ativada.
+- As funções e regras ainda precisam ser implantadas e testadas no projeto Firebase real. Até lá, os recursos que dependem dessas funções não estarão operacionais no site publicado.

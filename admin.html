@@ -9,42 +9,73 @@
     <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-    <main class="admin-shell">
-        <header class="admin-top">
+    <div class="admin-layout">
+        <aside class="sidebar">
             <a href="index.html" class="brand"><img src="img/favicon.png" alt=""> Money<span>Wise</span></a>
-            <a href="index.html" class="back-link">Voltar ao MoneyWise</a>
-        </header>
-
-        <section class="admin-card">
-            <div class="admin-mark">MW</div>
-            <p class="eyebrow">ÁREA RESTRITA</p>
-            <h1>Painel administrativo</h1>
-            <p id="adminStatus" class="status" role="status">Verificando sua permissão...</p>
-
-            <div id="adminContent" hidden>
-                <div class="admin-info">
-                    <span>Conta autenticada</span>
-                    <strong id="adminEmail"></strong>
-                </div>
-                <div class="admin-info">
-                    <span>Identificador Firebase</span>
-                    <code id="adminUid"></code>
-                </div>
-                <div class="admin-notice">
-                    <strong>Permissão confirmada</strong>
-                    <p>O Firebase confirmou a claim administrativa desta conta. Esta é a base protegida do painel; ferramentas de gestão de usuários e dados exigem uma API administrativa hospedada e protegida no servidor.</p>
-                </div>
-                <button id="adminSair" type="button">Sair da conta</button>
+            <div class="side-label">ADMINISTRAÇÃO</div>
+            <nav class="side-nav" aria-label="Menu administrativo">
+                <button class="nav-item active" data-view="overview"><span>▦</span> Visão geral</button>
+                <button class="nav-item" data-view="users"><span>♙</span> Usuários</button>
+                <button class="nav-item" data-view="permissions"><span>♧</span> Controle ADM</button>
+                <button class="nav-item" data-view="monitor"><span>◷</span> Monitoramento</button>
+                <button class="nav-item" data-view="settings"><span>⚙</span> Configurações</button>
+            </nav>
+            <div class="sidebar-bottom">
+                <div class="admin-identity"><span class="online-dot"></span><div><strong id="adminEmail">Verificando...</strong><small>Administrador</small></div></div>
+                <button id="adminSair" class="logout-btn">Sair da conta</button>
+                <a class="back-link" href="index.html">← Voltar ao MoneyWise</a>
             </div>
+        </aside>
 
-            <div id="adminDenied" class="denied" hidden>
-                <strong>Acesso não autorizado</strong>
-                <p>Esta conta não possui a permissão administrativa no Firebase.</p>
-                <a href="index.html">Voltar ao início</a>
+        <main class="main-content">
+            <header class="page-header">
+                <div><p class="eyebrow">MONEYWISE / PAINEL RESTRITO</p><h1 id="viewTitle">Visão geral</h1><p id="adminStatus" class="muted" role="status">Verificando sua permissão...</p></div>
+                <button id="refreshBtn" class="secondary-btn" type="button">↻ Atualizar dados</button>
+            </header>
+
+            <div id="adminDenied" class="alert danger" hidden><strong>Acesso não autorizado</strong><p>Esta conta não possui a permissão administrativa necessária.</p><a href="index.html">Voltar ao início</a></div>
+            <div id="adminError" class="alert danger" hidden></div>
+            <div id="adminApp" hidden>
+                <section class="view active" id="view-overview">
+                    <div class="stats-grid">
+                        <article class="stat-card"><span>Total de contas</span><strong id="statTotal">—</strong><small>Contas registradas no Firebase Auth</small></article>
+                        <article class="stat-card"><span>Contas ativas</span><strong id="statActive">—</strong><small>Com acesso habilitado</small></article>
+                        <article class="stat-card"><span>Contas bloqueadas</span><strong id="statDisabled">—</strong><small>Desativadas no Firebase Auth</small></article>
+                        <article class="stat-card"><span>Administradores</span><strong id="statAdmins">—</strong><small>Com permissão administrativa</small></article>
+                    </div>
+                    <div class="panel"><div class="panel-heading"><div><h2>Atividade recente</h2><p>Últimas ações administrativas registradas</p></div><button class="text-btn" data-goto="monitor">Ver monitoramento →</button></div><div id="recentActivity" class="activity-list"><p class="muted">Carregando atividades...</p></div></div>
+                </section>
+
+                <section class="view" id="view-users">
+                    <div class="panel">
+                        <div class="panel-heading"><div><h2>Usuários cadastrados</h2><p>Dados básicos de conta. Informações financeiras privadas não são exibidas.</p></div><span class="count-pill" id="usersCount">0 contas</span></div>
+                        <div class="toolbar"><input id="userSearch" type="search" placeholder="Buscar por nome, e-mail ou UID..." autocomplete="off"><select id="userFilter"><option value="all">Todos</option><option value="active">Ativos</option><option value="disabled">Bloqueados</option><option value="admin">Administradores</option></select></div>
+                        <div class="table-wrap"><table><thead><tr><th>Usuário</th><th>Status</th><th>Permissão</th><th>Último acesso</th><th>Ações</th></tr></thead><tbody id="usersTable"><tr><td colspan="5" class="empty">Carregando usuários...</td></tr></tbody></table></div>
+                    </div>
+                </section>
+
+                <section class="view" id="view-permissions">
+                    <div class="panel"><div class="panel-heading"><div><h2>Controle administrativo</h2><p>Conceda ou remova a permissão ADM de outras contas.</p></div></div><div class="notice"><strong>Proteção ativa</strong><p>O painel impede alterar sua própria permissão e mantém pelo menos um administrador. A alteração exige nova autenticação do usuário afetado.</p></div><div class="toolbar"><input id="adminSearch" type="search" placeholder="Buscar usuário para gerenciar..." autocomplete="off"></div><div class="table-wrap"><table><thead><tr><th>Conta</th><th>Permissão atual</th><th>Ação</th></tr></thead><tbody id="adminsTable"><tr><td colspan="3" class="empty">Carregando...</td></tr></tbody></table></div></div>
+                </section>
+
+                <section class="view" id="view-monitor">
+                    <div class="stats-grid monitor-grid"><article class="stat-card"><span>Firebase Functions</span><strong id="serviceStatus">—</strong><small>Verificação da API administrativa</small></article><article class="stat-card"><span>Última verificação</span><strong id="lastCheck">—</strong><small>Horário local do navegador</small></article></div>
+                    <div class="panel"><div class="panel-heading"><div><h2>Registro de atividades</h2><p>Auditoria de ações realizadas pelo painel administrativo.</p></div></div><div class="table-wrap"><table><thead><tr><th>Data</th><th>Administrador</th><th>Ação</th><th>Usuário afetado</th></tr></thead><tbody id="logsTable"><tr><td colspan="4" class="empty">Carregando registros...</td></tr></tbody></table></div></div>
+                </section>
+
+                <section class="view" id="view-settings">
+                    <div class="panel settings-panel"><div class="panel-heading"><div><h2>Configurações gerais</h2><p>Preferências administrativas armazenadas no Firestore.</p></div></div>
+                        <label class="field-label" for="announcement">Aviso administrativo</label><textarea id="announcement" maxlength="240" rows="4" placeholder="Escreva um aviso interno de até 240 caracteres..."></textarea>
+                        <label class="switch-row"><span><strong>Ativar aviso</strong><small>Salva o aviso como ativo nas configurações do sistema.</small></span><input type="checkbox" id="announcementEnabled"></label>
+                        <label class="switch-row"><span><strong>Modo de manutenção</strong><small>Registra o estado de manutenção para integração com o site.</small></span><input type="checkbox" id="maintenanceMode"></label>
+                        <p class="muted small-note">Essas opções são salvas no backend. A exibição pública do aviso e o bloqueio geral do site exigem integração adicional nas páginas públicas.</p>
+                        <button id="saveSettings" class="primary-btn" type="button">Salvar configurações</button><span id="settingsStatus" class="inline-status" role="status"></span>
+                    </div>
+                </section>
             </div>
-        </section>
-        <footer>MoneyWise · Administração protegida por Firebase Authentication</footer>
-    </main>
+            <footer>MoneyWise · Área administrativa protegida por Firebase Authentication</footer>
+        </main>
+    </div>
     <script type="module" src="js/firebase.js"></script>
     <script type="module" src="js/admin.js"></script>
 </body>
