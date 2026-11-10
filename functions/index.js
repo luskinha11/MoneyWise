@@ -8,6 +8,17 @@ const auth = getAuth();
 const db = getFirestore();
 const REGION = "southamerica-east1";
 
+async function listEveryUser() {
+    const users = [];
+    let pageToken;
+    do {
+        const page = await auth.listUsers(1000, pageToken);
+        users.push(...page.users);
+        pageToken = page.pageToken;
+    } while (pageToken);
+    return users;
+}
+
 function requireAdmin(request) {
     if (!request.auth || request.auth.token.admin !== true) {
         throw new HttpsError("permission-denied", "Acesso administrativo necessário.");
@@ -28,8 +39,7 @@ async function audit(actor, action, targetUid = null, details = {}) {
 
 exports.getAdminDashboard = onCall({ region: REGION }, async (request) => {
     const actor = requireAdmin(request);
-    const listed = await auth.listUsers(1000);
-    const users = listed.users;
+    const users = await listEveryUser();
     const adminCount = users.filter((u) => u.customClaims && u.customClaims.admin === true).length;
     const disabledCount = users.filter((u) => u.disabled).length;
     const logs = await db.collection("admin_logs").orderBy("createdAt", "desc").limit(8).get();
@@ -55,12 +65,12 @@ exports.getAdminDashboard = onCall({ region: REGION }, async (request) => {
 
 exports.listAdminUsers = onCall({ region: REGION }, async (request) => {
     requireAdmin(request);
-    const listed = await auth.listUsers(1000);
-    const docs = await db.getAll(...listed.users.map((user) => db.collection("usuarios").doc(user.uid)));
+    const users = await listEveryUser();
+    const docs = await db.getAll(...users.map((user) => db.collection("usuarios").doc(user.uid)));
     const profiles = new Map(docs.map((doc) => [doc.id, doc.exists ? doc.data() : {}]));
 
     return {
-        users: listed.users.map((user) => {
+        users: users.map((user) => {
             const profile = profiles.get(user.uid) || {};
             return {
                 uid: user.uid,
@@ -92,8 +102,8 @@ exports.setUserAdmin = onCall({ region: REGION }, async (request) => {
     else delete claims.admin;
 
     if (!admin && target.customClaims && target.customClaims.admin === true) {
-        const listed = await auth.listUsers(1000);
-        const admins = listed.users.filter((u) => u.customClaims && u.customClaims.admin === true);
+        const allUsers = await listEveryUser();
+        const admins = allUsers.filter((u) => u.customClaims && u.customClaims.admin === true);
         if (admins.length <= 1) {
             throw new HttpsError("failed-precondition", "O sistema precisa manter pelo menos um administrador.");
         }
@@ -121,6 +131,7 @@ exports.setUserDisabled = onCall({ region: REGION }, async (request) => {
     }
 
     await auth.updateUser(uid, { disabled });
+    if (disabled) await auth.revokeRefreshTokens(uid);
     await audit(actor, disabled ? "usuario_bloqueado" : "usuario_reativado", uid, { email: target.email || "" });
     return { success: true };
 });
