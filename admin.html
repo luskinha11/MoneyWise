@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050806">
+    <title>Administração | MoneyWise</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <main class="admin-shell">
+        <header class="admin-top">
+            <a href="index.html" class="brand"><img src="img/favicon.png" alt=""> Money<span>Wise</span></a>
+            <a href="index.html" class="back-link">Voltar ao MoneyWise</a>
+        </header>
+
+        <section class="admin-card">
+            <div class="admin-mark">MW</div>
+            <p class="eyebrow">ÁREA RESTRITA</p>
+            <h1>Painel administrativo</h1>
+            <p id="adminStatus" class="status" role="status">Verificando sua permissão...</p>
+
+            <div id="adminContent" hidden>
+                <div class="admin-info">
+                    <span>Conta autenticada</span>
+                    <strong id="adminEmail"></strong>
+                </div>
+                <div class="admin-info">
+                    <span>Identificador Firebase</span>
+                    <code id="adminUid"></code>
+                </div>
+                <div class="admin-notice">
+                    <strong>Permissão confirmada</strong>
+                    <p>O Firebase confirmou a claim administrativa desta conta. Esta é a base protegida do painel; ferramentas de gestão de usuários e dados exigem uma API administrativa hospedada e protegida no servidor.</p>
+                </div>
+                <button id="adminSair" type="button">Sair da conta</button>
+            </div>
+
+            <div id="adminDenied" class="denied" hidden>
+                <strong>Acesso não autorizado</strong>
+                <p>Esta conta não possui a permissão administrativa no Firebase.</p>
+                <a href="index.html">Voltar ao início</a>
+            </div>
+        </section>
+        <footer>MoneyWise · Administração protegida por Firebase Authentication</footer>
+    </main>
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/admin.js"></script>
+</body>
+</html>
