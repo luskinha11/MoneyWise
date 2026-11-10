@@ -149,11 +149,150 @@ if (entrarFirebase) {
                     erro
                 );
 
+                mostrarMensagemAuth(traduzirErroAuth(erro));
+
             }
 
         }
     );
 
+}
+
+
+/* =========================================
+   AUTENTICAÇÃO POR E-MAIL E SENHA
+========================================= */
+
+const formularioLogin = document.getElementById("formLogin");
+const formularioCadastro = document.getElementById("formCadastro");
+const mensagemAuth = document.getElementById("mensagemAuth");
+const botaoAbrirCadastro = document.getElementById("abrirCadastro");
+const botaoVoltarLogin = document.getElementById("voltarLogin");
+const botaoEsqueciSenha = document.getElementById("esqueciSenha");
+
+function mostrarMensagemAuth(texto, tipo = "erro") {
+    if (!mensagemAuth) return;
+    mensagemAuth.textContent = texto;
+    mensagemAuth.className = "mensagem-auth " + tipo;
+    mensagemAuth.hidden = false;
+}
+
+function limparMensagemAuth() {
+    if (!mensagemAuth) return;
+    mensagemAuth.hidden = true;
+    mensagemAuth.textContent = "";
+    mensagemAuth.className = "mensagem-auth";
+}
+
+function traduzirErroAuth(erro) {
+    const mensagens = {
+        "auth/invalid-email": "Esse e-mail não parece válido.",
+        "auth/user-not-found": "Não encontramos uma conta com esse e-mail.",
+        "auth/wrong-password": "A senha está incorreta.",
+        "auth/invalid-credential": "E-mail ou senha incorretos.",
+        "auth/email-already-in-use": "Esse e-mail já possui uma conta.",
+        "auth/weak-password": "A senha precisa ter pelo menos 6 caracteres.",
+        "auth/operation-not-allowed": "O login por e-mail ainda não foi ativado no Firebase.",
+        "auth/too-many-requests": "Muitas tentativas. Aguarde um pouco e tente novamente.",
+        "auth/network-request-failed": "Falha de conexão. Verifique sua internet."
+    };
+    return mensagens[erro.code] || "Não foi possível concluir. Tente novamente.";
+}
+
+if (botaoAbrirCadastro && formularioLogin && formularioCadastro) {
+    botaoAbrirCadastro.addEventListener("click", () => {
+        limparMensagemAuth();
+        formularioLogin.hidden = true;
+        formularioCadastro.hidden = false;
+    });
+}
+
+if (botaoVoltarLogin && formularioLogin && formularioCadastro) {
+    botaoVoltarLogin.addEventListener("click", () => {
+        limparMensagemAuth();
+        formularioCadastro.hidden = true;
+        formularioLogin.hidden = false;
+    });
+}
+
+if (formularioLogin) {
+    formularioLogin.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+        limparMensagemAuth();
+
+        const email = document.getElementById("emailLogin").value.trim();
+        const senha = document.getElementById("senhaLogin").value;
+        const botao = formularioLogin.querySelector('button[type="submit"]');
+
+        try {
+            botao.disabled = true;
+            botao.textContent = "Entrando...";
+            await signInWithEmailAndPassword(auth, email, senha);
+            window.location.replace("index.html");
+        } catch (erro) {
+            console.error("Erro no login:", erro);
+            mostrarMensagemAuth(traduzirErroAuth(erro));
+        } finally {
+            botao.disabled = false;
+            botao.innerHTML = 'Entrar na minha conta <span>↗</span>';
+        }
+    });
+}
+
+if (formularioCadastro) {
+    formularioCadastro.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
+        limparMensagemAuth();
+
+        const nome = document.getElementById("nomeCadastro").value.trim();
+        const email = document.getElementById("emailCadastro").value.trim();
+        const senha = document.getElementById("senhaCadastro").value;
+        const confirmacao = document.getElementById("confirmarSenhaCadastro").value;
+        const botao = formularioCadastro.querySelector('button[type="submit"]');
+
+        if (senha !== confirmacao) {
+            mostrarMensagemAuth("As senhas não coincidem.");
+            return;
+        }
+
+        window.__mwCadastroEmAndamento = true;
+
+        try {
+            botao.disabled = true;
+            botao.textContent = "Criando conta...";
+            const credencial = await createUserWithEmailAndPassword(auth, email, senha);
+            await updateProfile(credencial.user, { displayName: nome });
+            window.location.replace("index.html");
+        } catch (erro) {
+            console.error("Erro no cadastro:", erro);
+            mostrarMensagemAuth(traduzirErroAuth(erro));
+        } finally {
+            window.__mwCadastroEmAndamento = false;
+            botao.disabled = false;
+            botao.innerHTML = 'Criar minha conta <span>↗</span>';
+        }
+    });
+}
+
+if (botaoEsqueciSenha) {
+    botaoEsqueciSenha.addEventListener("click", async () => {
+        limparMensagemAuth();
+        const email = document.getElementById("emailLogin").value.trim();
+
+        if (!email) {
+            mostrarMensagemAuth("Digite seu e-mail no campo acima para receber o link de recuperação.");
+            document.getElementById("emailLogin").focus();
+            return;
+        }
+
+        try {
+            await sendPasswordResetEmail(auth, email);
+            mostrarMensagemAuth("Enviamos um link de recuperação para seu e-mail.", "sucesso");
+        } catch (erro) {
+            console.error("Erro ao recuperar senha:", erro);
+            mostrarMensagemAuth(traduzirErroAuth(erro));
+        }
+    });
 }
 
 /* =========================================
@@ -164,6 +303,7 @@ onAuthStateChanged(auth, async function (usuario) {
     const paginaLogin = window.location.pathname.endsWith("/login.html");
 
     if (usuario && paginaLogin) {
+        if (window.__mwCadastroEmAndamento) return;
         window.location.replace("index.html");
         return;
     }
