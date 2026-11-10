@@ -54,16 +54,6 @@ async function requireAdmin(req, res, next) {
 }
 app.use("/api/admin", requireAdmin);
 
-async function writeLog(action, targetUid, details = {}) {
-  await db.collection("admin_logs").add({
-    action, targetUid: targetUid || null,
-    actorUid: reqSafeActor.uid, actorEmail: reqSafeActor.email || null,
-    details, createdAt: FieldValue.serverTimestamp()
-  });
-}
-let reqSafeActor = { uid: "sistema", email: null };
-app.use("/api/admin", (req, _res, next) => { reqSafeActor = { uid: req.admin.uid, email: req.admin.email }; next(); });
-
 app.get("/api/admin/dashboard", async (_req, res) => {
   try {
     const result = await auth.listUsers(1000);
