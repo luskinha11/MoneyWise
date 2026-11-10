@@ -199,8 +199,21 @@ onAuthStateChanged(auth, async function (usuario) {
             googleEmail.textContent = usuario.email || "";
         }
 
+        const fotoGoogle =
+            usuario.photoURL ||
+            (usuario.providerData || []).find(
+                provedor => provedor.providerId === "google.com" && provedor.photoURL
+            )?.photoURL ||
+            "img/favicon.png";
+
         if (googleFoto) {
-            googleFoto.src = usuario.photoURL || "img/favicon.png";
+            googleFoto.onerror = function () {
+                this.onerror = null;
+                this.src = "img/favicon.png";
+            };
+            googleFoto.referrerPolicy = "no-referrer";
+            googleFoto.alt = "Foto do perfil";
+            googleFoto.src = fotoGoogle;
         }
 
         localStorage.setItem(
@@ -209,7 +222,7 @@ onAuthStateChanged(auth, async function (usuario) {
                 uid: usuario.uid,
                 nome: usuario.displayName || "Usuário",
                 email: usuario.email || "",
-                foto: usuario.photoURL || ""
+                foto: fotoGoogle === "img/favicon.png" ? "" : fotoGoogle
             })
         );
 
