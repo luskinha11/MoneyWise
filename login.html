@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050806">
+    <title>Entrar | MoneyWise</title>
+    <link rel="icon" href="img/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-bg-grid"></div>
+    <div class="login-glow login-glow-one"></div>
+    <div class="login-glow login-glow-two"></div>
+
+    <main class="login-shell">
+        <section class="login-showcase">
+            <a class="login-brand" href="login.html">
+                <img src="img/favicon.png" alt="MoneyWise">
+                <span>Money<span>Wise</span></span>
+            </a>
+
+            <div class="showcase-copy">
+                <span class="eyebrow"><i></i> SUA VIDA FINANCEIRA, EM EQUILÍBRIO</span>
+                <h1>Suas escolhas de hoje constroem <em>seu amanhã.</em></h1>
+                <p>Clareza para organizar. Inteligência para decidir. Liberdade para conquistar.</p>
+            </div>
+
+            <div class="showcase-card">
+                <div class="showcase-card-top">
+                    <span>VISÃO FINANCEIRA</span>
+                    <span class="live-dot">● PRIVADO</span>
+                </div>
+                <div class="showcase-amount">Seu dinheiro, sob controle.</div>
+                <div class="showcase-bars" aria-hidden="true">
+                    <span style="height:28%"></span><span style="height:43%"></span>
+                    <span style="height:37%"></span><span style="height:61%"></span>
+                    <span style="height:53%"></span><span style="height:76%"></span>
+                    <span style="height:68%"></span><span style="height:92%"></span>
+                </div>
+                <div class="showcase-card-foot"><span>ORGANIZAÇÃO</span><span>PLANEJAMENTO</span><span>EVOLUÇÃO</span></div>
+            </div>
+
+            <div class="showcase-footer"><span>© 2026 MONEYWISE</span><span>CONTROLE COM INTENÇÃO.</span></div>
+        </section>
+
+        <section class="login-side">
+            <div class="login-mobile-brand">
+                <img src="img/favicon.png" alt="">
+                <span>Money<span>Wise</span></span>
+            </div>
+
+            <div class="auth-card">
+                <div class="auth-heading">
+                    <span class="eyebrow">BEM-VINDO AO MONEYWISE</span>
+                    <h2>Sua jornada começa aqui.</h2>
+                    <p>Acesse sua conta e acompanhe sua vida financeira.</p>
+                </div>
+
+                <div id="mensagemAuth" class="mensagem-auth" role="alert" hidden></div>
+
+                <form id="formLogin" class="auth-form">
+                    <label for="emailLogin">E-mail</label>
+                    <input id="emailLogin" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+
+                    <div class="password-label">
+                        <label for="senhaLogin">Senha</label>
+                        <button type="button" id="esqueciSenha" class="text-link">Esqueceu a senha?</button>
+                    </div>
+                    <input id="senhaLogin" type="password" autocomplete="current-password" placeholder="Sua senha" required>
+
+                    <button class="primary-auth-button" type="submit">Entrar na minha conta <span>↗</span></button>
+                    <p class="auth-switch">Ainda não tem uma conta? <button type="button" id="abrirCadastro" class="text-link">Criar conta</button></p>
+                </form>
+
+                <form id="formCadastro" class="auth-form" hidden>
+                    <label for="nomeCadastro">Nome completo</label>
+                    <input id="nomeCadastro" type="text" autocomplete="name" placeholder="Como podemos te chamar?" required>
+
+                    <label for="emailCadastro">E-mail</label>
+                    <input id="emailCadastro" type="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+
+                    <label for="senhaCadastro">Crie uma senha</label>
+                    <input id="senhaCadastro" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo de 6 caracteres" required>
+
+                    <label for="confirmarSenhaCadastro">Confirme sua senha</label>
+                    <input id="confirmarSenhaCadastro" type="password" autocomplete="new-password" minlength="6" placeholder="Digite a senha novamente" required>
+
+                    <button class="primary-auth-button" type="submit">Criar minha conta <span>↗</span></button>
+                    <p class="auth-switch">Já tem uma conta? <button type="button" id="voltarLogin" class="text-link">Entrar</button></p>
+                </form>
+
+                <div class="auth-divider"><span>OU CONTINUE COM</span></div>
+                <div id="googleButton" class="google-login-container"></div>
+                <p class="auth-privacy">Sua conta é pessoal. Seus dados financeiros devem permanecer privados.</p>
+            </div>
+
+            <div class="login-bottom">SIMPLES. SEGURO. SOB SEU CONTROLE.</div>
+        </section>
+    </main>
+
+    <script type="module" src="js/firebase.js"></script>
+</body>
+</html>

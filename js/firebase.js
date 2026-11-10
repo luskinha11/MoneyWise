@@ -5,6 +5,10 @@ import {
     getAuth,
     GoogleAuthProvider,
     signInWithPopup,
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    updateProfile,
     signOut,
     onAuthStateChanged
 } from
@@ -157,6 +161,18 @@ if (entrarFirebase) {
 ========================================= */
 
 onAuthStateChanged(auth, async function (usuario) {
+    const paginaLogin = window.location.pathname.endsWith("/login.html");
+
+    if (usuario && paginaLogin) {
+        window.location.replace("index.html");
+        return;
+    }
+
+    if (!usuario && !paginaLogin) {
+        window.location.replace("login.html");
+        return;
+    }
+
     const modalLogin = document.getElementById("modalLoginMoneyWise");
 
     if (modalLogin) {
