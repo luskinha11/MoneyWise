@@ -10,7 +10,8 @@ import {
     sendPasswordResetEmail,
     updateProfile,
     signOut,
-    onAuthStateChanged
+    onAuthStateChanged,
+    getIdTokenResult
 } from
     "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
 
@@ -333,6 +334,27 @@ onAuthStateChanged(auth, async function (usuario) {
 
     if (usuario) {
         /* USUÁRIO LOGADO */
+
+        // Permissão administrativa vem exclusivamente de custom claims do Firebase.
+        try {
+            const resultadoToken = await getIdTokenResult(usuario, true);
+            const ehAdmin = resultadoToken.claims.admin === true;
+            const navegacao = document.querySelector("header nav");
+            const linkAdminExistente = document.getElementById("linkAdminMoneyWise");
+
+            if (ehAdmin && navegacao && !linkAdminExistente) {
+                const linkAdmin = document.createElement("a");
+                linkAdmin.id = "linkAdminMoneyWise";
+                linkAdmin.href = "admin.html";
+                linkAdmin.textContent = "Admin";
+                linkAdmin.className = "link-admin-moneywise";
+                navegacao.appendChild(linkAdmin);
+            } else if (!ehAdmin && linkAdminExistente) {
+                linkAdminExistente.remove();
+            }
+        } catch (erro) {
+            console.error("Não foi possível verificar a permissão administrativa:", erro);
+        }
 
         if (botaoLogin) {
             botaoLogin.style.display = "none";
