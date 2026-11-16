@@ -3635,133 +3635,45 @@ const variacaoSaldo24h =
 
 function desenharGraficoSaldo24h() {
 
-    if (!graficoSaldo24h) {
-        return;
-    }
+    if (!graficoSaldo24h) return;
 
-    const contexto =
-        graficoSaldo24h.getContext(
-            "2d"
-        );
+    const contexto = graficoSaldo24h.getContext("2d");
+    const largura = graficoSaldo24h.clientWidth;
+    const altura = graficoSaldo24h.clientHeight;
 
-    /* TAMANHO REAL DO CANVAS */
+    if (!largura || !altura) return;
 
-    const largura =
-        graficoSaldo24h.clientWidth;
+    const escala = Math.min(window.devicePixelRatio || 1, 2);
 
-    const altura =
-        graficoSaldo24h.clientHeight;
+    graficoSaldo24h.width = Math.round(largura * escala);
+    graficoSaldo24h.height = Math.round(altura * escala);
+    contexto.setTransform(escala, 0, 0, escala, 0, 0);
+    contexto.clearRect(0, 0, largura, altura);
 
-const escala =
-    Math.min(
-        window.devicePixelRatio || 1,
-        1.5
+    const agora = Date.now();
+    const limite = agora - (24 * 60 * 60 * 1000);
+
+    historicoSaldo24h = historicoSaldo24h.filter(registro =>
+        Number.isFinite(Number(registro.horario)) &&
+        Number.isFinite(Number(registro.saldo)) &&
+        registro.horario >= limite
     );
 
-    graficoSaldo24h.width =
-        largura * escala;
-
-    graficoSaldo24h.height =
-        altura * escala;
-
-    contexto.scale(
-        escala,
-        escala
-    );
-
-    contexto.clearRect(
-        0,
-        0,
-        largura,
-        altura
-    );
-
-    /* =========================
-       LIMPAR REGISTROS ANTIGOS
-    ========================= */
-
-    const agora =
-        Date.now();
-
-    const limite =
-        agora -
-        (
-            24 *
-            60 *
-            60 *
-            1000
-        );
-
-    historicoSaldo24h =
-        historicoSaldo24h.filter(
-            function (registro) {
-
-                return registro.horario >=
-                    limite;
-
-            }
-        );
-
-    /* =========================
-       PRIMEIRO REGISTRO
-    ========================= */
-
-    if (
-        historicoSaldo24h.length === 0
-    ) {
-
-        const resumo =
-            calcularResumo();
-
-        historicoSaldo24h.push({
-
-            horario:
-                agora,
-
-            saldo:
-                resumo.saldo
-
-        });
-
+    if (historicoSaldo24h.length === 0) {
+        const resumo = calcularResumo();
+        historicoSaldo24h.push({ horario: agora, saldo: resumo.saldo });
         salvarHistoricoSaldo24h();
-
     }
 
-    /* =========================
-       DADOS
-    ========================= */
+    const dados = [...historicoSaldo24h].sort(
+        (a, b) => a.horario - b.horario
+    );
 
-    const dados =
-        [...historicoSaldo24h]
-            .sort(
-                function (a, b) {
-
-                    return (
-                        a.horario -
-                        b.horario
-                    );
-
-                }
-            );
-
-    /* =========================
-       VARIAÇÃO DAS 24H
-    ========================= */
-
-    const saldoInicial =
-        dados[0].saldo;
-
-    const saldoAtual =
-        dados[
-            dados.length - 1
-        ].saldo;
-
-    const diferenca =
-        saldoAtual -
-        saldoInicial;
+    const primeiro = Number(dados[0].saldo);
+    const ultimo = Number(dados[dados.length - 1].saldo);
+    const diferenca = ultimo - primeiro;
 
     if (variacaoSaldo24h) {
-
         variacaoSaldo24h.classList.remove(
             "variacao-24h-positiva",
             "variacao-24h-negativa",
@@ -3769,398 +3681,162 @@ const escala =
         );
 
         if (diferenca > 0) {
-
-            variacaoSaldo24h.textContent =
-                "+" +
-                formatarDinheiro(
-                    diferenca
-                );
-
-            variacaoSaldo24h.classList.add(
-                "variacao-24h-positiva"
-            );
-
+            variacaoSaldo24h.textContent = "+" + formatarDinheiro(diferenca);
+            variacaoSaldo24h.classList.add("variacao-24h-positiva");
         } else if (diferenca < 0) {
-
-            variacaoSaldo24h.textContent =
-                formatarDinheiro(
-                    diferenca
-                );
-
-            variacaoSaldo24h.classList.add(
-                "variacao-24h-negativa"
-            );
-
+            variacaoSaldo24h.textContent = formatarDinheiro(diferenca);
+            variacaoSaldo24h.classList.add("variacao-24h-negativa");
         } else {
-
-            variacaoSaldo24h.textContent =
-                "R$ 0,00";
-
-            variacaoSaldo24h.classList.add(
-                "variacao-24h-neutra"
-            );
-
+            variacaoSaldo24h.textContent = "R$ 0,00";
+            variacaoSaldo24h.classList.add("variacao-24h-neutra");
         }
-
     }
 
-    /* =========================
-       ESCALA
-    ========================= */
+    const valores = dados.map(registro => Number(registro.saldo));
+    let menor = Math.min(...valores);
+    let maior = Math.max(...valores);
 
-    const valores =
-        dados.map(
-            function (registro) {
+    const variacao = maior - menor;
+    const folga = variacao > 0
+        ? variacao * 0.16
+        : Math.max(Math.abs(maior) * 0.012, 100);
 
-                return registro.saldo;
+    menor -= folga;
+    maior += folga;
 
-            }
-        );
+    const margem = { esquerda: 92, direita: 22, topo: 28, baixo: 42 };
+    const areaLargura = Math.max(1, largura - margem.esquerda - margem.direita);
+    const areaAltura = Math.max(1, altura - margem.topo - margem.baixo);
+    const baseY = margem.topo + areaAltura;
 
-    let menorSaldo =
-        Math.min(
-            ...valores
-        );
+    const x = horario =>
+        margem.esquerda +
+        Math.max(0, Math.min(1, (horario - limite) / (agora - limite))) *
+        areaLargura;
 
-    let maiorSaldo =
-        Math.max(
-            ...valores
-        );
+    const y = saldo =>
+        margem.topo + ((maior - saldo) / (maior - menor)) * areaAltura;
 
-    /* EVITA GRÁFICO TOTALMENTE RETO */
+    const cor = diferenca > 0 ? "#2fa84f" :
+        diferenca < 0 ? "#ff746a" : "#2fa84f";
 
-    if (menorSaldo === maiorSaldo) {
+    // Linhas horizontais e escala monetária lateral.
+    contexto.save();
+    contexto.font = "11px Arial";
+    contexto.textBaseline = "middle";
+    contexto.textAlign = "right";
 
-        menorSaldo -=
-            Math.max(
-                Math.abs(
-                    menorSaldo * 0.010
-                ),
-                100
-            );
-
-        maiorSaldo +=
-            Math.max(
-                Math.abs(
-                    maiorSaldo * 0.010
-                ),
-                100
-            );
-
-    }
-
-    const margemX =
-        20;
-
-    const margemY =
-        30;
-
-    const areaLargura =
-        largura -
-        margemX * 2;
-
-    const areaAltura =
-        altura -
-        margemY * 2;
-
-    /* =========================
-       LINHAS DO FUNDO
-    ========================= */
-
-    contexto.strokeStyle =
-        "rgba(38, 122, 60, 0.25)";
-
-    contexto.lineWidth =
-        1;
-
-    contexto.setLineDash(
-        [4, 5]
-    );
-
-    for (
-        let linha = 0;
-        linha < 4;
-        linha++
-    ) {
-
-        const y =
-            margemY +
-            (
-                areaAltura /
-                3
-            ) *
-            linha;
+    for (let i = 0; i < 5; i++) {
+        const proporcao = i / 4;
+        const posY = margem.topo + proporcao * areaAltura;
+        const valor = maior - proporcao * (maior - menor);
 
         contexto.beginPath();
-
-        contexto.moveTo(
-            margemX,
-            y
-        );
-
-        contexto.lineTo(
-            largura -
-            margemX,
-            y
-        );
-
+        contexto.setLineDash([4, 6]);
+        contexto.strokeStyle = "rgba(255,255,255,0.09)";
+        contexto.lineWidth = 1;
+        contexto.moveTo(margem.esquerda, posY);
+        contexto.lineTo(largura - margem.direita, posY);
         contexto.stroke();
 
-    }
-
-    contexto.setLineDash(
-        []
-    );
-
-    /* =========================
-       FUNÇÃO PARA POSIÇÃO Y
-    ========================= */
-
-    function calcularY(
-        saldo
-    ) {
-
-        return (
-            margemY +
-            (
-                (
-                    maiorSaldo -
-                    saldo
-                ) /
-                (
-                    maiorSaldo -
-                    menorSaldo
-                )
-            ) *
-            areaAltura
+        contexto.setLineDash([]);
+        contexto.fillStyle = "rgba(220,230,222,0.62)";
+        contexto.fillText(
+            valor.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL",
+                maximumFractionDigits: 0
+            }),
+            margem.esquerda - 12,
+            posY
         );
-
     }
+    contexto.restore();
 
-    /* =========================
-       FUNÇÃO PARA POSIÇÃO X
-    ========================= */
+    const pontos = dados.map(registro => ({
+        x: x(Number(registro.horario)),
+        y: y(Number(registro.saldo))
+    }));
 
-    function calcularX(
-        horario
-    ) {
-
-        const progresso =
-            (
-                horario -
-                limite
-            ) /
-            (
-                agora -
-                limite
-            );
-
-        return (
-            margemX +
-            progresso *
-            areaLargura
-        );
-
-    }
-
-    /* =========================
-       DEGRADÊ ABAIXO DA LINHA
-    ========================= */
-
-    const gradiente =
-        contexto.createLinearGradient(
-            0,
-            0,
-            0,
-            altura
-        );
-
-    gradiente.addColorStop(
-        0,
-        "rgba(38, 122, 60, 0.30)"
-    );
-
-    gradiente.addColorStop(
-        1,
-        "rgba(38, 122, 60, 0)"
-    );
+    // Área preenchida com degradê, como no gráfico do Bitcoin.
+    const gradiente = contexto.createLinearGradient(0, margem.topo, 0, baseY);
+    gradiente.addColorStop(0, diferenca < 0
+        ? "rgba(255,116,106,0.22)"
+        : "rgba(47,168,79,0.24)");
+    gradiente.addColorStop(1, "rgba(0,0,0,0)");
 
     contexto.beginPath();
+    contexto.moveTo(pontos[0].x, baseY);
+    contexto.lineTo(pontos[0].x, pontos[0].y);
 
-    dados.forEach(
-        function (
-            registro,
-            indice
-        ) {
+    for (let i = 1; i < pontos.length; i++) {
+        const meioX = (pontos[i - 1].x + pontos[i].x) / 2;
+        const meioY = (pontos[i - 1].y + pontos[i].y) / 2;
+        contexto.quadraticCurveTo(
+            pontos[i - 1].x,
+            pontos[i - 1].y,
+            meioX,
+            meioY
+        );
+    }
 
-            const x =
-                calcularX(
-                    registro.horario
-                );
-
-            const y =
-                calcularY(
-                    registro.saldo
-                );
-
-            if (indice === 0) {
-
-                contexto.moveTo(
-                    x,
-                    y
-                );
-
-            } else {
-
-                contexto.lineTo(
-                    x,
-                    y
-                );
-
-            }
-
-        }
-    );
-
-    const ultimo =
-        dados[
-            dados.length - 1
-        ];
-
-    const primeiro =
-        dados[0];
-
-    contexto.lineTo(
-        calcularX(
-            ultimo.horario
-        ),
-        altura -
-        margemY
-    );
-
-    contexto.lineTo(
-        calcularX(
-            primeiro.horario
-        ),
-        altura -
-        margemY
-    );
-
+    const ultimoPonto = pontos[pontos.length - 1];
+    contexto.lineTo(ultimoPonto.x, ultimoPonto.y);
+    contexto.lineTo(ultimoPonto.x, baseY);
     contexto.closePath();
-
-    contexto.fillStyle =
-        gradiente;
-
+    contexto.fillStyle = gradiente;
     contexto.fill();
 
-    /* =========================
-       LINHA PRINCIPAL
-    ========================= */
+    // Linha curva principal.
+    contexto.beginPath();
+    contexto.moveTo(pontos[0].x, pontos[0].y);
+
+    if (pontos.length === 1) {
+        contexto.lineTo(pontos[0].x + 0.1, pontos[0].y);
+    } else {
+        for (let i = 1; i < pontos.length; i++) {
+            const meioX = (pontos[i - 1].x + pontos[i].x) / 2;
+            const meioY = (pontos[i - 1].y + pontos[i].y) / 2;
+            contexto.quadraticCurveTo(
+                pontos[i - 1].x,
+                pontos[i - 1].y,
+                meioX,
+                meioY
+            );
+        }
+        contexto.lineTo(ultimoPonto.x, ultimoPonto.y);
+    }
+
+    contexto.strokeStyle = cor;
+    contexto.lineWidth = 2.5;
+    contexto.lineJoin = "round";
+    contexto.lineCap = "round";
+    contexto.shadowColor = cor;
+    contexto.shadowBlur = 8;
+    contexto.stroke();
+    contexto.shadowBlur = 0;
+
+    // Destaque discreto somente no último registro.
+    contexto.beginPath();
+    contexto.arc(ultimoPonto.x, ultimoPonto.y, 4, 0, Math.PI * 2);
+    contexto.fillStyle = cor;
+    contexto.fill();
 
     contexto.beginPath();
-
-    dados.forEach(
-        function (
-            registro,
-            indice
-        ) {
-
-            const x =
-                calcularX(
-                    registro.horario
-                );
-
-            const y =
-                calcularY(
-                    registro.saldo
-                );
-
-            if (indice === 0) {
-
-                contexto.moveTo(
-                    x,
-                    y
-                );
-
-            } else {
-
-                contexto.lineTo(
-                    x,
-                    y
-                );
-
-            }
-
-        }
-    );
-
-    contexto.strokeStyle =
-        "#267a3c";
-
-    contexto.lineWidth =
-        3;
-
-    contexto.lineJoin =
-        "round";
-
-    contexto.lineCap =
-        "round";
-
+    contexto.arc(ultimoPonto.x, ultimoPonto.y, 8, 0, Math.PI * 2);
+    contexto.strokeStyle = diferenca < 0
+        ? "rgba(255,116,106,0.28)"
+        : "rgba(47,168,79,0.30)";
+    contexto.lineWidth = 3;
     contexto.stroke();
 
-    /* =========================
-       PONTOS
-    ========================= */
-
-    dados.forEach(
-        function (registro) {
-
-            const x =
-                calcularX(
-                    registro.horario
-                );
-
-            const y =
-                calcularY(
-                    registro.saldo
-                );
-
-            contexto.beginPath();
-
-            contexto.arc(
-                x,
-                y,
-                4,
-                0,
-                Math.PI * 2
-            );
-
-            contexto.fillStyle =
-                "#267a3c";
-
-            contexto.fill();
-
-            contexto.beginPath();
-
-            contexto.arc(
-                x,
-                y,
-                8,
-                0,
-                Math.PI * 2
-            );
-
-            contexto.strokeStyle =
-                "rgba(38, 122, 60, 0.30)";
-
-            contexto.lineWidth =
-                3;
-
-            contexto.stroke();
-
-        }
-    );
-
+    // Se ainda existem poucos registros, não inventa oscilações.
+    if (dados.length < 3) {
+        contexto.fillStyle = "rgba(220,230,222,0.48)";
+        contexto.font = "10px Arial";
+        contexto.textAlign = "right";
+        contexto.fillText("Histórico em formação", largura - margem.direita, margem.topo - 10);
+    }
 }
 
 desenharGraficoSaldo24h();
