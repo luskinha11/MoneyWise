@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "set-admin": "node scripts/set-admin.cjs"
+    "set-admin": "node scripts/set-admin.cjs",
+    "admin-api": "node admin-api/server.cjs"
   },
   "keywords": [],
   "author": "",
