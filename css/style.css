@@ -621,6 +621,164 @@ font-family: "Bodoni Moda", Georgia, "Times New Roman", serif;
 
 
 /* =========================
+   GUIA DE INVESTIMENTOS NA HOME
+========================= */
+
+.home-investment-guide {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    width: 84%;
+    box-sizing: border-box;
+    margin: 55px auto 45px;
+    padding: 48px 52px;
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    align-items: center;
+    gap: 42px;
+    background:
+        radial-gradient(ellipse at 88% 10%, rgba(38, 122, 60, 0.19), transparent 42%),
+        linear-gradient(120deg, #0b110d, #050706 72%);
+    border: 1px solid #267a3c;
+}
+
+.home-investment-copy,
+.home-investment-steps {
+    position: relative;
+    z-index: 1;
+}
+
+.home-investment-copy h2 {
+    max-width: 620px;
+    margin: 12px 0 16px;
+    color: #fff;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(27px, 3vw, 38px);
+    line-height: 1.15;
+}
+
+.home-investment-copy > p:not(.label) {
+    max-width: 620px;
+    color: #c2c9c3;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.home-investment-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 20px;
+    padding: 14px 21px;
+    background: #267a3c;
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    transition: .2s ease;
+}
+
+.home-investment-button:hover {
+    background: #31964c;
+    transform: translateY(-3px);
+}
+
+.home-investment-button span {
+    font-size: 18px;
+}
+
+.home-investment-steps {
+    display: grid;
+    gap: 12px;
+}
+
+.home-investment-step {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    column-gap: 12px;
+    align-items: center;
+    padding: 16px 18px;
+    background: rgba(3, 7, 4, .72);
+    border: 1px solid rgba(38, 122, 60, .38);
+}
+
+.home-investment-step > span {
+    grid-row: span 2;
+    color: #36a653;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.home-investment-step strong {
+    color: #fff;
+    font-size: 14px;
+}
+
+.home-investment-step small {
+    margin-top: 4px;
+    color: #aab3ac;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.home-investment-decoration {
+    position: absolute;
+    right: -24px;
+    bottom: 7px;
+    z-index: 0;
+    color: rgba(80, 150, 94, .07);
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    transform: rotate(-8deg);
+    pointer-events: none;
+}
+
+@media (max-width: 900px) {
+    .home-investment-guide {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 38px;
+    }
+
+    .home-investment-steps {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .home-investment-step {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .home-investment-step > span {
+        grid-row: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-investment-guide {
+        width: 92%;
+        margin: 35px auto;
+        padding: 27px 22px;
+    }
+
+    .home-investment-steps {
+        grid-template-columns: 1fr;
+    }
+
+    .home-investment-step {
+        grid-template-columns: 32px 1fr;
+        gap: 3px 10px;
+    }
+
+    .home-investment-step > span {
+        grid-row: span 2;
+    }
+}
+
+
+/* =========================
    SOBRE
 ========================= */
 
